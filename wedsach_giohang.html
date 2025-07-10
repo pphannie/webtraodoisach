@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi-vn">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Giỏ Hàng</title>
+        <link rel="icon" href="SO.png" title="logo">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+        <link rel="stylesheet" href="gh-mystyle.css">
+    </head>
+    <body>
+        <header>
+            <div class="nav_bar">
+            <a href="#"><img src="SachOi.png" alt="logo" title="Trang chủ" id="logo"></a>
+            <a href="#" class="menu"><b>Trang Chủ</b></a>
+            <a href="#" class="menu"><b>Giới Thiệu</b></a>
+            <a href="#" class="menu"><b>Sản Phẩm</b></a>
+            <a href="wedsach_giohang.html" class="menu"><b>Giỏ Hàng</b></a>
+            <a href="dangnhap.html" class="menu"><b>Đăng Nhập</b></a>
+            <a href="#" class="menu"><b>Đăng Ký</b></a>
+            <a href="#" class="menu"><b>Liên Hệ</b></a>
+            </div>
+            <form action="search" method="get">
+            <div class="search_box">
+                <input type="text" id="search_input" placeholder=" Nhập tên sách...">
+                <button class="search_button" title="Tìm kiếm">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+                <a href="#" title="Đăng bán">
+                <i class="fa-solid fa-square-plus"></i>
+                </a>
+            </div>
+            </form>
+        </header>
+
+        <main>
+            <h1><i class="fa-solid fa-cart-shopping"></i> | Giỏ Hàng Của Bạn</h1>
+            <div id="cart-container"></div>
+            <p class="total" id="total-price">Tổng tiền: 0 đ</p>
+
+            <div class="btn-action">
+                <button class="all">
+                    <input type="checkbox" id="select-all">
+                    <span id="select">Chọn tất cả</span>
+                </button>
+                <button onclick="clearSelected()">Xoá các mục đã chọn</button>
+                <button onclick="confirmExchange()">Xác nhận trao đổi</button>
+            </div>
+
+        </main>
+
+        <footer>
+            <a href="#logo">
+                <img src="top.jpg" width="30px" title="đầu trang">
+            </a>
+        <script src="gh.js"></script>
+    </body>
+</html>
