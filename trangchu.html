@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <link rel="icon" href="images/icon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/jquery-3.7.1.min.js"></script>
+    
+    <link rel="stylesheet" href="mystyle.css" type="text/css">
+    
+    
+    
+</head>
+
+<body>
+
+     <header>
+
+        <div class="logo-container">
+            <a href="#"><img src="images/logo.png" alt="logo" title="Trang chủ" id="logo"></a>
+        </div>
+
+        <div class="menu-toggle">
+            <input type="checkbox" id="toggler">
+            <label for="toggler" class="fa-solid fa-bars"></label>
+
+            <div class="nav_bar" id="navBar">
+                <a href="#" class="menu"><b>Trang Chủ</b></a>
+                <a href="#" class="menu"><b>Giới Thiệu</b></a>
+                <a href="#" class="menu"><b>Sản Phẩm</b></a>
+                <a href="#" class="menu"><b>Giỏ Hàng</b></a>
+                <a href="dangnhap.html" class="menu"><b>Đăng Nhập</b></a>
+                <a href="#" class="menu"><b>Đăng Ký</b></a>
+                <a href="#" class="menu"><b>Liên Hệ</b></a>
+            </div>
+        </div>
+
+
+        <form action="search" method="get">
+            <div class="search_box">
+                <input type="text" id="search_input" placeholder=" Nhập tên sách, thể loại...">
+                <button class="search_button" title="Tìm kiếm"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <a href="#" title="Đăng bán"><i class="fa-solid fa-square-plus"></i></a>
+            </div>
+        </form>
+
+    </header>
+
+    <main class="one-col">
+        <p id="btop"></p>
+        <article>
+            <h2>Sách nổi bật</h2>
+            <div class="book-list">
+
+                <div class="book">
+                    <img src="https://via.placeholder.com/150x200" alt="Sách 1">
+                    <h3>Giáo trình HTML & CSS</h3>
+                    <p>Giá: 90.000đ</p>
+                    <button onclick="addToCart('Giáo trình HTML & CSS')">Thêm vào giỏ</button>
+                </div>
+
+                <div class="book">
+                    <img src="https://via.placeholder.com/150x200" alt="Sách 2">
+                    <h3>Lập trình JavaScript</h3>
+                    <p>Giá: 120.000đ</p>
+                    <button onclick="addToCart('Lập trình JavaScript')">Thêm vào giỏ</button>
+                </div>
+
+                <div class="book">
+                    <img src="https://via.placeholder.com/150x200" alt="Sách 3">
+                    <h3>Python cho người mới</h3>
+                    <p>Giá: 100.000đ</p>
+                    <button onclick="addToCart('Python cho người mới')">Thêm vào giỏ</button>
+                </div>
+
+                <div class="book">
+                    <img src="https://via.placeholder.com/150x200" alt="Sách 1">
+                    <h3>Giáo trình HTML & CSS</h3>
+                    <p>Giá: 90.000đ</p>
+                    <button onclick="addToCart('Giáo trình HTML & CSS')">Thêm vào giỏ</button>
+                </div>
+
+                <div class="book">
+                    <img src="https://via.placeholder.com/150x200" alt="Sách 2">
+                    <h3>Lập trình JavaScript</h3>
+                    <p>Giá: 120.000đ</p>
+                    <button onclick="addToCart('Lập trình JavaScript')">Thêm vào giỏ</button>
+                </div>
+
+                <div class="book">
+                    <img src="https://via.placeholder.com/150x200" alt="Sách 3">
+                    <h3>Python cho người mới</h3>
+                    <p>Giá: 100.000đ</p>
+                    <button onclick="addToCart('Python cho người mới')">Thêm vào giỏ</button>
+                </div>
+
+                <div class="book">
+                    <img src="https://via.placeholder.com/150x200" alt="Sách 1">
+                    <h3>Giáo trình HTML & CSS</h3>
+                    <p>Giá: 90.000đ</p>
+                    <button onclick="addToCart('Giáo trình HTML & CSS')">Thêm vào giỏ</button>
+                </div>
+
+                <div class="book">
+                    <img src="https://via.placeholder.com/150x200" alt="Sách 2">
+                    <h3>Lập trình JavaScript</h3>
+                    <p>Giá: 120.000đ</p>
+                    <button onclick="addToCart('Lập trình JavaScript')">Thêm vào giỏ</button>
+                </div>
+
+                <div class="book">
+                    <img src="https://via.placeholder.com/150x200" alt="Sách 3">
+                    <h3>Python cho người mới</h3>
+                    <p>Giá: 100.000đ</p>
+                    <button onclick="addToCart('Python cho người mới')">Thêm vào giỏ</button>
+                </div>
+
+            </div>
+        </article>
+    </main>
+
+    <footer >
+        <div>
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Trường Công nghệ Thông tin & Truyền thông - Trường Đại học Cần Thơ <br>Khu 2, đường 3/2, Phường Ninh Kiều, TP. Cần Thơ, Việt Nam;</span>
+        </div>
+        <div>
+            <i class="fa-solid fa-square-phone"></i>
+            <span>0292 3 831301</span>
+        </div>
+        <div>
+            <i class="fa-solid fa-envelope"></i>
+            <span>tcntt@ctu.edu.vn</span>
+        </div>
+        <div>
+            <span>Theo dõi chúng tôi tại: </span>
+            <a href="https://cit.ctu.edu.vn/"><i id="vb_lk" class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.instagram.com/ctudhct/?hl=vi"><i class="fa-brands fa-square-instagram"></i></a>
+            <a href="https://www.youtube.com/@CTUDHCT"><i class="fa-brands fa-youtube"></i></a>
+            <a id="btn-top" href="#btop"><i class="fa-solid fa-arrow-up"></i></a>
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="myjs.js"></script>
+</body>
+
+</html>
