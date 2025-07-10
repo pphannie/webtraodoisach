@@ -20,7 +20,7 @@ body {
 }
 
 header {
-    position: fixed;
+/*     position: fixed; */
     border: solid 5px #654321;
     width: 100%;
     max-width: 1080px;
@@ -53,7 +53,7 @@ main{
     
     border: 1px solid #ccc7c8;
     border-radius: 5px;
-    padding-top: 250px;
+/*     padding-top: 250px; */
     background-color: #fff;
 }
 
