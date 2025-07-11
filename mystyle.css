@@ -4,7 +4,7 @@ html {
     background-size: cover;
     font-family: Arial, Helvetica, sans-serif;
     background-attachment: fixed;
-
+    
     overflow-x: hidden;
 }
 
@@ -84,7 +84,7 @@ main{
     flex-shrink: 1;
     flex-basis: 150px;
     background-color: #df9959;
-    width: 10%;
+    width: 20%;
     /* margin-left: -10px; */
     height: fit-content;
     margin-top: 2%;
@@ -122,14 +122,18 @@ main{
     grid-area: search;
     margin-left: -10%;
     margin-top: 10%;
-    
     border: none;
     height: 30px;
+    display: flex;
+justify-content: center;
+align-items: center;
 }
 
 .fa-magnifying-glass{
     grid-area: search;
     margin-top: 0%;
+    
+    
 }
 
 .fa-square-plus {
@@ -180,7 +184,7 @@ footer a i:hover {
 #btn-top {
     padding: 10px;
     background-color: #ffd399;
-    z-index: 10;
+    z-index: 999;
     position: fixed;
     right: 10px;
     bottom: 5px;
@@ -190,6 +194,8 @@ footer a i:hover {
     text-align: center;
     font-size: 50px;
     border: black 2px solid;
+    display: none; /* ẩn ban đầu */
+  transition: opacity 0.3s;
 }
 
 footer {
