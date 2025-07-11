@@ -1,51 +1,57 @@
-const track = document.getElementById("carouselTrack");
-const prevBtn = document.getElementById("prevBtn");
+const bookList = document.getElementById("bookList");
 const nextBtn = document.getElementById("nextBtn");
+const prevBtn = document.getElementById("prevBtn");
 
-const itemsPerPage = 3;             // Hiển thị 3 mục mỗi lần
-const itemWidth = 115;              // Chiều rộng mỗi mục (100px + 2x5px margin)
-const totalItems = track.children.length;
+let currentIndex = 0;
 
-// Tính số lần cuộn tối đa
-const maxIndex = Math.ceil(totalItems / itemsPerPage) - 1;
-
-let currentPage = 0;
-
-function updateCarousel() {
-  const offset = currentPage * itemsPerPage * itemWidth;
-  track.style.transform = `translateX(-${offset}px)`;
+function getBookWidth() {
+  const book = bookList.querySelector(".book");
+  const style = window.getComputedStyle(book);
+  const marginLeft = parseInt(style.marginLeft) || 0;
+  const marginRight = parseInt(style.marginRight) || 0;
+  return book.offsetWidth + marginLeft + marginRight;
 }
 
-prevBtn.addEventListener("click", () => {
-  currentPage--;
-  if (currentPage < 0) {
-    currentPage = maxIndex; // Quay về trang cuối
-  }
-  updateCarousel();
-});
+function getMaxIndex() {
+  const books = bookList.children.length;
+  const itemsPerView = getItemsPerView();
+  return books - itemsPerView;
+}
+
+function getItemsPerView() {
+  const width = window.innerWidth;
+  if (width >= 1024) return 5;
+  if (width >= 768) return 3;
+  return 1;
+}
+
+function updateCarousel() {
+  const bookWidth = getBookWidth();
+  const offset = currentIndex * bookWidth;
+  bookList.style.transform = `translateX(-${offset}px)`;
+}
 
 nextBtn.addEventListener("click", () => {
-  currentPage++;
-  if (currentPage > maxIndex) {
-    currentPage = 0; // Quay về đầu
+  const maxIndex = getMaxIndex();
+  if (currentIndex < maxIndex) {
+    currentIndex++;
+  } else {
+    currentIndex = 0;
   }
   updateCarousel();
 });
 
+prevBtn.addEventListener("click", () => {
+  const maxIndex = getMaxIndex();
+  if (currentIndex > 0) {
+    currentIndex--;
+  } else {
+    currentIndex = maxIndex;
+  }
+  updateCarousel();
+});
 
-window.onscroll = function () {
-    const btn = document.getElementById("btn-top");
-    if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
-      btn.style.display = "block";
-    } else {
-      btn.style.display = "none";
-    }
-  };
-
-  // Cuộn mượt lên đầu khi bấm nút
-  document.getElementById("btn-top").addEventListener("click", function () {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth"
-    });
-  });
+window.addEventListener("resize", () => {
+  currentIndex = 0; // Reset về đầu khi resize để tránh lỗi lệch
+  updateCarousel();
+});
