@@ -11,8 +11,113 @@ body {
   font-size: 1.6rem;
 }
 
+#logo {
+  max-width: 25rem;
+  width: 100%;
+}
+
+.nav_bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: nowrap;
+  gap: 1.2%;
+}
+header {
+  margin-bottom: 1rem;
+}
 
 .menu {
+  flex-shrink: 1;
+  flex-basis: 15rem;
+  background-color: #df9959;
+  width: 10%;
+  margin-left: -1rem;
+  height: fit-content;
+  margin-top: 2%;
+  border-radius: 2rem;
+  text-align: center;
+  padding: 1rem 0.5rem;
+  font-size: large;
+  text-decoration: none;
+  color: black;
+
+  transition-duration: 0.31s;
+  transition-timing-function: ease;
+  cursor: pointer;
+}
+
+.menu:hover {
+  filter: brightness(130%);
+  transform: scale(1.2);
+}
+
+/* khung tim kiem */
+
+#search_input {
+  grid-area: search_box;
+  margin-left: 2%;
+  border: none;
+  outline: none;
+  margin-top: 1.5%;
+  height: 3rem;
+  width: 93%;
+}
+
+.search_button {
+  grid-area: search;
+  margin-left: -10%;
+  margin-top: 10%;
+
+  border: none;
+  height: 3.1rem;
+}
+
+.fa-square-plus {
+  grid-area: sold;
+  margin-left: -5%;
+  margin-top: 10%;
+}
+
+.search_button,
+.fa-square-plus {
+  text-align: center;
+  color: black;
+  padding: 13% 0;
+  width: 90%;
+  transition-duration: 0.31s;
+  transition-timing-function: ease;
+  cursor: pointer;
+}
+
+#search_input,
+.search_button,
+.fa-square-plus {
+  border-radius: 2rem;
+  background-color: #ffd399;
+}
+
+.search_box {
+  display: grid;
+  grid-template-areas: "search_box search sold";
+  grid-template-columns: 3fr 0.5fr 0.5fr;
+
+  max-width: 500px;
+  background-color: #df9959;
+  /* width: 85%; */
+  height: 45px;
+  margin: 1% 2% 0 auto;
+  border-radius: 2rem;
+}
+
+.search_button:hover,
+.fa-square-plus:hover,
+footer a i:hover {
+  filter: brightness(105%);
+  transform: scale(1.1);
+}
+
+/* .menu {
   display: flex;
   align-items: center;
   gap: 2rem;
@@ -63,7 +168,7 @@ body {
 }
 #search:hover {
   background-color: #df9959;
-}
+} */
 .main-product {
   background-color: #df9959;
   width: 90%;
@@ -137,7 +242,7 @@ body {
   font-size: 1.6rem;
 }
 
-button {
+.button-buy {
   padding: 0.8rem 1.6rem;
   background: #4caf50;
   color: white;
@@ -165,6 +270,36 @@ button {
   width: 2rem;
   text-align: center;
   color: black;
+}
+.main-store {
+  background-color: #df9959;
+  width: 40%;
+  margin: 0 auto;
+  border-radius: 10px;
+  padding: 1rem;
+  text-align: center;
+}
+
+.store-header {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr 1fr;
+  gap: 2rem;
+  margin: 0 auto;
+  width: 100%;
+}
+.item {
+  display: grid;
+  grid-template-columns: 2fr 2fr 1fr 1fr;
+  align-items: center;
+  gap: 2rem;
+  background: #ffeace;
+  padding: 1rem;
+  border: 0.1rem solid black;
+  border-radius: 0.5rem;
+}
+.item-img {
+  width: 100%;
+  border-radius: 5px;
 }
 @media only screen and (max-width: 767px) {
   .product-card {

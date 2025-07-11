@@ -13,31 +13,33 @@
   </head>
   <body>
     <header>
-      <nav class="menu">
-        <div class="logo">
-          <a href="#"><img src="img/SachOi.png" alt="logo" /></a>
-        </div>
-        <div class="nav-links">
-          <a class="link" href="#">Trang Chủ</a>
-          <a class="link" href="#">Giới Thiệu</a>
-          <a class="link" href="#">Sản Phẩm</a>
-          <a class="link" href="#">Giỏ Hàng</a>
-          <a class="link" href="#">Đăng Nhập</a>
-          <a class="link" href="#">Đăng Ký</a>
-          <a class="link" href="#">Liên Hệ</a>
-        </div>
+      <div class="nav_bar">
+        <a href="#"
+          ><img src="img/SachOi.png" alt="logo" title="Trang chủ" id="logo"
+        /></a>
+        <a href="#" class="menu"> <b>Trang Chủ</b></a>
+        <a href="#" class="menu"><b>Giới Thiệu</b></a>
+        <a href="#" class="menu"><b>Sản Phẩm</b></a>
+        <a href="#" class="menu"><b>Giỏ Hàng</b></a>
+        <a href="dangnhap.html" class="menu"><b>Đăng Nhập</b></a>
+        <a href="#" class="menu"><b>Đăng Ký</b></a>
+        <a href="#" class="menu"><b>Liên Hệ</b></a>
+      </div>
+      <form action="search" method="get">
         <div class="search_box">
           <input
             type="text"
-            name="search"
-            id="search_box"
-            placeholder="Nhập tên sách, thể loại,..."
+            id="search_input"
+            placeholder=" Nhập tên sách, thể loại..."
           />
-          <button type="submit" id="search">
+          <button class="search_button" title="Tìm kiếm">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
+          <a href="#" title="Đăng bán"
+            ><i class="fa-solid fa-square-plus"></i
+          ></a>
         </div>
-      </nav>
+      </form>
     </header>
     <main class="main-product">
       <div class="type-product">
@@ -57,10 +59,10 @@
           <p>Mô tả ngắn về sản phẩm này. Rất hấp dẫn.</p>
           <div class="bottom">
             <span class="price">299.000đ</span>
-            <button>Mua ngay</button>
+            <button class="button-buy">Mua ngay</button>
           </div>
         </div>
-        <div class="product-card">
+            <div class="product-card">
           <img src="img/demen.jpg" alt="Ảnh sản phẩm" />
           <div class="overlay">
             <figcaption>
@@ -73,10 +75,10 @@
           <p>Mô tả ngắn về sản phẩm này. Rất hấp dẫn.</p>
           <div class="bottom">
             <span class="price">299.000đ</span>
-            <button>Mua ngay</button>
+            <button class="button-buy">Mua ngay</button>
           </div>
         </div>
-        <div class="product-card">
+            <div class="product-card">
           <img src="img/demen.jpg" alt="Ảnh sản phẩm" />
           <div class="overlay">
             <figcaption>
@@ -89,10 +91,10 @@
           <p>Mô tả ngắn về sản phẩm này. Rất hấp dẫn.</p>
           <div class="bottom">
             <span class="price">299.000đ</span>
-            <button>Mua ngay</button>
+            <button class="button-buy">Mua ngay</button>
           </div>
         </div>
-        <div class="product-card">
+            <div class="product-card">
           <img src="img/demen.jpg" alt="Ảnh sản phẩm" />
           <div class="overlay">
             <figcaption>
@@ -105,10 +107,10 @@
           <p>Mô tả ngắn về sản phẩm này. Rất hấp dẫn.</p>
           <div class="bottom">
             <span class="price">299.000đ</span>
-            <button>Mua ngay</button>
+            <button class="button-buy">Mua ngay</button>
           </div>
         </div>
-        <div class="product-card">
+            <div class="product-card">
           <img src="img/demen.jpg" alt="Ảnh sản phẩm" />
           <div class="overlay">
             <figcaption>
@@ -121,10 +123,10 @@
           <p>Mô tả ngắn về sản phẩm này. Rất hấp dẫn.</p>
           <div class="bottom">
             <span class="price">299.000đ</span>
-            <button>Mua ngay</button>
+            <button class="button-buy">Mua ngay</button>
           </div>
         </div>
-        <div class="product-card">
+            <div class="product-card">
           <img src="img/demen.jpg" alt="Ảnh sản phẩm" />
           <div class="overlay">
             <figcaption>
@@ -137,10 +139,10 @@
           <p>Mô tả ngắn về sản phẩm này. Rất hấp dẫn.</p>
           <div class="bottom">
             <span class="price">299.000đ</span>
-            <button>Mua ngay</button>
+            <button class="button-buy">Mua ngay</button>
           </div>
         </div>
-        <div class="product-card">
+            <div class="product-card">
           <img src="img/demen.jpg" alt="Ảnh sản phẩm" />
           <div class="overlay">
             <figcaption>
@@ -153,10 +155,10 @@
           <p>Mô tả ngắn về sản phẩm này. Rất hấp dẫn.</p>
           <div class="bottom">
             <span class="price">299.000đ</span>
-            <button>Mua ngay</button>
+            <button class="button-buy">Mua ngay</button>
           </div>
         </div>
-        <div class="product-card">
+            <div class="product-card">
           <img src="img/demen.jpg" alt="Ảnh sản phẩm" />
           <div class="overlay">
             <figcaption>
@@ -169,10 +171,10 @@
           <p>Mô tả ngắn về sản phẩm này. Rất hấp dẫn.</p>
           <div class="bottom">
             <span class="price">299.000đ</span>
-            <button>Mua ngay</button>
+            <button class="button-buy">Mua ngay</button>
           </div>
         </div>
-        <div class="product-card">
+            <div class="product-card">
           <img src="img/demen.jpg" alt="Ảnh sản phẩm" />
           <div class="overlay">
             <figcaption>
@@ -185,10 +187,10 @@
           <p>Mô tả ngắn về sản phẩm này. Rất hấp dẫn.</p>
           <div class="bottom">
             <span class="price">299.000đ</span>
-            <button>Mua ngay</button>
+            <button class="button-buy">Mua ngay</button>
           </div>
         </div>
-        <div class="product-card">
+            <div class="product-card">
           <img src="img/demen.jpg" alt="Ảnh sản phẩm" />
           <div class="overlay">
             <figcaption>
@@ -201,7 +203,23 @@
           <p>Mô tả ngắn về sản phẩm này. Rất hấp dẫn.</p>
           <div class="bottom">
             <span class="price">299.000đ</span>
-            <button>Mua ngay</button>
+            <button class="button-buy">Mua ngay</button>
+          </div>
+        </div>
+            <div class="product-card">
+          <img src="img/demen.jpg" alt="Ảnh sản phẩm" />
+          <div class="overlay">
+            <figcaption>
+              <p><strong>Tác Giả:</strong> Tô Hoài</p>
+              <p><strong>Năm:</strong> 1941</p>
+              <p><strong>Tóm tắt:</strong> Câu chuyện về tuổi thơ...</p>
+            </figcaption>
+          </div>
+          <h3>Tên sản phẩm</h3>
+          <p>Mô tả ngắn về sản phẩm này. Rất hấp dẫn.</p>
+          <div class="bottom">
+            <span class="price">299.000đ</span>
+            <button class="button-buy">Mua ngay</button>
           </div>
         </div>
       </div>
