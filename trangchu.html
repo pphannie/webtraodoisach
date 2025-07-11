@@ -17,7 +17,7 @@
 
 <body>
     <header>
-        <div>
+        <div class="header-bar">
             <div class="logo-container">
                 <a href="#"><img src="images/logo.png" alt="logo" title="Trang chủ" id="logo"></a>
             </div>
@@ -53,6 +53,7 @@
                 <div class="col">
                     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-indicators">
+
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
                                 class="active" aria-current="true" aria-label="Slide 1"></button>
                             <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
@@ -107,93 +108,106 @@
         <br></br><br></br>
 
         <article>
+
             <h2>Sách nổi bật</h2>
+
             <div class="mycarousel-container">
+
                 <button id="prevBtn"><i class="fa-solid fa-arrow-left"></i></button>
 
                 <div class="mycarousel-wrapper">
+
                     <div class="book-list" id="bookList">
                         <!-- Mỗi .book là một "slide" -->
+
                         <div class="book">
                             <img src="images/book1.jpg" alt="Sách 1">
                             <h3>Giáo trình HTML & CSS</h3>
                             <p>Giá: 90.000đ</p>
-                            <button onclick="addToCart('Giáo trình HTML & CSS')">Thêm vào giỏ hàng</button>
+                            <button class="addCart" onclick="addToCart('Giáo trình HTML & CSS')">Thêm vào giỏ hàng</button>
                         </div>
 
                         <div class="book">
                             <img src="images/book2jpg.jpg" alt="Sách 2">
                             <h3>Lập trình JavaScript</h3>
                             <p>Giá: 120.000đ</p>
-                            <button onclick="addToCart('Lập trình JavaScript')">Thêm vào giỏ hàng</button>
+                            <button class="addCart" onclick="addToCart('Lập trình JavaScript')">Thêm vào giỏ hàng</button>
                         </div>
 
                         <div class="book">
                             <img src="images/book3.jpg" alt="Sách 3">
                             <h3>Python cho người mới</h3>
                             <p>Giá: 100.000đ</p>
-                            <button onclick="addToCart('Python cho người mới')">Thêm vào giỏ hàng</button>
+                            <button class="addCart" onclick="addToCart('Python cho người mới')">Thêm vào giỏ hàng</button>
                         </div>
 
                         <div class="book">
                             <img src="images/book1.jpg" alt="Sách 1">
                             <h3>Giáo trình HTML & CSS</h3>
                             <p>Giá: 90.000đ</p>
-                            <button onclick="addToCart('Giáo trình HTML & CSS')">Thêm vào giỏ hàng</button>
+                            <button class="addCart" onclick="addToCart('Giáo trình HTML & CSS')">Thêm vào giỏ hàng</button>
                         </div>
 
                         <div class="book">
                             <img src="images/book2jpg.jpg" alt="Sách 2">
                             <h3>Lập trình JavaScript</h3>
                             <p>Giá: 120.000đ</p>
-                            <button onclick="addToCart('Lập trình JavaScript')">Thêm vào giỏ hàng</button>
+                            <button class="addCart" onclick="addToCart('Lập trình JavaScript')">Thêm vào giỏ hàng</button>
                         </div>
 
                         <div class="book">
                             <img src="images/book3.jpg" alt="Sách 3">
                             <h3>Python cho người mới</h3>
                             <p>Giá: 100.000đ</p>
-                            <button onclick="addToCart('Python cho người mới')">Thêm vào giỏ hàng</button>
+                            <button class="addCart" onclick="addToCart('Python cho người mới')">Thêm vào giỏ hàng</button>
                         </div>
 
                         <div class="book">
                             <img src="images/book1.jpg" alt="Sách 1">
                             <h3>Giáo trình HTML & CSS</h3>
                             <p>Giá: 90.000đ</p>
-                            <button onclick="addToCart('Giáo trình HTML & CSS')">Thêm vào giỏ hàng</button>
+                            <button class="addCart" onclick="addToCart('Giáo trình HTML & CSS')">Thêm vào giỏ hàng</button>
                         </div>
 
                         <div class="book">
                             <img src="images/book2jpg.jpg" alt="Sách 2">
                             <h3>Lập trình JavaScript</h3>
                             <p>Giá: 120.000đ</p>
-                            <button onclick="addToCart('Lập trình JavaScript')">Thêm vào giỏ hàng</button>
+                            <button class="addCart" onclick="addToCart('Lập trình JavaScript')">Thêm vào giỏ hàng</button>
                         </div>
 
                         <div class="book">
                             <img src="images/book3.jpg" alt="Sách 3">
                             <h3>Python cho người mới</h3>
                             <p>Giá: 100.000đ</p>
-                            <button onclick="addToCart('Python cho người mới')">Thêm vào giỏ hàng</button>
+                            <button class="addCart" onclick="addToCart('Python cho người mới')">Thêm vào giỏ hàng</button>
                         </div>
 
                         <div class="book">
                             <img src="images/book3.jpg" alt="Sách 3">
                             <h3>Python cho người mới</h3>
                             <p>Giá: 100.000đ</p>
-                            <button onclick="addToCart('Python cho người mới')">Thêm vào giỏ hàng</button>
+                            <button class="addCart" onclick="addToCart('Python cho người mới')">Thêm vào giỏ hàng</button>
                         </div>
 
-                        <button id="dot"><i class="fa-solid fa-ellipsis"></i></button>
+                        <a id="dot" href="sach.html" class="book">
+                            <div class="dot-content">
+                                <p><strong>Xem thêm sách?</strong></p>
+                                <p>Bấm vào đây</p>
+                            </div>
+                        </a>
                     </div>
                 </div>
 
                 <button id="nextBtn"><i class="fa-solid fa-arrow-right"></i></button>
                 
             </div>
+
         </article>
 
     </main>
+
+    <br></br><br></br>
 
     <footer>
         <div>
