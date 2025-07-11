@@ -5,7 +5,7 @@ const prevBtn = document.getElementById("prevBtn");
 let currentIndex = 0;
 
 function getBooks() {
-  return Array.from(bookList.querySelectorAll(".book")); // chỉ lấy .book, bỏ #dot
+  return Array.from(bookList.querySelectorAll(".book, #dot"));
 }
 
 function getItemsPerView() {
@@ -18,15 +18,16 @@ function getItemsPerView() {
 function getMaxIndex() {
   const books = getBooks().length;
   const itemsPerView = getItemsPerView();
-  return books - itemsPerView;
+  return Math.max(books - itemsPerView, 0);
 }
 
 function getBookWidth() {
-  const book = bookList.querySelector(".book");
-  const style = window.getComputedStyle(book);
+  const items = bookList.querySelectorAll(".book, #dot");
+  if (items.length === 0) return 0;
+  const style = window.getComputedStyle(items[0]);
   const marginLeft = parseInt(style.marginLeft) || 0;
   const marginRight = parseInt(style.marginRight) || 0;
-  return book.offsetWidth + marginLeft + marginRight;
+  return items[0].offsetWidth + marginLeft + marginRight;
 }
 
 function updateCarousel() {
@@ -57,5 +58,9 @@ prevBtn.addEventListener("click", () => {
 
 window.addEventListener("resize", () => {
   currentIndex = 0; // Reset về đầu khi resize để tránh lỗi lệch
+  updateCarousel();
+});
+
+window.addEventListener("load", () => {
   updateCarousel();
 });
