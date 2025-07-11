@@ -216,6 +216,7 @@ footer a i:hover {
   height: auto;
   max-height: 500px; /* đặt chiều cao tối đa nếu cần */
   border-radius: 15px;
+  
 }
 
 #btn-top {
@@ -378,7 +379,8 @@ h2{
 .mycarousel-wrapper {
   width: 100%;
   overflow: hidden;
-  height: auto; 
+  height: auto;
+  position: relative;
 }
 
 .book-list {
@@ -386,16 +388,14 @@ h2{
   transition: transform 0.5s ease-in-out;
   height: auto;
   align-items: stretch;
-  width: fit-content;
+  width: 100%;
 }
 
 .book {
   background-color: #df9959;
   border-radius: 15px;
-  margin: 0 5px;
   padding: 10px;
   text-align: center;
-  flex: 0 0 calc(90% / 5); /* Mặc định 5 sách */
   box-sizing: border-box;
   height: auto;
   display: flex;
@@ -412,8 +412,12 @@ h2{
   display: block;
 }
 
-/* justify-content: center;
-    height: fit-content; */
+.book,
+#dot {
+  flex: 0 0 20%;
+  max-width: 20%;
+  margin: 0 5px;
+}
 
 #dot{
   background-color: #df9959;
@@ -421,7 +425,6 @@ h2{
   margin: 0 5px;
   padding: 10px;
   text-align: center;
-  flex: 0 0 calc(90% / 5); /* giống .book */
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
@@ -458,26 +461,21 @@ h2{
     font-size: 450%;
     border: black solid 2px;
     border-radius: 10%;
-    padding: 1%;
+    margin: 1%;
     color: #ffd399;
     background-color: #df9959;
 }
 
 @media (max-width: 1023px) {
-  .book {
-    flex: 0 0 calc(100% / 3); /* Hiển thị 3 sách */
-  }
-
-   #dot {
-    flex: 0 0 calc(100% / 3);
+  .book,
+  #dot {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+    margin: 0 5px;
   }
 }
 
 @media (max-width: 767px) {
-  .book {
-    flex: 0 0 100%; /* Hiển thị 1 sách */
-    height: auto;
-  }
 
   .book-list {
     flex-wrap: nowrap;
@@ -494,8 +492,11 @@ h2{
     align-items: stretch;
   }
 
+  .book,
   #dot {
     flex: 0 0 100%;
+    max-width: 100%;
+    margin: 0 5px;
   }
 
 }
