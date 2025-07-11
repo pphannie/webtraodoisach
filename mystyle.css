@@ -48,25 +48,35 @@ main{
     background-color: transparent;
 }
 
+.header-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
 #logo {
     max-width: 250px;
     width: 100%;
 }
 
 .logo-container{
-    display: flex;
+    display: block;
 }
 
 .user{
+    display: block;
     border-radius: 25%;
-    max-width: 100px;
-    width: 100%;
-    float: right;
-    border: solid 4px black;
-    float: right;
+    max-width: 70px;
+    width: 90%;
+    border: solid 2px black;
     background-color: #df9959;
     transition: all 0.31s ease;
-    margin-right: 20px;
+    margin-left: auto;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .user:hover {
@@ -77,7 +87,7 @@ main{
 .fa-user{
     text-align: center;
     color: #ffd399;
-    font-size: 500%;
+    font-size: 300%;
     width: auto;
 }
 
@@ -136,21 +146,19 @@ main{
     border: none;
     height: 30px;
     display: flex;
-justify-content: center;
-align-items: center;
+    justify-content: center;
+    align-items: center;
 }
 
 .fa-magnifying-glass{
     grid-area: search;
     margin-top: 0%;
-    
-    
 }
 
 .fa-square-plus {
     grid-area: sold;
     margin-left: -5%;
-    margin-top: 10%;
+    margin-top: 8%;
 }
 
 .search_button,
@@ -175,10 +183,8 @@ align-items: center;
     display: grid;
     grid-template-areas: "search_box search sold";
     grid-template-columns: 3fr 0.5fr 0.5fr;
-
     max-width: 500px;
     background-color: #df9959;
-    /* width: 85%; */
     height: 45px;
     margin: 1% 2% 0 auto;
     border-radius: 20px;
@@ -194,18 +200,25 @@ footer a i:hover {
 
 .container{
     background-color: #df9959;
-    padding: 1%;
+    padding: 2%;
     border-radius: 30px;
 }
 
 #carouselExampleAutoplaying{
     background-color: #ffd399;
-    padding: 1%;
+    padding: 2%;
     border-radius: 30px;
 }
 
+.carousel-item img {
+  object-fit: cover; /* hoặc contain, tùy nhu cầu */
+  width: 20%;
+  height: auto;
+  max-height: 500px; /* đặt chiều cao tối đa nếu cần */
+  border-radius: 15px;
+}
+
 #btn-top {
-    padding: 10px;
     background-color: #df9959;
     z-index: 999;
     position: fixed;
@@ -213,11 +226,12 @@ footer a i:hover {
     bottom: 5px;
     border-radius: 10px;
     color: #ffd399;
-    width: 100px;
+    width: 50px;
     text-align: center;
-    font-size: 50px;
+    font-size: 30px;
     border: black 2px solid;
     transition: opacity 0.3s;
+    margin: 1%;
 }
 
 footer {
@@ -353,25 +367,26 @@ h2{
   align-items: center;
   justify-content: center;
   background-color: #ffd399;
-  padding: 20px;
+  padding: 10px;
   border-radius: 15px;
   overflow: hidden;
   position: relative;
   margin-top: 20px;
-  height: auto; /* Cho phép co giãn theo nội dung */
+  height: auto;
 }
 
 .mycarousel-wrapper {
   width: 100%;
   overflow: hidden;
-  height: auto; /* Đảm bảo chiều cao co giãn */
+  height: auto; 
 }
 
 .book-list {
   display: flex;
   transition: transform 0.5s ease-in-out;
   height: auto;
-  align-items: stretch; /* Giúp phần tử con cao đều */
+  align-items: stretch;
+  width: fit-content;
 }
 
 .book {
@@ -386,17 +401,47 @@ h2{
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: center;
 }
 
 .book img {
   max-width: 80%;
   height: auto;
   border-radius: 10px;
+  margin: 0 auto;
+  display: block;
 }
 
+/* justify-content: center;
+    height: fit-content; */
+
 #dot{
-    justify-content: center;
-    height: fit-content;
+  background-color: #df9959;
+  border-radius: 15px;
+  margin: 0 5px;
+  padding: 10px;
+  text-align: center;
+  flex: 0 0 calc(90% / 5); /* giống .book */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+#dot:hover {
+  filter: brightness(110%);
+  transform: scale(1.05);
+}
+
+#dot .dot-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .carousel-container button {
@@ -409,9 +454,22 @@ h2{
   z-index: 10;
 }
 
+#prevBtn, #nextBtn{
+    font-size: 450%;
+    border: black solid 2px;
+    border-radius: 10%;
+    padding: 1%;
+    color: #ffd399;
+    background-color: #df9959;
+}
+
 @media (max-width: 1023px) {
   .book {
     flex: 0 0 calc(100% / 3); /* Hiển thị 3 sách */
+  }
+
+   #dot {
+    flex: 0 0 calc(100% / 3);
   }
 }
 
@@ -435,5 +493,10 @@ h2{
     height: auto;
     align-items: stretch;
   }
+
+  #dot {
+    flex: 0 0 100%;
+  }
+
 }
 
