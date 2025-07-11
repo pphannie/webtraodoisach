@@ -4,30 +4,23 @@ html {
     background-size: cover;
     font-family: Arial, Helvetica, sans-serif;
     background-attachment: fixed;
-    
     overflow-x: hidden;
 }
 
 body {
-    background-color: #df9959;
-    max-width: 1080px;
+    background-color: transparent;
     width: 100%;
     margin: auto;
-    display: grid;
+    /* display: grid;
     grid-template-areas:
         "header-cell" "nav-cell" "main-cell" "footer-cell"
-    ;
+    ; */
 }
 
 header {
-/*     position: fixed; */
-    border: solid 5px #654321;
     width: 100%;
-    max-width: 1080px;
-    background-image: url("images/header3.jpg");
     height: 250px;
     grid-area: header-cell;
-    /* border: solid red 5px; */
     align-items: center;
     justify-content: space-between;
     z-index: 1000;
@@ -50,11 +43,9 @@ header .fa-bars{
 }
 
 main{
-    
-    border: 1px solid #ccc7c8;
+    /* border: 1px solid #ccc7c8; */
     border-radius: 5px;
-/*     padding-top: 250px; */
-    background-color: #fff;
+    background-color: transparent;
 }
 
 #logo {
@@ -64,9 +55,30 @@ main{
 
 .logo-container{
     display: flex;
-    justify-content: center; /* căn giữa theo chiều ngang */
-    align-items: center;     /* căn giữa theo chiều dọc nếu cần */
-    padding: 10px 0;
+}
+
+.user{
+    border-radius: 25%;
+    max-width: 100px;
+    width: 100%;
+    float: right;
+    border: solid 4px black;
+    float: right;
+    background-color: #df9959;
+    transition: all 0.31s ease;
+    margin-right: 20px;
+}
+
+.user:hover {
+    filter: brightness(110%);
+    transform: scale(1.2);
+}
+
+.fa-user{
+    text-align: center;
+    color: #ffd399;
+    font-size: 500%;
+    width: auto;
 }
 
 .nav_bar {
@@ -85,7 +97,6 @@ main{
     flex-basis: 150px;
     background-color: #df9959;
     width: 20%;
-    /* margin-left: -10px; */
     height: fit-content;
     margin-top: 2%;
     margin-left: 1%;
@@ -181,21 +192,32 @@ footer a i:hover {
     transform: scale(1.1);
 }
 
+.container{
+    background-color: #df9959;
+    padding: 1%;
+    border-radius: 30px;
+}
+
+#carouselExampleAutoplaying{
+    background-color: #ffd399;
+    padding: 1%;
+    border-radius: 30px;
+}
+
 #btn-top {
     padding: 10px;
-    background-color: #ffd399;
+    background-color: #df9959;
     z-index: 999;
     position: fixed;
     right: 10px;
     bottom: 5px;
     border-radius: 10px;
-    color: #df9959;
+    color: #ffd399;
     width: 100px;
     text-align: center;
     font-size: 50px;
     border: black 2px solid;
-    display: none; /* ẩn ban đầu */
-  transition: opacity 0.3s;
+    transition: opacity 0.3s;
 }
 
 footer {
@@ -225,12 +247,17 @@ footer {
         height: 100%;
     }
 
+    .logo-container{
+        justify-content: center; /* căn giữa theo chiều ngang */
+        align-items: center;     /* căn giữa theo chiều dọc nếu cần */
+        padding: 10px 0;
+    }
+
 }
 
 @media only screen and (max-width: 767px) {
 
     .search_box {
-        /* margin-top: 5%; */
         width: 85%;
         height: 51px;
     }
@@ -247,6 +274,12 @@ footer {
 
     #search_input {
         height: 34px;
+    }
+
+    .logo-container{
+        justify-content: center; /* căn giữa theo chiều ngang */
+        align-items: center;     /* căn giữa theo chiều dọc nếu cần */
+        padding: 10px 0;
     }
 
 }
@@ -300,3 +333,107 @@ footer {
     }
 
 }
+
+h2{
+    background-color: #df9959;
+    width: 20%;
+    height: fit-content;
+    margin: 2% auto;
+    min-width: 200px;
+    border-radius: 20px;
+    text-align: center;
+    padding: 10px 5px;
+    font-size: 3rem;
+    text-decoration: none;
+    color: black;
+}
+
+.mycarousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffd399;
+  padding: 20px;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 20px;
+  height: auto; /* Cho phép co giãn theo nội dung */
+}
+
+.mycarousel-wrapper {
+  width: 100%;
+  overflow: hidden;
+  height: auto; /* Đảm bảo chiều cao co giãn */
+}
+
+.book-list {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  height: auto;
+  align-items: stretch; /* Giúp phần tử con cao đều */
+}
+
+.book {
+  background-color: #df9959;
+  border-radius: 15px;
+  margin: 0 5px;
+  padding: 10px;
+  text-align: center;
+  flex: 0 0 calc(90% / 5); /* Mặc định 5 sách */
+  box-sizing: border-box;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.book img {
+  max-width: 80%;
+  height: auto;
+  border-radius: 10px;
+}
+
+#dot{
+    justify-content: center;
+    height: fit-content;
+}
+
+.carousel-container button {
+  background-color: transparent;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 10px;
+  color: #333;
+  z-index: 10;
+}
+
+@media (max-width: 1023px) {
+  .book {
+    flex: 0 0 calc(100% / 3); /* Hiển thị 3 sách */
+  }
+}
+
+@media (max-width: 767px) {
+  .book {
+    flex: 0 0 100%; /* Hiển thị 1 sách */
+    height: auto;
+  }
+
+  .book-list {
+    flex-wrap: nowrap;
+    align-items: stretch;
+    height: auto;
+  }
+
+  .mycarousel-wrapper {
+    height: auto;
+  }
+
+  .mycarousel-container {
+    height: auto;
+    align-items: stretch;
+  }
+}
+
