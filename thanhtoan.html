@@ -3,13 +3,14 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Đăng Nhập</title>
-    <link rel="icon" href="SO.png" title="logo" />
+    <title>Thanh Toán</title>
+    <link rel="icon" href="img/SO.png" title="logo" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
     <link rel="stylesheet" href="style.css" />
+    <script src="myscripts.js"></script>
   </head>
   <body>
     <header>
@@ -42,12 +43,6 @@
       </form>
     </header>
     <main class="main-store">
-      <div class="store-header">
-        <p>Ảnh</p>
-        <p>Sách</p>
-        <p>Giá</p>
-        <p>Thao Tác</p>
-      </div>
       <div class="store">
         <div class="item">
           <img class="item-img" src="img/demen.jpg" alt="ảnh sách" />
@@ -58,24 +53,25 @@
           <p class="item-price">100.000đ</p>
           <button class="button-clear">Xóa</button>
         </div>
-      </div>
-      <div class="item">
-        <img class="item-img" src="img/demen.jpg" alt="ảnh sách" />
-        <div class="item-info">
-          <p class="item-name">Dế Mèn Phiêu Lưu Ký</p>
-          <p class="item-type">Thể loại: Thiếu nhi</p>
+        <div class="item">
+          <img class="item-img" src="img/demen.jpg" alt="ảnh sách" />
+          <div class="item-info">
+            <p class="item-name">Dế Mèn Phiêu Lưu Ký</p>
+            <p class="item-type">Thể loại: Thiếu nhi</p>
+          </div>
+          <p class="item-price">100.000đ</p>
+          <button class="button-clear">Xóa</button>
         </div>
-        <p class="item-price">100.000đ</p>
-        <button class="button-clear">Xóa</button>
-      </div>
-      <div class="item">
-        <img class="item-img" src="img/demen.jpg" alt="ảnh sách" />
-        <div class="item-info">
-          <p class="item-name">Dế Mèn Phiêu Lưu Ký</p>
-          <p class="item-type">Thể loại: Thiếu nhi</p>
+        <div class="info">
+          <h2>Tên:Nguyễn văn A</h2>
+          <h2>Địa chỉ: 3/41 Đường 3/2 Ninh Kiều Cần Thơ.</h2>
         </div>
-        <p class="item-price">100.000đ</p>
-        <button class="button-clear">Xóa</button>
+        <div class="payment">
+          <h3>Tổng tiền: <span id="total-price" fun>0đ</span></h3>
+          <form method="post" action="#">
+            <button type="submit">Trao đổi</button>
+          </form>
+        </div>
       </div>
     </main>
 
