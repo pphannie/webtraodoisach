@@ -321,10 +321,14 @@ footer a i:hover {
     font-size: 1rem;
   }
 
-  button {
+  .button-buy {
     font-size: 1rem;
     padding: 0.5rem;
   }
+  .main-store{
+    width: 90%;
+  }
+  
 }
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   html {
@@ -349,11 +353,14 @@ footer a i:hover {
     font-size: 1rem;
   }
 
-  button {
+  .button-buy {
     font-size: 1rem;
     padding: 0.5rem;
   }
   #search_box {
     font-size: 1rem;
+  }
+   .main-store{
+    width: 90%;
   }
 }
