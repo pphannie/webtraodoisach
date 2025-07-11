@@ -227,7 +227,11 @@ footer a i:hover {
   padding: 1rem;
   text-align: center;
 }
-
+.store{
+  background-color: #ffd399;
+  padding: 1rem;
+  border-radius: 5px;
+}
 .item {
   display: grid;
   grid-template-columns: 2fr 2fr 1fr 1fr;
@@ -242,12 +246,20 @@ footer a i:hover {
   width: 100%;
   border-radius: 5px;
 }
+/* nút trao đổi với nút xóa */
 .main-store button{
   padding: 0.8rem 1.6rem;
   background: #ffd399;
   border-radius: 0.4rem;
   font-size: 1.4rem;
   cursor: pointer;
+}
+/* thông tin người trao đổi */
+
+.info>h3{
+  background-color: #ffeace;
+  border-radius: 5px;
+  padding: 1rem;
 }
 @media only screen and (max-width: 767px) {
   .product-card {
