@@ -237,16 +237,6 @@ body {
     font-size: 500%;
 }
 
-/* .tcmycarousel-container button {
-  background-color: transparent;
-  border: none;
-  font-size: 30px;
-  cursor: pointer;
-  padding: 10px;
-  color: #333;
-  z-index: 10;
-} */
-
 .tcprevBtn, .tcnextBtn{
     font-size: 450%;
     border: black solid 2px;
