@@ -1,0 +1,333 @@
+body {
+    background-image: url("images/bgw.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
+    background-attachment: fixed;
+    overflow-x: hidden;
+}
+
+.tccontainer{
+    background-color: #df9959;
+    padding: 2%;
+    border-radius: 30px;
+}
+
+/* Những phần bootstrap nên hạn chế sửa id và class */
+#tccarouselExampleAutoplaying{
+    background-color: #ffd399;
+    padding: 2%;
+    border-radius: 30px;
+}
+
+.carousel-item img {
+  object-fit: cover;
+  width: 20%;
+  height: auto;
+  max-height: 500px;
+  border-radius: 15px;
+}
+/* Những phần bootstrap nên hạn chế sửa id và class */
+
+/* Nút cuộn lên */
+/* #btn-top {
+    background-color: #df9959;
+    z-index: 999;
+    position: fixed;
+    right: 10px;
+    bottom: 5px;
+    border-radius: 10px;
+    color: #ffd399;
+    width: 50px;
+    text-align: center;
+    font-size: 30px;
+    border: black 2px solid;
+    transition: opacity 0.3s;
+    margin: 1%;
+} */
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+
+    .menu {
+        padding: 7px 3px;
+        white-space: nowrap;
+        font-size: normal;
+    }
+
+    .r1_dk {
+        width: 65%;
+        height: 100%;
+    }
+
+}
+
+/*  */
+.wcu {
+  background-color: #df9959;
+  border-radius: 20px;
+  padding: 30px 30px;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  margin: 0 auto;
+  max-width: 100%;
+
+}
+
+.stats-container {
+  position: relative;
+  background-image: url('https://batansach.com/wp-content/uploads/2023/11/Sach-Khoa-Hoc.jpg');
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  padding: 40px 20px;
+  overflow: hidden;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: fit-content;     /* Căn theo nội dung */
+  max-width: 100%;
+}
+
+.stats-container::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  border-radius: 20px;
+}
+
+.stats-container > * {
+  position: relative;
+  z-index: 2;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+.stat-box {
+  flex: 0 1 180px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.stat-box i {
+  font-size: 30px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.stat-box h3 {
+  font-size: 32px;
+  margin: 10px 0 5px;
+}
+
+.stat-box p {
+  font-size: 14px;
+}
+
+/*  */
+
+#tch2{
+    background-color: #df9959;
+    width: 20%;
+    height: fit-content;
+    margin: 2% auto;
+    min-width: fit-content;
+    border-radius: 20px;
+    text-align: center;
+    padding: 10px 5px;
+    font-size: 3rem;
+    text-decoration: none;
+    color: black;
+}
+
+.tcmycarousel-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffd399;
+  padding: 10px;
+  border-radius: 15px;
+  overflow: hidden;
+  position: relative;
+  margin-top: 20px;
+  height: auto;
+}
+
+.tcmycarousel-wrapper {
+  width: 100%;
+  overflow: hidden;
+  height: auto;
+  position: relative;
+}
+
+.tcbook-list {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  height: auto;
+  align-items: stretch;
+  width: 100%;
+}
+
+.tcbook {
+  background-color: #df9959;
+  border-radius: 15px;
+  padding: 10px;
+  text-align: center;
+  box-sizing: border-box;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tcbook img {
+  max-width: 80%;
+  height: auto;
+  border-radius: 10px;
+  margin: 0 auto;
+  padding-bottom: 5%;
+  display: block;
+}
+
+.tcbook p{
+    font-size: 150%;
+}
+
+.tcbook,
+#tcdot {
+  flex: 0 0 calc(100% / 5 - 10px); /* Mặc định hiển thị 5 cái */
+  max-width: calc(100% / 5 - 10px);
+  margin: 0 5px;
+}
+
+#tcdot{
+  background-color: #df9959;
+  border-radius: 15px;
+  margin: 0 5px;
+  padding: 10px;
+  text-align: center;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+#tcdot:hover {
+  filter: brightness(110%);
+  transform: scale(1.05);
+}
+
+#tcdot .tcdot-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tcdot-content{
+    font-size: 120%;
+}
+
+.fa-right-to-bracket{
+    font-size: 500%;
+}
+
+.tcmycarousel-container button {
+  background-color: transparent;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+  padding: 10px;
+  color: #333;
+  z-index: 10;
+}
+
+.tcprevBtn, .tcnextBtn{
+    font-size: 450%;
+    border: black solid 2px;
+    border-radius: 10%;
+    margin: 1%;
+    color: #ffd399;
+    background-color: #df9959;
+}
+
+@media (max-width: 1023px) {
+  .tcbook,
+  #tcdot {
+    flex: 0 0 calc(100% / 3 - 10px);
+    max-width: calc(100% / 3 - 10px);
+  }
+}
+
+@media (max-width: 767px) {
+
+  .tcmycarousel-container {
+    flex-direction: row; /* Không đổi cấu trúc chính */
+    align-items: center;
+    position: relative;
+    padding: 30px 0;
+    gap: 5px;
+  }
+
+  .tcprevBtn,
+  .tcnextBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 200%;
+    padding: 10px;
+    height: auto;
+    z-index: 2;
+    background-color: #df9959;
+    border: 2px solid black;
+    border-radius: 50%;
+  }
+
+  .tcprevBtn {
+    left: 5px;
+  }
+
+  .tcnextBtn {
+    right: 5px;
+  }
+
+  .tcmycarousel-wrapper {
+    padding: 0 40px;
+  }
+
+  .tcbook-list {
+    padding: 10px 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: nowrap;
+  }
+
+  .tcbook,
+  #tcdot {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+}
+
