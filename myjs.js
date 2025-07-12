@@ -1,11 +1,11 @@
-const bookList = document.getElementById("bookList");
-const nextBtn = document.getElementById("nextBtn");
-const prevBtn = document.getElementById("prevBtn");
+const bookList = document.getElementById("tcbookList");
+const nextBtn = document.getElementById("tcnextBtn");
+const prevBtn = document.getElementById("tcprevBtn");
 
 let currentIndex = 0;
 
 function getBooks() {
-  return Array.from(bookList.querySelectorAll(".book, #dot"));
+  return Array.from(bookList.querySelectorAll(".tcbook, #tcdot"));
 }
 
 function getItemsPerView() {
@@ -15,27 +15,28 @@ function getItemsPerView() {
   return 1;
 }
 
-function getMaxIndex() {
-  const books = getBooks().length;
-  const itemsPerView = getItemsPerView();
-  return Math.max(books - itemsPerView, 0);
-}
-
-function getBookWidth() {
-  const items = bookList.querySelectorAll(".book, #dot");
-  if (items.length === 0) return 0;
-  const style = window.getComputedStyle(items[0]);
-  const marginLeft = parseInt(style.marginLeft) || 0;
-  const marginRight = parseInt(style.marginRight) || 0;
-  return items[0].offsetWidth + marginLeft + marginRight;
+function getBookFullWidth() {
+  const item = bookList.querySelector(".tcbook, #tcdot");
+  if (!item) return 0;
+  const style = window.getComputedStyle(item);
+  const marginLeft = parseFloat(style.marginLeft) || 0;
+  const marginRight = parseFloat(style.marginRight) || 0;
+  return item.offsetWidth + marginLeft + marginRight;
 }
 
 function updateCarousel() {
-  const bookWidth = getBookWidth();
+  const bookWidth = getBookFullWidth();
   const offset = currentIndex * bookWidth;
   bookList.style.transform = `translateX(-${offset}px)`;
 }
 
+function getMaxIndex() {
+  const totalBooks = getBooks().length;
+  const itemsPerView = getItemsPerView();
+  return Math.max(totalBooks - itemsPerView, 0);
+}
+
+// Move forward by 1 book
 nextBtn.addEventListener("click", () => {
   const maxIndex = getMaxIndex();
   if (currentIndex < maxIndex) {
@@ -46,6 +47,7 @@ nextBtn.addEventListener("click", () => {
   updateCarousel();
 });
 
+// Move backward by 1 book
 prevBtn.addEventListener("click", () => {
   const maxIndex = getMaxIndex();
   if (currentIndex > 0) {
@@ -57,7 +59,7 @@ prevBtn.addEventListener("click", () => {
 });
 
 window.addEventListener("resize", () => {
-  currentIndex = 0; // Reset về đầu khi resize để tránh lỗi lệch
+  currentIndex = 0;
   updateCarousel();
 });
 
