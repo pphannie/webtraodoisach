@@ -8,13 +8,13 @@ body {
 }
 
 /* Những phần bootstrap nên hạn chế sửa id và class  start */
-.tccontainer{
+.container{
     background-color: #df9959;
     padding: 2%;
     border-radius: 30px;
 }
 
-#tccarouselExampleAutoplaying{
+#carouselExampleAutoplaying{
     background-color: #ffd399;
     padding: 2%;
     border-radius: 30px;
