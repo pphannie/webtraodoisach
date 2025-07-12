@@ -41,7 +41,6 @@ header {
   font-size: large;
   text-decoration: none;
   color: black;
-
   transition-duration: 0.31s;
   transition-timing-function: ease;
   cursor: pointer;
@@ -101,7 +100,6 @@ header {
   display: grid;
   grid-template-areas: "search_box search sold";
   grid-template-columns: 3fr 0.5fr 0.5fr;
-
   max-width: 500px;
   background-color: #df9959;
   /* width: 85%; */
@@ -124,12 +122,13 @@ footer a i:hover {
   border-radius: 10px;
   padding: 1rem;
 }
-.type-product {
+#book-category {
   background-color: #ffeace;
   border-radius: 10px;
-  width: 15rem;
+  width: 25rem;
   height: 3rem;
   text-align: center;
+  font-weight: bold;
 }
 /* thẻ sản phẩm */
 .product-card {
@@ -227,7 +226,7 @@ footer a i:hover {
   padding: 1rem;
   text-align: center;
 }
-.store{
+.store {
   background-color: #ffd399;
   padding: 1rem;
   border-radius: 5px;
@@ -247,7 +246,7 @@ footer a i:hover {
   border-radius: 5px;
 }
 /* nút trao đổi với nút xóa */
-.main-store button{
+.main-store button {
   padding: 0.8rem 1.6rem;
   background: #ffd399;
   border-radius: 0.4rem;
@@ -256,7 +255,7 @@ footer a i:hover {
 }
 /* thông tin người trao đổi */
 
-.info>h3{
+.info > h3 {
   background-color: #ffeace;
   border-radius: 5px;
   padding: 1rem;
@@ -286,10 +285,12 @@ footer a i:hover {
     font-size: 1rem;
     padding: 0.5rem;
   }
-  .main-store{
+  .main-store {
     width: 90%;
   }
-  
+  #book-category {
+    width: 20rem;
+  }
 }
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
   html {
@@ -321,7 +322,11 @@ footer a i:hover {
   #search_box {
     font-size: 1rem;
   }
-   .main-store{
+  .main-store {
     width: 90%;
+  }
+  #book-category {
+    width: 25rem;
+    font-size: 1.5rem;
   }
 }
