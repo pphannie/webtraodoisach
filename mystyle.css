@@ -1,5 +1,5 @@
-html {
-    background-image: url("images/trangchu_bg.jpg");
+body {
+    background-image: url("images/bgw.png");
     background-repeat: no-repeat;
     background-size: cover;
     font-family: Arial, Helvetica, sans-serif;
@@ -7,219 +7,30 @@ html {
     overflow-x: hidden;
 }
 
-body {
-    background-color: transparent;
-    width: 100%;
-    margin: auto;
-    /* display: grid;
-    grid-template-areas:
-        "header-cell" "nav-cell" "main-cell" "footer-cell"
-    ; */
-}
-
-header {
-    width: 100%;
-    height: 250px;
-    grid-area: header-cell;
-    align-items: center;
-    justify-content: space-between;
-    z-index: 1000;
-}
-
-header #toggler{
-    display: none;
-}
-
-header .fa-bars{
-    margin: 10px;
-    background-color: #df9959;
-    text-align: center;
-    font-size: 50px;
-    border: 2px black solid;
-    width: 60px;
-    color: #ffd399;
-    border-radius: 10px;
-    display: none;
-}
-
-main{
-    /* border: 1px solid #ccc7c8; */
-    border-radius: 5px;
-    background-color: transparent;
-}
-
-.header-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-}
-
-#logo {
-    max-width: 250px;
-    width: 100%;
-}
-
-.logo-container{
-    display: block;
-}
-
-.user{
-    display: block;
-    border-radius: 25%;
-    max-width: 70px;
-    width: 90%;
-    border: solid 2px black;
-    background-color: #df9959;
-    transition: all 0.31s ease;
-    margin-left: auto;
-    padding: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.user:hover {
-    filter: brightness(110%);
-    transform: scale(1.2);
-}
-
-.fa-user{
-    text-align: center;
-    color: #ffd399;
-    font-size: 300%;
-    width: auto;
-}
-
-.nav_bar {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    flex-wrap: nowrap;
-    gap: 1.2%;
-    transition: max-height 0.8s ease, opacity 0.8s ease;
-    overflow: hidden;
-    padding-bottom: 10px;
-}
-
-.menu {
-    flex-shrink: 1;
-    flex-basis: 150px;
-    background-color: #df9959;
-    width: 20%;
-    height: fit-content;
-    margin-top: 2%;
-    margin-left: 1%;
-    margin-right: 1%;
-    border-radius: 20px;
-    text-align: center;
-    padding: 10px 5px;
-    font-size: large;
-    text-decoration: none;
-    color: black;
-    transition: all 0.31s ease;
-    cursor: pointer;
-    border: #000 solid 2px;
-}
-
-.menu:hover {
-    filter: brightness(130%);
-    transform: scale(1.2);
-}
-
-/* khung tim kiem */
-
-#search_input {
-    grid-area: search_box;
-    margin-left: 2%;
-    border: none;
-    outline: none;
-    margin-top: 1.5%;
-    height: 30px;
-    width: 93%;
-}
-
-.search_button {
-    grid-area: search;
-    margin-left: -10%;
-    margin-top: 10%;
-    border: none;
-    height: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.fa-magnifying-glass{
-    grid-area: search;
-    margin-top: 0%;
-}
-
-.fa-square-plus {
-    grid-area: sold;
-    margin-left: -5%;
-    margin-top: 8%;
-}
-
-.search_button,
-.fa-square-plus {
-    text-align: center;
-    color: black;
-    padding: 13% 0;
-    width: 90%;
-    transition-duration: 0.31s;
-    transition-timing-function: ease;
-    cursor: pointer;
-}
-
-#search_input,
-.search_button,
-.fa-square-plus {
-    border-radius: 20px;
-    background-color: #ffd399;
-}
-
-.search_box {
-    display: grid;
-    grid-template-areas: "search_box search sold";
-    grid-template-columns: 3fr 0.5fr 0.5fr;
-    max-width: 500px;
-    background-color: #df9959;
-    height: 45px;
-    margin: 1% 2% 0 auto;
-    border-radius: 20px;
-    border: #000 solid 2px;
-}
-
-.search_button:hover,
-.fa-square-plus:hover,
-footer a i:hover {
-    filter: brightness(105%);
-    transform: scale(1.1);
-}
-
-.container{
+.tccontainer{
     background-color: #df9959;
     padding: 2%;
     border-radius: 30px;
 }
 
-#carouselExampleAutoplaying{
+/* Những phần bootstrap nên hạn chế sửa id và class */
+#tccarouselExampleAutoplaying{
     background-color: #ffd399;
     padding: 2%;
     border-radius: 30px;
 }
 
 .carousel-item img {
-  object-fit: cover; /* hoặc contain, tùy nhu cầu */
+  object-fit: cover;
   width: 20%;
   height: auto;
-  max-height: 500px; /* đặt chiều cao tối đa nếu cần */
+  max-height: 500px;
   border-radius: 15px;
-  
 }
+/* Những phần bootstrap nên hạn chế sửa id và class */
 
-#btn-top {
+/* Nút cuộn lên */
+/* #btn-top {
     background-color: #df9959;
     z-index: 999;
     position: fixed;
@@ -233,21 +44,7 @@ footer a i:hover {
     border: black 2px solid;
     transition: opacity 0.3s;
     margin: 1%;
-}
-
-footer {
-    grid-area: footer-cell;
-    font-size: 20px;
-    margin-top: 2px;
-    border-width: 1px;
-    border: solid;
-    border-color: #ccc7c8;
-    border-radius: 5px;
-    padding: 0px 5px;
-    color: black;
-    text-align: center;
-    background-color: #df9959;
-}
+} */
 
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
 
@@ -262,99 +59,95 @@ footer {
         height: 100%;
     }
 
-    .logo-container{
-        justify-content: center; /* căn giữa theo chiều ngang */
-        align-items: center;     /* căn giữa theo chiều dọc nếu cần */
-        padding: 10px 0;
-    }
+}
+
+/*  */
+.wcu {
+  background-color: #df9959;
+  border-radius: 20px;
+  padding: 30px 30px;
+  text-align: center;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: fit-content;
+  margin: 0 auto;
+  max-width: 100%;
 
 }
 
-@media only screen and (max-width: 767px) {
-
-    .search_box {
-        width: 85%;
-        height: 51px;
-    }
-
-    .search_button {
-        height: 35px;
-        padding-top: 10%;
-    }
-
-    .fa-square-plus {
-        height: 35px;
-        padding-top: 17%;
-    }
-
-    #search_input {
-        height: 34px;
-    }
-
-    .logo-container{
-        justify-content: center; /* căn giữa theo chiều ngang */
-        align-items: center;     /* căn giữa theo chiều dọc nếu cần */
-        padding: 10px 0;
-    }
-
+.stats-container {
+  position: relative;
+  background-image: url('https://batansach.com/wp-content/uploads/2023/11/Sach-Khoa-Hoc.jpg');
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  padding: 40px 20px;
+  overflow: hidden;
+  z-index: 0;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  width: fit-content;     /* Căn theo nội dung */
+  max-width: 100%;
 }
 
-@media only screen and (max-width: 767px){
-
-    .nav_bar a {
-        flex-basis: 0px;
-        width: 100%;
-    } 
-
-    .nav_bar {
-        display: none;
-        flex-direction: column;
-        background-color: #df9959;
-        position: absolute;
-        top: 60px; /* ngay dưới fa-bars */
-        left: 0;
-        width: 100%;  /* hoặc 100% nếu bạn muốn full chiều ngang */
-        z-index: 999;
-        border: 1px solid #000;
-        border-radius: 10px;
-        }
-
-    /* Hiển thị nav_bar khi checkbox toggler được chọn */
-    #toggler:checked ~ .nav_bar {
-        display: flex;
-        flex-direction: column;
-    }
-
-    /* Hiển thị nút menu 3 gạch */
-    header .fa-bars {
-        display: block;
-        cursor: pointer;
-    }
-
-    /* Căn chỉnh các mục menu cho mobile */
-    .nav_bar a {
-        width: 100%;
-        text-align: center;
-        padding: 0px 0;
-        margin: 0px 0;
-        font-size: 18px;
-        border: 1px solid #000;
-        border-radius: 0;
-    }
-
-    .menu-toggle {
-        position: relative; /* quan trọng để nav_bar căn theo fa-bars */
-        margin-left: 10px;
-    }
-
+.stats-container::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  border-radius: 20px;
 }
 
-h2{
+.stats-container > * {
+  position: relative;
+  z-index: 2;
+}
+
+.section-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+.stat-box {
+  flex: 0 1 180px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border: 1px solid white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.stat-box i {
+  font-size: 30px;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.stat-box h3 {
+  font-size: 32px;
+  margin: 10px 0 5px;
+}
+
+.stat-box p {
+  font-size: 14px;
+}
+
+/*  */
+
+#tch2{
     background-color: #df9959;
     width: 20%;
     height: fit-content;
     margin: 2% auto;
-    min-width: 200px;
+    min-width: fit-content;
     border-radius: 20px;
     text-align: center;
     padding: 10px 5px;
@@ -363,7 +156,7 @@ h2{
     color: black;
 }
 
-.mycarousel-container {
+.tcmycarousel-container {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -376,14 +169,14 @@ h2{
   height: auto;
 }
 
-.mycarousel-wrapper {
+.tcmycarousel-wrapper {
   width: 100%;
   overflow: hidden;
   height: auto;
   position: relative;
 }
 
-.book-list {
+.tcbook-list {
   display: flex;
   transition: transform 0.5s ease-in-out;
   height: auto;
@@ -391,7 +184,7 @@ h2{
   width: 100%;
 }
 
-.book {
+.tcbook {
   background-color: #df9959;
   border-radius: 15px;
   padding: 10px;
@@ -404,22 +197,27 @@ h2{
   align-items: center;
 }
 
-.book img {
+.tcbook img {
   max-width: 80%;
   height: auto;
   border-radius: 10px;
   margin: 0 auto;
+  padding-bottom: 5%;
   display: block;
 }
 
-.book,
-#dot {
-  flex: 0 0 20%;
-  max-width: 20%;
+.tcbook p{
+    font-size: 150%;
+}
+
+.tcbook,
+#tcdot {
+  flex: 0 0 calc(100% / 5 - 10px); /* Mặc định hiển thị 5 cái */
+  max-width: calc(100% / 5 - 10px);
   margin: 0 5px;
 }
 
-#dot{
+#tcdot{
   background-color: #df9959;
   border-radius: 15px;
   margin: 0 5px;
@@ -436,18 +234,26 @@ h2{
   transition: all 0.3s ease;
 }
 
-#dot:hover {
+#tcdot:hover {
   filter: brightness(110%);
   transform: scale(1.05);
 }
 
-#dot .dot-content {
+#tcdot .tcdot-content {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.carousel-container button {
+.tcdot-content{
+    font-size: 120%;
+}
+
+.fa-right-to-bracket{
+    font-size: 500%;
+}
+
+.tcmycarousel-container button {
   background-color: transparent;
   border: none;
   font-size: 30px;
@@ -457,7 +263,7 @@ h2{
   z-index: 10;
 }
 
-#prevBtn, #nextBtn{
+#tcprevBtn, #tcnextBtn{
     font-size: 450%;
     border: black solid 2px;
     border-radius: 10%;
@@ -467,36 +273,60 @@ h2{
 }
 
 @media (max-width: 1023px) {
-  .book,
-  #dot {
-    flex: 0 0 33.3333%;
-    max-width: 33.3333%;
-    margin: 0 5px;
+  .tcbook,
+  #tcdot {
+    flex: 0 0 calc(100% / 3 - 10px);
+    max-width: calc(100% / 3 - 10px);
   }
 }
 
 @media (max-width: 767px) {
 
-  .book-list {
+  .tcmycarousel-container {
+    flex-direction: row; /* Không đổi cấu trúc chính */
+    align-items: center;
+    position: relative;
+    padding: 30px 0;
+    gap: 5px;
+  }
+
+  #tcprevBtn,
+  #tcnextBtn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 200%;
+    padding: 10px;
+    height: auto;
+    z-index: 2;
+    background-color: #df9959;
+    border: 2px solid black;
+    border-radius: 50%;
+  }
+
+  #tcprevBtn {
+    left: 5px;
+  }
+
+  #tcnextBtn {
+    right: 5px;
+  }
+
+  .tcmycarousel-wrapper {
+    padding: 0 40px;
+  }
+
+  .tcbook-list {
+    padding: 10px 0;
+    margin: 0;
+    display: flex;
     flex-wrap: nowrap;
-    align-items: stretch;
-    height: auto;
   }
 
-  .mycarousel-wrapper {
-    height: auto;
-  }
-
-  .mycarousel-container {
-    height: auto;
-    align-items: stretch;
-  }
-
-  .book,
-  #dot {
+  .tcbook,
+  #tcdot {
     flex: 0 0 100%;
     max-width: 100%;
-    margin: 0 5px;
   }
 
 }
