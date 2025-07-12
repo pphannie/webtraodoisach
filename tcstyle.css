@@ -7,13 +7,13 @@ body {
     overflow-x: hidden;
 }
 
+/* Những phần bootstrap nên hạn chế sửa id và class  start */
 .tccontainer{
     background-color: #df9959;
     padding: 2%;
     border-radius: 30px;
 }
 
-/* Những phần bootstrap nên hạn chế sửa id và class */
 #tccarouselExampleAutoplaying{
     background-color: #ffd399;
     padding: 2%;
@@ -27,7 +27,7 @@ body {
   max-height: 500px;
   border-radius: 15px;
 }
-/* Những phần bootstrap nên hạn chế sửa id và class */
+/* Những phần bootstrap nên hạn chế sửa id và class end */
 
 /* Nút cuộn lên */
 /* #btn-top {
@@ -46,23 +46,8 @@ body {
     margin: 1%;
 } */
 
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
-
-    .menu {
-        padding: 7px 3px;
-        white-space: nowrap;
-        font-size: normal;
-    }
-
-    .r1_dk {
-        width: 65%;
-        height: 100%;
-    }
-
-}
-
-/*  */
-.wcu {
+/* Phần WCU (dưới carousel 1 trên carousel 2 start */
+.tcwcu {
   background-color: #df9959;
   border-radius: 20px;
   padding: 30px 30px;
@@ -74,10 +59,16 @@ body {
   width: fit-content;
   margin: 0 auto;
   max-width: 100%;
-
 }
 
-.stats-container {
+.tcsection-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+}
+
+.tcstats-container {
   position: relative;
   background-image: url('https://batansach.com/wp-content/uploads/2023/11/Sach-Khoa-Hoc.jpg');
   border-radius: 20px;
@@ -90,11 +81,11 @@ body {
   justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
-  width: fit-content;     /* Căn theo nội dung */
+  width: fit-content;
   max-width: 100%;
 }
 
-.stats-container::before {
+.tcstats-container::before {
   content: "";
   position: absolute;
   top: 0; left: 0;
@@ -104,19 +95,12 @@ body {
   border-radius: 20px;
 }
 
-.stats-container > * {
+.tcstats-container > * {
   position: relative;
   z-index: 2;
 }
 
-.section-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 40px;
-  text-transform: uppercase;
-}
-
-.stat-box {
+.tcstat-box {
   flex: 0 1 180px;
   background-color: rgba(255, 255, 255, 0.1);
   border: 1px solid white;
@@ -125,23 +109,23 @@ body {
   text-align: center;
 }
 
-.stat-box i {
+.tcstat-box i {
   font-size: 30px;
   margin-bottom: 10px;
   display: block;
 }
 
-.stat-box h3 {
+.tcstat-box h3 {
   font-size: 32px;
   margin: 10px 0 5px;
 }
 
-.stat-box p {
+.tcstat-box p {
   font-size: 14px;
 }
+/* Phần WCU (dưới carousel 1 trên carousel 2 end */
 
-/*  */
-
+/* Tất cả những thứ trong carousel 2 và 3 */
 #tch2{
     background-color: #df9959;
     width: 20%;
@@ -253,7 +237,7 @@ body {
     font-size: 500%;
 }
 
-.tcmycarousel-container button {
+/* .tcmycarousel-container button {
   background-color: transparent;
   border: none;
   font-size: 30px;
@@ -261,7 +245,7 @@ body {
   padding: 10px;
   color: #333;
   z-index: 10;
-}
+} */
 
 .tcprevBtn, .tcnextBtn{
     font-size: 450%;
@@ -270,6 +254,13 @@ body {
     margin: 1%;
     color: #ffd399;
     background-color: #df9959;
+}
+
+/* Thêm book vào giỏ hàng */
+.fa-cart-plus{
+    font-size: 200%;
+    border-radius: 10%;
+    color: black;
 }
 
 @media (max-width: 1023px) {
@@ -283,7 +274,7 @@ body {
 @media (max-width: 767px) {
 
   .tcmycarousel-container {
-    flex-direction: row; /* Không đổi cấu trúc chính */
+    flex-direction: row;
     align-items: center;
     position: relative;
     padding: 30px 0;
@@ -330,4 +321,3 @@ body {
   }
 
 }
-
