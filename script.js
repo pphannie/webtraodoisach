@@ -9,8 +9,25 @@ function signin(e){
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
     const password_again = document.querySelector("#password_again").value;
+    if(user_name = ''){
+        alert("Vui lòng nhập họ tên!");
+        return;
+    }
     if(gender == 'sample'){
         alert("Vui lòng chọn giới tính!");
+        return;
+    }
+    if(tel = '' || tel.length < 10){
+        alert("Vui lòng nhập đúng định dạng số điện thoại!");
+        return;
+    }
+    if(address = ''){
+        alert("Vui lòng nhập địa chỉ chính xác!");
+        return;
+    }
+    const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    if(!emailRegex.test(email)){
+        alert("Vui lòng nhập đúng định dạng email!");
         return;
     }
     const passRegex = /(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}/;

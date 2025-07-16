@@ -831,7 +831,32 @@ header {
 
 /* liên hệ, người dùng & giới thiệu */
 
-#vb_nd{
+#vb_lienhe *, #vb_lienhe ::before, #vb_lienhe ::after {
+  box-sizing: content-box;
+}
+#vb_user *, #vb_user ::before, #vb_user ::after {
+  box-sizing: content-box;
+}
+.vb_background{
+        max-width: 700px;
+        margin: 0 auto;
+        margin-top: 15px;
+    }
+#vb_ykien{
+       max-width:  650px;
+    }
+.vb_search_box{
+  background-color: #ffeace;
+}
+#vb_submit{
+    border: #d48437 solid 2px;
+    outline: none;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: #ffeace;
+}
+
+#vb_ykien{
     border: none;
     outline: none;
     border-radius: 10px;
@@ -981,14 +1006,19 @@ p.vb_ndtg{
 }
 
 /* đăng ký */
-.r1_dk#db{
+.r1_dk{
     width: 65%;
-    height: 100%;
+    height: 150%;
 }
 
 /* đăng bán */
 #describe_parent{
   width: 35rem;
+}
+
+.r1_dk#db{
+    width: 65%;
+    height: 100%;
 }
 
 /* sản phẩm */
@@ -1028,7 +1058,7 @@ p.vb_ndtg{
         white-space: nowrap;
         font-size: normal;
     } */
-     #vb_nd{
+    #vb_ykien{
         width: 550px;
     }
     .vb_background{
@@ -1037,6 +1067,10 @@ p.vb_ndtg{
         margin: 0 auto;
         margin-top: 15px;
     }
+    .vb_search_box{
+        background-color: #ffeace;
+        text-align: left;
+  }
 
   /* end liên hệ, người dùng & giới thiệu */
 
@@ -1287,22 +1321,7 @@ p.vb_ndtg{
 
   /*liên hệ, người dùng & giới thiệu */
 
-  /* .vb_search_box{
-        margin-top: 5%;
-        width: 85%;
-    }
-    .vb_search_button{
-        height: 35px;
-    }
-    
-    .fa-square-plus{
-        height: 50%;
-        padding-top: 23%;
-    }
-    #vb_search_input{
-       height: 40px; 
-    } */
-     #vb_nd{
+  #vb_ykien{
         width: 450px;
     }
     .vb_background{
@@ -1311,6 +1330,10 @@ p.vb_ndtg{
         margin: 0 auto;
         margin-top: 15px;
     }
+    .vb_search_box{
+        background-color: #ffeace;
+        text-align: left;
+      }
 
   /* end liên hệ, người dùng & giới thiệu */
 
