@@ -9,7 +9,7 @@ function signin(e){
     const email = document.querySelector("#email").value;
     const password = document.querySelector("#password").value;
     const password_again = document.querySelector("#password_again").value;
-    if(gender == sample){
+    if(gender == 'sample'){
         alert("Vui lòng chọn giới tính!");
         return;
     }
@@ -35,8 +35,7 @@ function signin(e){
         // obj -> chuỗi
         const  data = JSON.stringify(user);
         localStorage.setItem(email, data);
-        alert("Đăng ký thành công.");
-        alert("Bây giờ hãy đăng nhập vào Sách Ơi! nhé!");
+        alert("Đăng ký thành công. Bây giờ hãy đăng nhập vào Sách Ơi! nhé!");
         window.location.href = "dangnhap.html";
     }
 }
