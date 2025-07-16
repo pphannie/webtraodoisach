@@ -6,22 +6,59 @@
     <title>Đăng Nhập</title>
     <link rel="icon" href="SO.png" title="logo">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <div class="nav_bar">
-            <a href="#"><img src="SachOi.png" alt="logo" title="Trang chủ" id="logo"></a>
+        <div class="nav_bar" >
+            <a href="#"><img src="img/SachOi.png" alt="logo" title="Trang chủ" id="logo"></a>
             <a href="#" class="menu"> <b>Trang Chủ</b></a>
             <a href="#" class="menu"><b>Giới Thiệu</b></a>
-            <a href="#" class="menu"><b>Sản Phẩm</b></a>
-            <a href="#" class="menu"><b>Giỏ Hàng</b></a>
+            <a href="sanpham.html" class="menu"><b>Sản Phẩm</b></a>
+            <a href="giohang.html" class="menu"><b>Giỏ Hàng</b></a>
             <a href="dangnhap.html" class="menu"><b>Đăng Nhập</b></a>
-            <a href="#" class="menu"><b>Đăng Ký</b></a>
+            <a href="dangky.html" class="menu"><b>Đăng Ký</b></a>
             <a href="#" class="menu"><b>Liên Hệ</b></a>
-            <a href="#" class="menu"><b>Người dùng</b></a>
+            <a href="#" class="menu" ><b>Người dùng</b></a>
         </div>
-        
+        <!-- menu cho dien thoai -->
+        <nav class="navbar navbar-expand-lg navbar-light transparent d-md-none">
+            <a class="navbar-brand" href="#"><a href="#"><img src="img/SachOi.png" alt="logo" title="Trang chủ" id="logo_mobile"></a></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#"><b>Trang Chủ</b> <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#"><b>Giới thiệu</b> <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#"><b>Sản phẩm</b> <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#"><b>Giỏ hàng </b><span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#"><b>Đăng nhập</b><span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#"><b>Đăng ký</b><span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#"><b>Người dùng </b><span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#"><b>Liên hệ</b><span class="sr-only">(current)</span></a>
+            </li>
+        </ul>
+        </div>
+        </nav>
+<!-- khung tim kiem -->
         <form action="search" method="get">
             <div class="search_box">
             <input type="text" id="search_input" placeholder=" Nhập tên sách, thể loại...">
@@ -55,7 +92,7 @@
         </div>
 
     </main>
-    <footer >
+    <footer>
         <div>
             <i class="fa-solid fa-location-dot"></i>
             <span>Trường Công nghệ Thông tin & Truyền thông - Trường Đại học Cần Thơ <br>Khu 2, đường 3/2, Phường Ninh Kiều, TP. Cần Thơ, Việt Nam;</span>
@@ -76,6 +113,7 @@
         </div>
     </footer>
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>
