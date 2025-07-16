@@ -795,9 +795,13 @@ header {
     font-size: 500%;
 }
 
+/* .fa-arrow-left, .fa-arrow-right{
+  color: black;
+} */
+
 .tcprevBtn, .tcnextBtn{
     font-size: 300%;
-    border: none;
+    border: solid 1% black;
     border-radius: 10%;
     margin: 1%;
     color: #df9959;
@@ -810,15 +814,17 @@ header {
   border: none;
 }
 
-.tcaddCart,.tcprevBtn, .tcnextBtn{
+.tcaddCart{
   transition-duration: 0.31s;
   transition-timing-function: ease;
   cursor: pointer;
 }
-.tcaddCart:hover,.tcprevBtn:hover, .tcnextBtn:hover{
+.tcaddCart:hover{
   filter: brightness(105%);
   transform: scale(1.1);
 }
+
+
 
 
 /* Thêm book vào giỏ hàng */
@@ -831,32 +837,7 @@ header {
 
 /* liên hệ, người dùng & giới thiệu */
 
-#vb_lienhe *, #vb_lienhe ::before, #vb_lienhe ::after {
-  box-sizing: content-box;
-}
-#vb_user *, #vb_user ::before, #vb_user ::after {
-  box-sizing: content-box;
-}
-.vb_background{
-        max-width: 700px;
-        margin: 0 auto;
-        margin-top: 15px;
-    }
-#vb_ykien{
-       max-width:  650px;
-    }
-.vb_search_box{
-  background-color: #ffeace;
-}
-#vb_submit{
-    border: #d48437 solid 2px;
-    outline: none;
-    padding: 8px;
-    border-radius: 10px;
-    background-color: #ffeace;
-}
-
-#vb_ykien{
+#vb_nd{
     border: none;
     outline: none;
     border-radius: 10px;
@@ -960,6 +941,18 @@ p.vb_ndtg{
     margin-left: 30px ;
 }
 
+@media only screen and (min-width: 1023px) {
+  .tcprevBtn, .tcnextBtn{
+    transition-duration: 0.31s;
+    transition-timing-function: ease;
+    cursor: pointer;
+  }
+  .tcprevBtn:hover, .tcnextBtn:hover{
+    filter: brightness(105%);
+    transform: scale(1.1);
+  }
+}
+
 /* end liên hệ, người dùng & giới thiệu */
 @media (max-width: 1023px) {
   /* trang chủ */
@@ -993,8 +986,8 @@ p.vb_ndtg{
   }
 
   /* end liên hệ, người dùng & giới thiệu */
-}
 
+}
 
 @media only screen and (min-width: 768px) and (max-width: 1023px){
   
@@ -1006,19 +999,14 @@ p.vb_ndtg{
 }
 
 /* đăng ký */
-.r1_dk{
+.r1_dk#db{
     width: 65%;
-    height: 150%;
+    height: 100%;
 }
 
 /* đăng bán */
 #describe_parent{
   width: 35rem;
-}
-
-.r1_dk#db{
-    width: 65%;
-    height: 100%;
 }
 
 /* sản phẩm */
@@ -1058,7 +1046,7 @@ p.vb_ndtg{
         white-space: nowrap;
         font-size: normal;
     } */
-    #vb_ykien{
+     #vb_nd{
         width: 550px;
     }
     .vb_background{
@@ -1067,13 +1055,18 @@ p.vb_ndtg{
         margin: 0 auto;
         margin-top: 15px;
     }
-    .vb_search_box{
-        background-color: #ffeace;
-        text-align: left;
-  }
 
   /* end liên hệ, người dùng & giới thiệu */
 
+    .tcprevBtn, .tcnextBtn{
+      transition-duration: 0.31s;
+      transition-timing-function: ease;
+      cursor: pointer;
+    }
+    .tcprevBtn:hover, .tcnextBtn:hover{
+      filter: brightness(105%);
+      transform: scale(1.1);
+    }
 
 }
 
@@ -1295,10 +1288,12 @@ p.vb_ndtg{
   }
 
   .tcprevBtn {
+    color: #ffd399;
     left: 5px;
   }
 
   .tcnextBtn {
+    color: #ffd399;
     right: 5px;
   }
 
@@ -1321,7 +1316,22 @@ p.vb_ndtg{
 
   /*liên hệ, người dùng & giới thiệu */
 
-  #vb_ykien{
+  /* .vb_search_box{
+        margin-top: 5%;
+        width: 85%;
+    }
+    .vb_search_button{
+        height: 35px;
+    }
+    
+    .fa-square-plus{
+        height: 50%;
+        padding-top: 23%;
+    }
+    #vb_search_input{
+       height: 40px; 
+    } */
+     #vb_nd{
         width: 450px;
     }
     .vb_background{
@@ -1330,10 +1340,6 @@ p.vb_ndtg{
         margin: 0 auto;
         margin-top: 15px;
     }
-    .vb_search_box{
-        background-color: #ffeace;
-        text-align: left;
-      }
 
   /* end liên hệ, người dùng & giới thiệu */
 
