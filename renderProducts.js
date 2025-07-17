@@ -91,10 +91,33 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Hàm xử lý mua sách
-function buy(book) {
-  alert(` Bạn đã mua sách: ${book.name || book.book_name}`);
 
-  const purchased = JSON.parse(localStorage.getItem("purchased_books")) || [];
-  purchased.push(book);
-  localStorage.setItem("purchased_books", JSON.stringify(purchased));
+function buy(book) {
+  const currentUserEmail = localStorage.getItem("currentUserEmail"); 
+  if (!currentUserEmail) {
+    alert("Vui lòng đăng ký");
+    return;
+  }
+
+  // Lấy thông tin người dùng
+  const userJSON = localStorage.getItem(currentUserEmail);
+  if (!userJSON) {
+    alert("Người dùng không tồn tại.");
+    return;
+  }
+
+  const user = JSON.parse(userJSON);
+
+  // Cập nhật danh sách sách đã mua
+  if (!user.purchased_books) {
+    user.purchased_books = [];
+  }
+
+  user.purchased_books.push(book);
+
+  // Lưu lại vào localStorage
+  localStorage.setItem(currentUserEmail, JSON.stringify(user));
+
+  // Hiển thị thông báo
+  alert(`Bạn đã mua sách: ${book.name || book.book_name}`);
 }
