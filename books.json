@@ -1,0 +1,20 @@
+[
+  {
+    "book_name": "Đắc Nhân Tâm",
+    "author": "Dale Carnegie",
+    "cost": 89000,
+    "genre": "ky-nang",
+    "status": "Còn hàng",
+    "describe": "Cuốn sách nổi tiếng giúp bạn phát triển kỹ năng giao tiếp.",
+    "img_book": "img/dacnhantam.jpg"
+  },
+  {
+    "book_name": "Dế Mèn Phiêu Lưu Ký",
+    "author": "Tô Hoài",
+    "cost": 65000,
+    "genre": "thieu-nhi",
+    "status": "Còn hàng",
+    "describe": "Câu chuyện hấp dẫn về chú dế nhỏ gan dạ.",
+    "img_book": "img/demen.jpg"
+  }
+]

@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sản Phầm</title>
-    <link rel="icon" href="img/SO.png" title="logo" />
+    <title>Đăng Nhập</title>
+    <link rel="icon" href="SO.png" title="logo" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
@@ -114,32 +114,38 @@
         </div>
       </form>
     </header>
-    <main class="main-product">
-      <select id="filter-genre" name="filter-genre">
-        <option value="">Thể Loại</option>
-        <option value="van-hoc">Văn học</option>
-        <option value="ky-nang">Kỹ năng sống</option>
-        <option value="kinh-doanh">Kinh tế – Kinh doanh</option>
-        <option value="tam-ly">Tâm lý – Tình cảm</option>
-        <option value="cong-nghe">Công nghệ – Khoa học</option>
-        <option value="thieu-nhi">Thiếu nhi</option>
-        <option value="giao-duc">Giáo dục – Học tập</option>
-        <option value="ton-giao">Tôn giáo – Tâm linh</option>
-        <option value="lich-su">Lịch sử – Văn hóa</option>
-      </select>
-      <div class="list-product"  id="list-product">
-      </div>
-      <div>
-        <section class="pagination">
-          <a href="#">&laquo;</a>
-          <a class="active" href="">1</a>
-          <a href="">2</a>
-          <a href="">3</a>
-          <a href="">4</a>
-          <a href="">5</a>
-          <a href="">6</a>
-          <a href="#">&raquo;</a>
-        </section>
+    <main>
+      <div class="r1_dn">
+        <h1>ĐĂNG NHẬP</h1>
+        <div class="r2_dn">
+          <form onsubmit="login(event)">
+            <div class="r3_dn">
+              <label for="email">
+                <i class="fa-solid fa-envelope"></i>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="Email đăng nhập ..."
+                />
+              </label>
+            </div>
+            <div class="r3_dn">
+              <label for="password">
+                <i class="fa-solid fa-lock"></i>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  placeholder="Nhập mật khẩu ..."
+                />
+              </label>
+            </div>
+            <div>
+              <button class="r4"><b>Đăng Nhập</b></button>
+            </div>
+          </form>
+        </div>
       </div>
     </main>
     <footer>
@@ -170,9 +176,8 @@
           ><i class="fa-brands fa-youtube"></i
         ></a>
       </div>
-      <a href="#vb_logo" id="vb_dau"><i class="fa-solid fa-arrow-up"></i></a>
     </footer>
+    <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="renderProducts.js"></script>
   </body>
 </html>
