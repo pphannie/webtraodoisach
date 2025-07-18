@@ -155,7 +155,7 @@ header {
     width: 90%;
     margin: 5% auto auto auto;
     border-radius: 20px;
-    height: 350px;
+    height: 390px;
 }
 
 .r2_dn{
@@ -224,6 +224,14 @@ header {
     transform: scale(1.2);
 }
 
+.r4#dk{
+  margin-top: 2%;
+}
+
+.r4 a{
+  color: black;
+  text-decoration: none;
+}
 /* đăng ký */
 
 .r1_dk{
@@ -232,7 +240,7 @@ header {
     width: 90%;
     margin: 5% auto auto auto;
     border-radius: 20px;
-    height: 620px;
+    height: fit-content;
 }
 
 .r2_dk{
@@ -836,8 +844,53 @@ header {
 /* end trang chủ */
 
 /* liên hệ, người dùng & giới thiệu */
+#vb_lienhe *, #vb_lienhe ::before, #vb_lienhe ::after {
+  box-sizing: content-box;
+}
+#vb_user *, #vb_user ::before, #vb_user ::after {
+  box-sizing: content-box;
+}
+.vb_background{
+        max-width: 700px;
+        margin: 0 auto;
+        margin-top: 15px;
+    }
+#vb_ykien{
+       max-width:  650px;
+    }
+.vb_search_box{
+  background-color: #ffeace;
+}
+#vb_submit{
+    border: #d48437 solid 2px;
+    outline: none;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: #ffeace;
+}
 
-#vb_nd{
+.vb_htt {
+    padding-right: 8px;  
+    padding-bottom: -7px;
+    padding-top: -7px;
+}
+.vb_dong{
+    display: block;
+    background-color: #ffeace;
+    padding: 8px 13px;
+    margin: 10px;
+    border-radius: 10px;
+    max-width: 100%;  
+}
+#logoutBtn{
+  border: solid #d48437 2px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-color: #ffeace;
+}
+
+#vb_ykien{
     border: none;
     outline: none;
     border-radius: 10px;
@@ -891,15 +944,7 @@ header {
     text-align: center;
     
 }
-.vb_dong{
-    display: block;
-    background-color: #ffeace;
-    padding: 10px;
-    margin: 10px;
-    border-radius: 10px;
-    max-width: 100%;
-    height: 17px;
-}
+
 .vb_lichsu > section {
     flex: 1 1 0;
     align-items: stretch;
@@ -941,6 +986,8 @@ p.vb_ndtg{
     margin-left: 30px ;
 }
 
+/* end liên hệ, người dùng & giới thiệu */
+
 @media only screen and (min-width: 1023px) {
   .tcprevBtn, .tcnextBtn{
     transition-duration: 0.31s;
@@ -964,14 +1011,7 @@ p.vb_ndtg{
   /* end trang chủ */
 
   /* liên hệ, người dùng & giới thiệu */
-  .vb_background{
-        width: 700px;
-        margin: 0 auto;
-        margin-top: 15px;
-    }
-     #vb_nd{
-        width: 650px;
-    }
+  
     .vb_search_box{
     display: grid;
     grid-template-areas: "search_box search sold";
@@ -998,15 +1038,17 @@ p.vb_ndtg{
     font-size: small;
 }
 
-/* đăng ký */
+
+
+/* đăng bán */
+
+#describe_parent{
+  width: 35rem;
+}
+
 .r1_dk#db{
     width: 65%;
     height: 100%;
-}
-
-/* đăng bán */
-#describe_parent{
-  width: 35rem;
 }
 
 /* sản phẩm */
@@ -1039,14 +1081,8 @@ p.vb_ndtg{
     width: 90%;
   }
 
-  /* liên hệ, người dùng & giới thiệu */
-
-  /* .vb_menu{
-        padding: 7px 3px;
-        white-space: nowrap;
-        font-size: normal;
-    } */
-     #vb_nd{
+/* liên hệ, người dùng & giới thiệu */
+     #vb_ykien{
         width: 550px;
     }
     .vb_background{
@@ -1055,6 +1091,10 @@ p.vb_ndtg{
         margin: 0 auto;
         margin-top: 15px;
     }
+    .vb_search_box{
+        background-color: #ffeace;
+        text-align: left;
+  }
 
   /* end liên hệ, người dùng & giới thiệu */
 
@@ -1139,7 +1179,6 @@ p.vb_ndtg{
 
     .r1_dk{
         width: 85%;
-        height: auto;
     }
     .r3_dk{
         height: auto;
@@ -1316,22 +1355,7 @@ p.vb_ndtg{
 
   /*liên hệ, người dùng & giới thiệu */
 
-  /* .vb_search_box{
-        margin-top: 5%;
-        width: 85%;
-    }
-    .vb_search_button{
-        height: 35px;
-    }
-    
-    .fa-square-plus{
-        height: 50%;
-        padding-top: 23%;
-    }
-    #vb_search_input{
-       height: 40px; 
-    } */
-     #vb_nd{
+     #vb_ykien{
         width: 450px;
     }
     .vb_background{
@@ -1340,6 +1364,10 @@ p.vb_ndtg{
         margin: 0 auto;
         margin-top: 15px;
     }
+    .vb_search_box{
+        background-color: #ffeace;
+        text-align: left;
+      }
 
   /* end liên hệ, người dùng & giới thiệu */
 
