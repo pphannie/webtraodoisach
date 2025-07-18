@@ -77,28 +77,6 @@ function login(e) {
 // end đăng nhập
 
 // đăng bán
-//in thông tin user
-document.addEventListener("DOMContentLoaded", function () {
-  let currentUserEmail = localStorage.getItem("currentUserEmail");
-  const userData = localStorage.getItem(currentUserEmail);
-
-  if (!userData) {
-    alert("Bạn chưa đăng nhập. Vui lòng đăng nhập lại.");
-    window.location.href = "login.html";
-    return;
-  }
-
-  const user = JSON.parse(userData);
-
-  document.getElementById("td-name").innerHTML = `<i class="fa-solid fa-user"></i> ${user.user_name}`;
-  document.getElementById("td-email").innerHTML = `<i class="fa-solid fa-envelope"></i> ${user.email}`;
-  document.getElementById("td-tel").innerHTML = `<i class="fa-solid fa-square-phone"></i> ${user.tel}`;
-  document.getElementById("td-address").innerHTML = `<i class="fa-solid fa-location-dot"></i> ${user.address}`;
-  document.getElementById("td-gender").innerHTML = `<i class="fa-solid fa-venus-mars"></i> ${user.gender}`;
-  document.getElementById("td-birthday").innerHTML = `<i class="fa-solid fa-cake-candles"></i> ${user.birthday}`;
-});
-
-
 //kiểm tra đúng định dạng ảnh
 document.addEventListener("DOMContentLoaded", function () {
   var img_book = document.querySelector("#img_book");
