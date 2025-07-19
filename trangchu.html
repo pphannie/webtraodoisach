@@ -1,0 +1,779 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <link rel="icon" href="img/SO.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang Chủ</title>
+    <!-- Có thể thay bằng cách nhúng mã -> Không cần tải file -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"
+        integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <!-- Có thể thay bằng cách nhúng mã -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" type="text/css">
+</head>
+
+<body>
+    <header>
+        <div class="nav_bar">
+            <a href="trangchu.html"><img src="img/SachOi.png" alt="logo" title="Trang chủ" id="logo"></a>
+            <a href="trangchu.html" class="menu"> <b>Trang Chủ</b></a>
+            <a href="gioithieu.html" class="menu"><b>Giới Thiệu</b></a>
+            <a href="sanpham.html" class="menu"><b>Sản Phẩm</b></a>
+            <a href="giohang.html" class="menu"><b>Giỏ Hàng</b></a>
+            <a href="dangnhap.html" class="menu"><b>Đăng Nhập</b></a>
+            <a href="dangky.html" class="menu"><b>Đăng Ký</b></a>
+            <a href="lienhe.html" class="menu"><b>Liên Hệ</b></a>
+            <a href="nguoidung.html" class="menu"><b>Người dùng</b></a>
+        </div>
+        <!-- menu cho dien thoai -->
+        <nav class="navbar navbar-expand-lg navbar-light transparent d-md-none">
+            <a class="navbar-brand" href="trangchu.html"><img src="img/SachOi.png" alt="logo" title="Trang chủ"
+                    id="logo_mobile"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="trangchu.html"><b>Trang Chủ</b> <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="gioithieu.html"><b>Giới thiệu</b> <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="sanpham.html"><b>Sản phẩm</b> <span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="giohang.html"><b>Giỏ hàng </b><span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="dangnhap.html"><b>Đăng nhập</b><span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="dangky.html"><b>Đăng ký</b><span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="nguoidung.html"><b>Người dùng </b><span
+                                class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="lienhe.html"><b>Liên hệ</b><span class="sr-only">(current)</span></a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+        <!-- khung tim kiem -->
+        <form action="search" method="get">
+            <div class="search_box">
+                <input type="text" id="search_input" placeholder=" Nhập tên sách, thể loại...">
+                <button class="search_button" title="Tìm kiếm"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <a href="dangban.html" title="Đăng bán"><i class="fa-solid fa-square-plus"></i></a>
+            </div>
+        </form>
+    </header>
+
+    <main>
+        <br></br>
+        <div class="container text-center">
+            <div class="row">
+                <div class="col">
+                    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+                        <div class="carousel-indicators">
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0"
+                                class="active" aria-current="true" aria-label="Slide 1"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                                aria-label="Slide 2"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                                aria-label="Slide 3"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                                aria-label="Slide 4"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4"
+                                aria-label="Slide 5"></button>
+                            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5"
+                                aria-label="Slide 6"></button>
+                        </div>
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="img/2.png" class="d-block w-100 rounded-3" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <!-- <h5></h5>
+                                    <p></p> -->
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/3.png" class="d-block w-100 rounded-3" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <!-- <h5></h5>
+                                    <p></p> -->
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/4.png" class="d-block w-100 rounded-3" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <!-- <h5></h5>
+                                    <p></p> -->
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/5.png" class="d-block w-100 rounded-3" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <!-- <h5></h5>
+                                    <p></p> -->
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/1.png" class="d-block w-100 rounded-3" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <!-- <h5></h5>
+                                    <p></p> -->
+                                </div>
+                            </div>
+                            <div class="carousel-item">
+                                <img src="img/6.png" class="d-block w-100 rounded-3" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                    <!-- <h5></h5>
+                                    <p></p> -->
+                                </div>
+                            </div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                            <span class="visually-hidden">Next</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <br></br><br></br>
+
+        <section class="tcwcu">
+            <h2 class="tcsection-title">TẠI SAO NÊN TRAO ĐỔI SÁCH VỚI CHÚNG TÔI?</h2>
+            <div class="tcstats-container">
+                <div class="tcstat-box">
+                    <i class="fa-solid fa-calendar-days"></i>
+                    <h3>10+</h3>
+                    <p>"Năm" với lĩnh vực sách cũ</p>
+                </div>
+                <div class="tcstat-box">
+                    <i class="fa-solid fa-star"></i>
+                    <h3>3000</h3>
+                    <p>"Quyển sách xưa" đang có mặt</p>
+                </div>
+                <div class="tcstat-box">
+                    <i class="fa-solid fa-heart"></i>
+                    <h3>20+</h3>
+                    <p>"Nhân viên" nhiệt tình, am hiểu</p>
+                </div>
+                <div class="tcstat-box">
+                    <i class="fa-solid fa-book"></i>
+                    <h3>30+</h3>
+                    <p>"Tấn sách" mỗi ngày tại cửa hàng</p>
+                </div>
+                <div class="tcstat-box">
+                    <i class="fa-solid fa-house"></i>
+                    <h3>4</h3>
+                    <p>"Chi nhánh" có mặt tại TPHCM</p>
+                </div>
+            </div>
+        </section>
+
+        <br></br><br></br>
+
+        <article class="carousel-section">
+            <h2 id="tch2">Sách nổi bật</h2>
+            <div class="tcmycarousel-container">
+                <button class="tcprevBtn"><i class="fa-solid fa-arrow-left"></i></button>
+                <div class="tcmycarousel-wrapper">
+                    <div class="tcbook-list">
+                        <div class="tcbook">
+                            <img src="img/overlord_1.jpg" alt="Sách 1">
+                            <h3>Overlord (Light Novel) Vol. 1</h3>
+                            <p>Giá: 36.000đ</p>
+                            <div class="tcbook-actions">
+                                <button class="tcaddCart" title="Thêm vào giỏ hàng">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <button class="tcmota" title="Xem mô tả">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <div class="tcbook-overlay">
+                                <p>Tác giả: Kugane Maruyama</p>
+                                <p>Thể loại: Action | Comedy | Fantasy | Supernatural | Seinen | Harem</p>
+                                <p>Mô tả: Câu chuyện bắt đầu tại Yggdrasil, một game online từng nổi tiếng sắp phải đóng
+                                    cửa trong những ngày cuối. Thủ lĩnh Momonga quyết định ở lại cho đến tận những giây
+                                    phút cuối với trò chơi yêu thích của cậu ta. Ngạc nhiên, server không đóng lại và
+                                    Momonga bị mắc kẹt trong bộ xương của nhân vật ở thế giới này. “Overlord mạnh mẽ”
+                                    giờ đây tiếp tục đi khám phá thế giới mới và đối mặt với những thử thách. Không gia
+                                    đình, bạn bè, vị trí trong xã hội, người đàn ông bình thường này sẽ chiến đấu hết
+                                    sức để thống trị thế giới mới mà trò chơi đã trở thành.</p>
+                            </div>
+                        </div>
+                        <div class="tcbook">
+                            <img src="img/bttkdt.jpg" alt="Sách 2">
+                            <h3>Bậc Thầy Thiết Kế Điền Trang - Chapter 1</h3>
+                            <p>Giá: 12.000đ</p>
+                            <div class="tcbook-actions">
+                                <button class="tcaddCart" title="Thêm vào giỏ hàng">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <button class="tcmota" title="Xem mô tả">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <div class="tcbook-overlay">
+                                <p>Tác giả: Moon Baek</p>
+                                <p>Thể loại: Action | Manhwa | Xuyên Không | Chuyển Sinh | Fantasy | Supernatural </p>
+                                <p>Mô tả: Kim Suho, một kĩ sư dân dụng đã xuyên không thành một quý tộc trong cuốn tiểu
+                                    thuyết. Đời anh sẽ trôi về đâu đây? Dự án điền trang sắp thất bại, được lưu lại để
+                                    thiết kế, xây dựng và bán. Cơ hội đặc biệt được chờ đợi trên khắp lục địa! Giao
+                                    thông uy tín, khu giáo dục tốt nhất, khu rừng dễ chịu, và một cuộc sống địa chủ cao
+                                    cấp của gia tộc Frontera mà mọi người chờ đợi. Một hợp đồng trên cơ sở đến trước
+                                    phục vụ trước!</p>
+                            </div>
+                        </div>
+                        <div class="tcbook">
+                            <img src="img/csts1.jpg" alt="Sách 3">
+                            <h3>Về Chuyện Tôi Chuyển Sinh Thành Slime - (Light Novel) Vol. 1</h3>
+                            <p>Giá: 170.000đ</p>
+                            <div class="tcbook-actions">
+                                <button class="tcaddCart" title="Thêm vào giỏ hàng">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <button class="tcmota" title="Xem mô tả">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <div class="tcbook-overlay">
+                                <p>Tác giả: Fuse, Mizt Vah</p>
+                                <p>Thể loại: Action | Comedy | Fantasy | Supernatural | Seinen | Harem | Xuyên Không |
+                                    Chuyển Sinh</p>
+                                <p>Mô tả: Câu chuyện bắt đầu với anh chàng Mikami Satoru, một nhân viên 37 tuổi sống
+                                    cuộc sống chán chường và không vui vẻ gì. Trong một lần gặp cướp, anh đã bị mất
+                                    mạng. Tưởng chừng cuộc sống chán ngắt ấy đã kết thúc... Nhưng không! Ấy lại chính là
+                                    sự khởi đầu của một cuộc sống mới. Satoru thức dậy, thấy mình đang ở trong một thế
+                                    giới kì lạ. Và điều quái dị là anh không còn hình dạng con người nữa mà đã trở thành
+                                    quái vật Slime dẻo quẹo và không có mắt. Khi dần quen với hình dáng mới này, anh bắt
+                                    đầu khám phá thế giới mới với cái tên Rimuru Tempest, cùng với những quái vật khác
+                                    xây dựng quốc gia riêng và bắt đầu công cuộc thay đổi thế giới mới.</p>
+                            </div>
+                        </div>
+                        <div class="tcbook">
+                            <img src="img/knsb.jpg" alt="Sách 4">
+                            <h3>Hãy ban phúc lành cho thế giới tuyệt vời này! (Light Novel) Vol. 1</h3>
+                            <p>Giá: 90.000đ</p>
+                            <div class="tcbook-actions">
+                                <button class="tcaddCart" title="Thêm vào giỏ hàng">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <button class="tcmota" title="Xem mô tả">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <div class="tcbook-overlay">
+                                <p>Tác giả: Akatsuki Natsume, Mishima Kurone</p>
+                                <p>Thể loại: Action | Comedy | Fantasy | Supernatural | Shounen | Harem | Xuyên Không |
+                                    Chuyển Sinh</p>
+                                <p>Mô tả: Satou Kazuma đang theo đuổi lối sống "hikikomori" và cũng là một game thủ, đã
+                                    gặp phải tai nạn thảm khốc. Khi vừa tỉnh dậy, anh nhìn thấy một thiếu nữ xinh đẹp,
+                                    tự xưng là nữ thần, đưa ra cho anh hai lựa chọn: lên thiên đường hoặc đi cùng cô đến
+                                    một thế giới khác để đánh bại Ma vương. Bản năng game thủ của Kazuma trỗi dậy và anh
+                                    ấy chọn bắt đầu cuộc sống mới dù sẽ gặp nhiều rắc rối, thậm chí phải đối đầu với đội
+                                    quân của quỷ dữ.</p>
+                            </div>
+                        </div>
+                        <div class="tcbook">
+                            <img src="img/ms.jpg" alt="Sách 5">
+                            <h3>Mushoku Tensei - Isekai Ittara Honki Dasu (Light Novel) Vol. 1</h3>
+                            <p>Giá: 615.000đ</p>
+                            <div class="tcbook-actions">
+                                <button class="tcaddCart" title="Thêm vào giỏ hàng">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <button class="tcmota" title="Xem mô tả">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <div class="tcbook-overlay">
+                                <p>Tác giả: Rifujin na Magonote, Shirotaka</p>
+                                <p>Thể loại: Action | Adventure | Fantasy | Harem | Iseka |i Web Novel | Comedy | Ecchi
+                                    | Magic | Mature | Romance | Drama</p>
+                                <p>Mô tả: Một otaku vô công rồi nghề 34 tuổi bị đuổi ra khỏi nhà bởi chính gia đình của
+                                    mình. Nhận ra cuộc đời của bản thân đã lâm vào ngõ cụt cũng như là sự rác rưởi, vô
+                                    dụng của bản thân; anh ta ước rằng phải chi bản thân khi xưa vượt qua được giai đoạn
+                                    đen tối của cuộc đời thì bây giờ có lẽ mọi chuyện đã khác. Đúng vào khoảnh khắc hối
+                                    tiếc đó, anh thấy 1 chiếc xe tải chạy với vận tốc lớn đang lao đến 3 học sinh trung
+                                    học gần đó. Gom tất cả sức lực còn lại, anh ta cứu được 3 học sinh kia tuy nhiên lại
+                                    phải bỏ mạng của chính bản thân mình dưới bánh chiếc xe tải đó. Khi mở mắt ra, anh
+                                    nhận ra rằng mình đã được đầu thai ở thế giới của gươm giáo và phép thuật song hành
+                                    tồn tại dưới cái tên Rudeus Greyrat. Dưới hình hài mới ở một thế giới mới, Rudeus tự
+                                    khẳng định với bản thân " Lần này mình sẽ thực sự sống đến tận cùng cuộc sống này mà
+                                    không hề tiếc nuối". Và như thế, cuộc hành trình của anh bắt đầu.</p>
+                            </div>
+                        </div>
+                        <div class="tcbook">
+                            <img src="img/sl.webp" alt="Sách 6">
+                            <h3>Solo Leveling - Chapter 1</h3>
+                            <p>Giá: 85.000đ</p>
+                            <div class="tcbook-actions">
+                                <button class="tcaddCart" title="Thêm vào giỏ hàng">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <button class="tcmota" title="Xem mô tả">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <div class="tcbook-overlay">
+                                <p>Tác giả: Dubu (Redice Studio), Chugong</p>
+                                <p>Thể loại: Manhwa | Action | Adventure | Shounen | Webtoon</p>
+                                <p>Mô tả: SUNG JIN WOO, THỢ SĂN HẠNG E YẾU ỚT BẬC NHẤT nghèo khổ, tài năng không có mà
+                                    cũng chẳng được ai chống lưng. Trong một chuyến công phá để kiếm kế sinh nhai, cậu
+                                    tình cờ tìm thấy HẦM NGỤC KÉP. Trên chiến trường tàn khốc, cậu đã lựa chọn con đường
+                                    cô độc nhất…
+                                </p>
+                                <p>Từ kẻ yếu ớt trở thành Thợ săn mạnh nhất!!</p>
+                            </div>
+                        </div>
+                        <div class="tcbook">
+                            <img src="img/aot11.webp" alt="Sách 7">
+                            <h3>Đại chiến Titan 11</h3>
+                            <p>Giá: 22.000đ</p>
+                            <div class="tcbook-actions">
+                                <button class="tcaddCart" title="Thêm vào giỏ hàng">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <button class="tcmota" title="Xem mô tả">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <div class="tcbook-overlay">
+                                <p>Tác giả: Hajime Isayama</p>
+                                <p>Thể loại: Action | Shounen | Mystery | Horror | Historical | Tragedy</p>
+                                <p>Mô tả: Hơn 100 năm trước, giống người khổng lồ Titan đã tấn công và đẩy loài người
+                                    tới bờ vực tuyệt chủng. Những con người sống sót tụ tập lại, xây bao quanh mình 1
+                                    tòa thành 3 lớp kiên cố và tự nhốt mình bên trong để trốn tránh những cuộc tấn công
+                                    của người khổng lồ. Họ tìm mọi cách để tiêu diệt người khổng lồ nhưng không thành
+                                    công. Và sau 1 thế kỉ hòa bình, giống khổng lồ đã xuất hiện trở lại, một lần nữa đe
+                                    dọa sự tồn vong của con người.... Elen và Mikasa phải chứng kiến một cảnh tượng cực
+                                    kinh khủng - mẹ của mình bị ăn thịt ngay trước mắt. Elen thề rằng cậu sẽ giết tất cả
+                                    những tên khổng lồ mà cậu gặp.....</p>
+                            </div>
+                        </div>
+                        <div class="tcbook">
+                            <img src="img/tdt.webp" alt="Sách 8">
+                            <h3>Thất Hình Đại Tội - Tập 1</h3>
+                            <p>Giá: 20.000đ</p>
+                            <div class="tcbook-actions">
+                                <button class="tcaddCart" title="Thêm vào giỏ hàng">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <button class="tcmota" title="Xem mô tả">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <div class="tcbook-overlay">
+                                <p>Tác giả: Suzuki Nakaba</p>
+                                <p>Thể loại: Action | Adventure | Comedy | Fantasy | Shounen</p>
+                                <p>Mô tả: “Thất đại ác nhân”, một nhóm chiến binh có tham vọng lật đổ vương quốc
+                                    Britannia, được cho là đã bị tiêu diệt bởi các “hiệp sĩ thánh chiến” mặc dù vẫn còn
+                                    1 số người cho rằng họ vẫn còn sống. 10 năm sau, Các hiệp sĩ thánh chiến đã làm 1
+                                    cuộc đảo chính và khống chế đức vua, họ trở thành người cai trị độc tài mới của
+                                    vương quốc. Elizabeth, con gái duy nhất của nhà vua, đã lên đường tìm “thất đại ác
+                                    nhân” để nhờ họ tái chiếm lại vương quốc. Công chúa có thành công trong việc tìm
+                                    kiếm “thất đại ác nhân”, các “hiệp sĩ thánh chiến” sẽ làm gì để ngăn chăn cô? xem
+                                    các chap truyện sau sẽ rõ.</p>
+                            </div>
+                        </div>
+                        <div class="tcbook">
+                            <img src="img/mdd.jpg" alt="Sách 9">
+                            <h3>Sono Bisque Doll wa Koi o suru 07</h3>
+                            <p>Giá: 480.000đ</p>
+                            <div class="tcbook-actions">
+                                <button class="tcaddCart" title="Thêm vào giỏ hàng">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <button class="tcmota" title="Xem mô tả">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <div class="tcbook-overlay">
+                                <p>Tác giả: Fukuda Shinichi</p>
+                                <p>Thể loại: Romance | School Life | Seinen | Slice Of Life</p>
+                                <p>Mô tả: Gojo Wakana là học sinh cao trung năm nhất có ước mơ trở thành nghệ nhân chế
+                                    tạo búp bê Hina. Một ngày nọ trong học kỳ đầu tiên của mình, cô bạn cùng lớp nổi
+                                    tiếng của cậu, Kitagawa Marin, nhìn thấy cậu đang làm trang phục búp bê trong phòng
+                                    thủ công của trường. Marin đã yêu cầu Wakana tạo trang phục cosplay cho mình từ một
+                                    nhân vật trong trò chơi điện tử mà cô yêu thích. Mặc dù Wakana không có kinh nghiệm
+                                    trong làm trang phục dành cho người, nhưng Wakana đã được truyền cảm hứng từ sự kiên
+                                    trì của Marin và đồng ý làm một bộ trang phục cho cô ấy.</p>
+                            </div>
+                        </div>
+                        <div class="tcbook">
+                            <img src="img/dgbs.jpg" alt="Sách 10">
+                            <h3>Dragon Ball Super - Tập 12</h3>
+                            <p>Giá: 28.000đ</p>
+                            <div class="tcbook-actions">
+                                <button class="tcaddCart" title="Thêm vào giỏ hàng">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <button class="tcmota" title="Xem mô tả">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <div class="tcbook-overlay">
+                                <p>Tác giả: Akira Toriyama, Toyotarou</p>
+                                <p>Thể loại: Action | Adventure | Colored | Fantasy | Manga | Martial Arts | Shounen |
+                                    Supernatural</p>
+                                <p>Mô tả: Sau khi đánh bại Majin Buu, Trái Đất hòa bình trở lại, mọi người dần ổn định
+                                    cuộc sống. Một ngày nọ, thần hủy diệt Beerus tỉnh giấc sau nhiều thập kỉ chìm trong
+                                    giấc ngủ. Trong lời tiên tri 39 năm về trước, Super Saiyan God được coi là một trong
+                                    những chiến binh huyền thoại. Beerus muốn chiến đầu với chiến binh đó, nên đã cùng
+                                    trợ lý (kiêm sư phụ) Thiên sứ Whis xuống Trái Đất tìm kiếm thông tin.
+
+                                    Sau đó, mọi người cũng được biết rằng có tới 12 vũ trụ khác nhau. Trái Đất nơi Goku
+                                    và mọi người sinh sống nằm trong Vũ Trụ Thứ 7. Người anh em song sinh với Beerus là
+                                    Champa nằm trong Vũ Trụ Thứ 6, Trái Đất ở vũ trụ này gặp nạn và không còn sức sống.
+                                    Champa nảy ý định thuyết phục Beerus tổ chức giải đấu võ thuật cấp liên vũ trụ, phần
+                                    thưởng là Ngọc Rồng Siêu Cấp to bằng cả một hành tinh, có khả năng thực hiện được
+                                    bất kì điều ước nào. Sau đó sẽ hoán đổi Trái Đất ở hai vũ thụ thứ 6 và thứ 7, buộc
+                                    Goku và mọi người phải tham gia...</p>
+                            </div>
+                        </div>
+                        <a id="tcdot" href="sach.html" class="tcbook">
+                            <div class="tcdot-content" title="Chuyển đến trang Sản Phẩm">
+                                <p><strong>Xem thêm sách?</strong></p>
+                                <p>Bấm vào đây</p>
+                                <p><i class="fa-solid fa-right-to-bracket"></i></p>
+                                <p>Chuyển đến trang Sản Phẩm</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <button class="tcnextBtn"><i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </article>
+        <br></br><br></br>
+        <article class="carousel-section">
+            <h2 id="tch2">Sách mới cập nhật</h2>
+            <div class="tcmycarousel-container">
+                <button class="tcprevBtn"><i class="fa-solid fa-arrow-left"></i></button>
+                <div class="tcmycarousel-wrapper">
+                    <div class="tcbook-list">
+                        <!-- Mỗi .book là một "slide" -->
+                        <div class="tcbook">
+                            <img src="img/b1.jpg" alt="Sách 1">
+                            <h3>Nhập môn HTML và CSS</h3>
+                            <p>Giá: 90.000đ</p>
+                            <div class="tcbook-actions">
+                                <button class="tcaddCart" title="Thêm vào giỏ hàng">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <button class="tcmota" title="Xem mô tả">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <div class="tcbook-overlay">
+                                <p>Tác giả: Nguyễn Quang Hải</p>
+                                <p>Thể loại: Tài liệu học tập | Tài liệu tham khảo</p>
+                                <p>Mô tả: Sách giúp người học có kiến thức cơ bản về HTML và CSS.</p>
+                            </div>
+                        </div>
+                        <div class="tcbook">
+                            <img src="img/book2jpg.jpg" alt="Sách 2">
+                            <h3>100 bài tập Javascript có lời giải</h3>
+                            <p>Giá: 120.000đ</p>
+                            <div class="tcbook-actions">
+                                <button class="tcaddCart" title="Thêm vào giỏ hàng">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <button class="tcmota" title="Xem mô tả">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <div class="tcbook-overlay">
+                                <p>Tác giả: Lưu Trường Hải Lân</p>
+                                <p>Thể loại: Tài liệu học tập | Tài liệu tham khảo</p>
+                                <p>Mô tả: Quyển sách này là nguồn tài nguyên tuyệt vời dành cho các bạn muốn nâng cao kỹ
+                                    năng lập trình của mình. Với việc tập trung vào việc thực hành, sách cung cấp 100
+                                    bài tập lập trình đa dạng, bao gồm những bài tập từ cơ bản đến nâng cao, giúp bạn
+                                    chủ động rèn luyện từng khía cạnh của ngôn ngữ lập trình một cách hiệu quả.
+
+                                    Mỗi bài tập đi kèm với mã nguồn mẫu chi tiết, giúp bạn hiểu rõ cách giải quyết vấn
+                                    đề và xây dựng ứng dụng. Sách không chỉ giới hạn ở việc cung cấp bài tập và mã
+                                    nguồn, mà còn kèm theo 100 video giải bài và 100 video phân tích bài toán. Những
+                                    video này không chỉ giúp học viên hiểu rõ cách giải quyết mỗi bài tập mà còn hỗ trợ
+                                    việc học thông qua trực quan hóa, tạo ra một trải nghiệm học tập đa chiều và phong
+                                    phú.
+
+                                    Cuốn sách không chỉ là một nguồn tài nguyên học tập mà còn là một hướng dẫn chi tiết
+                                    và đầy đủ, giúp bạn phát triển kỹ năng lập trình một cách toàn diện và hiệu quả.</p>
+                            </div>
+                        </div>
+                        <div class="tcbook">
+                            <img src="img/book3.jpg" alt="Sách 3">
+                            <h3>LẬP TRÌNH PYTHON CHO NGƯỜI MỚI BẮT ĐẦU</h3>
+                            <p>Giá: 100.000đ</p>
+                            <div class="tcbook-actions">
+                                <button class="tcaddCart" title="Thêm vào giỏ hàng">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <button class="tcmota" title="Xem mô tả">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <div class="tcbook-overlay">
+                                <p>Tác giả: Nguyễn Ngọc Tân</p>
+                                <p>Thể loại: Tài liệu học tập | Tài liệu tham khảo</p>
+                                <p>Mô tả: Cuốn sách "Lập trình Python cho người mới bắt đầu" cung cấp đầy đủ kiến thức
+                                    căn bản về cú pháp Python và đưa ra các ví dụ cụ thể để người
+
+                                    học rèn luyện tư duy lập trình và thực hành.
+
+                                    Sách được chia thành nhiều bài học, từ cơ bản đến nâng cao, tập trung vào việc phát
+                                    triển tư duy và kỹ năng thực hành thông qua việc phân tích, thực hành và xây dựng
+                                    các chương trình và ứng dụng Python.</p>
+                            </div>
+                        </div>
+                        <div class="tcbook">
+                            <img src="img/b1.jpg" alt="Sách 1">
+                            <h3>Nhập môn HTML và CSS</h3>
+                            <p>Giá: 90.000đ</p>
+                            <div class="tcbook-actions">
+                                <button class="tcaddCart" title="Thêm vào giỏ hàng">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <button class="tcmota" title="Xem mô tả">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <div class="tcbook-overlay">
+                                <p>Tác giả: Nguyễn Quang Hải</p>
+                                <p>Thể loại: Tài liệu học tập | Tài liệu tham khảo</p>
+                                <p>Mô tả: Sách giúp người học có kiến thức cơ bản về HTML và CSS.</p>
+                            </div>
+                        </div>
+                        <div class="tcbook">
+                            <img src="img/book2jpg.jpg" alt="Sách 2">
+                            <h3>100 bài tập Javascript có lời giải</h3>
+                            <p>Giá: 120.000đ</p>
+                            <div class="tcbook-actions">
+                                <button class="tcaddCart" title="Thêm vào giỏ hàng">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <button class="tcmota" title="Xem mô tả">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <div class="tcbook-overlay">
+                                <p>Tác giả: Lưu Trường Hải Lân</p>
+                                <p>Thể loại: Tài liệu học tập | Tài liệu tham khảo</p>
+                                <p>Mô tả: Quyển sách này là nguồn tài nguyên tuyệt vời dành cho các bạn muốn nâng cao kỹ
+                                    năng lập trình của mình. Với việc tập trung vào việc thực hành, sách cung cấp 100
+                                    bài tập lập trình đa dạng, bao gồm những bài tập từ cơ bản đến nâng cao, giúp bạn
+                                    chủ động rèn luyện từng khía cạnh của ngôn ngữ lập trình một cách hiệu quả.
+
+                                    Mỗi bài tập đi kèm với mã nguồn mẫu chi tiết, giúp bạn hiểu rõ cách giải quyết vấn
+                                    đề và xây dựng ứng dụng. Sách không chỉ giới hạn ở việc cung cấp bài tập và mã
+                                    nguồn, mà còn kèm theo 100 video giải bài và 100 video phân tích bài toán. Những
+                                    video này không chỉ giúp học viên hiểu rõ cách giải quyết mỗi bài tập mà còn hỗ trợ
+                                    việc học thông qua trực quan hóa, tạo ra một trải nghiệm học tập đa chiều và phong
+                                    phú.
+
+                                    Cuốn sách không chỉ là một nguồn tài nguyên học tập mà còn là một hướng dẫn chi tiết
+                                    và đầy đủ, giúp bạn phát triển kỹ năng lập trình một cách toàn diện và hiệu quả.</p>
+                            </div>
+                        </div>
+                        <div class="tcbook">
+                            <img src="img/book3.jpg" alt="Sách 3">
+                            <h3>LẬP TRÌNH PYTHON CHO NGƯỜI MỚI BẮT ĐẦU</h3>
+                            <p>Giá: 100.000đ</p>
+                            <div class="tcbook-actions">
+                                <button class="tcaddCart" title="Thêm vào giỏ hàng">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <button class="tcmota" title="Xem mô tả">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <div class="tcbook-overlay">
+                                <p>Tác giả: Nguyễn Ngọc Tân</p>
+                                <p>Thể loại: Tài liệu học tập | Tài liệu tham khảo</p>
+                                <p>Mô tả: Cuốn sách "Lập trình Python cho người mới bắt đầu" cung cấp đầy đủ kiến thức
+                                    căn bản về cú pháp Python và đưa ra các ví dụ cụ thể để người
+
+                                    học rèn luyện tư duy lập trình và thực hành.
+
+                                    Sách được chia thành nhiều bài học, từ cơ bản đến nâng cao, tập trung vào việc phát
+                                    triển tư duy và kỹ năng thực hành thông qua việc phân tích, thực hành và xây dựng
+                                    các chương trình và ứng dụng Python.</p>
+                            </div>
+                        </div>
+                        <div class="tcbook">
+                            <img src="img/b1.jpg" alt="Sách 1">
+                            <h3>Nhập môn HTML và CSS</h3>
+                            <p>Giá: 90.000đ</p>
+                            <div class="tcbook-actions">
+                                <button class="tcaddCart" title="Thêm vào giỏ hàng">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <button class="tcmota" title="Xem mô tả">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <div class="tcbook-overlay">
+                                <p>Tác giả: Nguyễn Quang Hải</p>
+                                <p>Thể loại: Tài liệu học tập | Tài liệu tham khảo</p>
+                                <p>Mô tả: Sách giúp người học có kiến thức cơ bản về HTML và CSS.</p>
+                            </div>
+                        </div>
+                        <div class="tcbook">
+                            <img src="img/book2jpg.jpg" alt="Sách 2">
+                            <h3>100 bài tập Javascript có lời giải</h3>
+                            <p>Giá: 120.000đ</p>
+                            <div class="tcbook-actions">
+                                <button class="tcaddCart" title="Thêm vào giỏ hàng">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <button class="tcmota" title="Xem mô tả">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <div class="tcbook-overlay">
+                                <p>Tác giả: Lưu Trường Hải Lân</p>
+                                <p>Thể loại: Tài liệu học tập | Tài liệu tham khảo</p>
+                                <p>Mô tả: Quyển sách này là nguồn tài nguyên tuyệt vời dành cho các bạn muốn nâng cao kỹ
+                                    năng lập trình của mình. Với việc tập trung vào việc thực hành, sách cung cấp 100
+                                    bài tập lập trình đa dạng, bao gồm những bài tập từ cơ bản đến nâng cao, giúp bạn
+                                    chủ động rèn luyện từng khía cạnh của ngôn ngữ lập trình một cách hiệu quả.
+
+                                    Mỗi bài tập đi kèm với mã nguồn mẫu chi tiết, giúp bạn hiểu rõ cách giải quyết vấn
+                                    đề và xây dựng ứng dụng. Sách không chỉ giới hạn ở việc cung cấp bài tập và mã
+                                    nguồn, mà còn kèm theo 100 video giải bài và 100 video phân tích bài toán. Những
+                                    video này không chỉ giúp học viên hiểu rõ cách giải quyết mỗi bài tập mà còn hỗ trợ
+                                    việc học thông qua trực quan hóa, tạo ra một trải nghiệm học tập đa chiều và phong
+                                    phú.
+
+                                    Cuốn sách không chỉ là một nguồn tài nguyên học tập mà còn là một hướng dẫn chi tiết
+                                    và đầy đủ, giúp bạn phát triển kỹ năng lập trình một cách toàn diện và hiệu quả.</p>
+                            </div>
+                        </div>
+                        <div class="tcbook">
+                            <img src="img/book3.jpg" alt="Sách 3">
+                            <h3>LẬP TRÌNH PYTHON CHO NGƯỜI MỚI BẮT ĐẦU</h3>
+                            <p>Giá: 100.000đ</p>
+                            <div class="tcbook-actions">
+                                <button class="tcaddCart" title="Thêm vào giỏ hàng">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <button class="tcmota" title="Xem mô tả">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <div class="tcbook-overlay">
+                                <p>Tác giả: Nguyễn Ngọc Tân</p>
+                                <p>Thể loại: Tài liệu học tập | Tài liệu tham khảo</p>
+                                <p>Mô tả: Cuốn sách "Lập trình Python cho người mới bắt đầu" cung cấp đầy đủ kiến thức
+                                    căn bản về cú pháp Python và đưa ra các ví dụ cụ thể để người
+
+                                    học rèn luyện tư duy lập trình và thực hành.
+
+                                    Sách được chia thành nhiều bài học, từ cơ bản đến nâng cao, tập trung vào việc phát
+                                    triển tư duy và kỹ năng thực hành thông qua việc phân tích, thực hành và xây dựng
+                                    các chương trình và ứng dụng Python.</p>
+                            </div>
+                        </div>
+                        <div class="tcbook">
+                            <img src="img/book3.jpg" alt="Sách 3">
+                            <h3>LẬP TRÌNH PYTHON CHO NGƯỜI MỚI BẮT ĐẦU</h3>
+                            <p>Giá: 100.000đ</p>
+                            <div class="tcbook-actions">
+                                <button class="tcaddCart" title="Thêm vào giỏ hàng">
+                                    <i class="fa-solid fa-cart-plus"></i>
+                                </button>
+                            </div>
+                            <button class="tcmota" title="Xem mô tả">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                            <div class="tcbook-overlay">
+                                <p>Tác giả: Nguyễn Ngọc Tân</p>
+                                <p>Thể loại: Tài liệu học tập | Tài liệu tham khảo</p>
+                                <p>Mô tả: Cuốn sách "Lập trình Python cho người mới bắt đầu" cung cấp đầy đủ kiến thức
+                                    căn bản về cú pháp Python và đưa ra các ví dụ cụ thể để người
+
+                                    học rèn luyện tư duy lập trình và thực hành.
+
+                                    Sách được chia thành nhiều bài học, từ cơ bản đến nâng cao, tập trung vào việc phát
+                                    triển tư duy và kỹ năng thực hành thông qua việc phân tích, thực hành và xây dựng
+                                    các chương trình và ứng dụng Python.</p>
+                            </div>
+                        </div>
+                        <a id="tcdot" href="sach.html" class="tcbook">
+                            <div class="tcdot-content" title="Chuyển đến trang Sản Phẩm">
+                                <p><strong>Xem thêm sách?</strong></p>
+                                <p>Bấm vào đây</p>
+                                <p><i class="fa-solid fa-right-to-bracket"></i></p>
+                                <p>Chuyển đến trang Sản Phẩm</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <button class="tcnextBtn"><i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </article>
+
+    </main>
+
+    <br></br><br></br>
+
+    <footer>
+        <div>
+            <i class="fa-solid fa-location-dot"></i>
+            <span>Trường Công nghệ Thông tin & Truyền thông - Trường Đại học Cần Thơ <br>Khu 2, đường 3/2, Phường Ninh
+                Kiều, TP. Cần Thơ, Việt Nam;</span>
+        </div>
+        <div>
+            <i class="fa-solid fa-square-phone"></i>
+            <span>0292 3 831301</span>
+        </div>
+        <div>
+            <i class="fa-solid fa-envelope"></i>
+            <span>tcntt@ctu.edu.vn</span>
+        </div>
+        <div>
+            <span>Theo dõi chúng tôi tại: </span>
+            <a href="https://cit.ctu.edu.vn/"><i id="vb_lk" class="fa-brands fa-facebook"></i></a>
+            <a href="https://www.instagram.com/ctudhct/?hl=vi"><i class="fa-brands fa-square-instagram"></i></a>
+            <a href="https://www.youtube.com/@CTUDHCT"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+
+        <a href="#" id="vb_dau"><i class="fa-solid fa-arrow-up"></i></a>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
