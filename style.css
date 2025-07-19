@@ -844,6 +844,49 @@ header {
 /* end trang chủ */
 
 /* liên hệ, người dùng & giới thiệu */
+
+/*  Vi chỉnh sửa 19/7/2025 */
+#vb_logout{
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  background-color: #ffeace;
+}
+.vb_htt {
+    padding-right: 20px;  
+    padding-top: 2px;
+    text-align: center;
+    font-size: larger;
+
+}
+.vb_inf{
+    font-weight: bold;
+    font-size: medium;
+
+    display: flex;
+    background-color: #ffeace;
+    padding-left: 13px;
+    padding-top: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    max-width: 100%;  
+
+
+}
+.vb_dong{
+    padding: 8px 13px;
+    padding-bottom: 5px;
+}
+
+
+
+/* end chỉnh sửa */
+
+
+
+
+
+
 #vb_lienhe *, #vb_lienhe ::before, #vb_lienhe ::after {
   box-sizing: content-box;
 }
@@ -869,19 +912,8 @@ header {
     background-color: #ffeace;
 }
 
-.vb_htt {
-    padding-right: 8px;  
-    padding-bottom: -7px;
-    padding-top: -7px;
-}
-.vb_dong{
-    display: block;
-    background-color: #ffeace;
-    padding: 8px 13px;
-    margin: 10px;
-    border-radius: 10px;
-    max-width: 100%;  
-}
+
+
 #logoutBtn{
   border: solid #d48437 2px;
   border-radius: 5px;
