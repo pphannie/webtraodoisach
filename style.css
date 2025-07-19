@@ -273,15 +273,23 @@ header {
   height: 5rem;
 }
 
-#describe_parent{
+/* #describe_parent{
   height: 17rem;
   max-width: 250rem;
   width: 86%;
-}
+} */
 .r3_dk textarea{
   margin-top: -2%;
     height: 14rem;
-    width: 250;
+    width: 25rem;
+}
+
+.r5{
+  height: fit-content;
+}
+
+#cost{
+  font-size: medium;
 }
 
 /* giỏ hàng */
@@ -1042,10 +1050,6 @@ p.vb_ndtg{
 
 /* đăng bán */
 
-#describe_parent{
-  width: 35rem;
-}
-
 .r1_dk#db{
     width: 65%;
     height: 100%;
@@ -1192,12 +1196,18 @@ p.vb_ndtg{
     #img_book{
        height: auto;
     }
-    #describe_parent{
-      width: 35rem;
-    }
 
     .r3_dk textarea{
       height: 15rem;
+      font-size: small;
+    }
+
+    .r3_dk input{
+      font-size: small;
+    }
+
+    #cost{
+      font-size: small;
     }
 
     /* giỏ hàng */

@@ -1,161 +1,54 @@
-// // đăng ký
-// function signin(e){
-//     e.preventDefault();
-//     const user_name = document.querySelector("#user_name").value;
-//     const gender = document.querySelector("#gender").value;
-//     const birthday =  document.querySelector("#birthday").value;
-//     const tel = document.querySelector("#tel").value;
-//     const address = document.querySelector("#address").value;
-//     const email = document.querySelector("#email").value;
-//     const password = document.querySelector("#password").value;
-//     const password_again = document.querySelector("#password_again").value;
-//     if(user_name = ''){
-//         alert("Vui lòng nhập họ tên!");
-//         return;
-//     }
-//     if(gender == 'sample'){
-//         alert("Vui lòng chọn giới tính!");
-//         return;
-//     }
-//     if(tel = '' || tel.length < 10){
-//         alert("Vui lòng nhập đúng định dạng số điện thoại!");
-//         return;
-//     }
-//     if(address = ''){
-//         alert("Vui lòng nhập địa chỉ chính xác!");
-//         return;
-//     }
-//     const emailRegex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-//     if(!emailRegex.test(email)){
-//         alert("Vui lòng nhập đúng định dạng email!");
-//         return;
-//     }
-//     const passRegex = /(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}/;
-//     if(!passRegex.test(password)){
-//         alert("Vui lòng nhập đúng định dạng. Mật khẩu buộc phải có ít nhất 8 ký tự, một chữ cái in hoa và 1 số.")
-//         return;
-//     }
-//     else if(password != password_again){
-//         alert("Mật khẩu không khớp nhau. Vui lòng nhập lại thật chính xác!")
-//         return;
-//     }
-//     else {
-//         const user = {
-//             user_name : user_name,
-//             gender : gender,
-//             birthday : birthday,
-//             tel : tel,
-//             address : address,
-//             email : email,
-//             password : password,
-//         }
-//         // obj -> chuỗi
-//         const  data = JSON.stringify(user);
-//         localStorage.setItem(email, data);
-//         alert("Đăng ký thành công. Bây giờ hãy đăng nhập vào Sách Ơi! nhé!");
-//         window.location.href = "dangnhap.html";
-//     }
-// }
-// // end đăng ký
+// ô tìm kiếm
 
-// // đăng nhập
-// function login(e){
-//     e.preventDefault();
-//     const email = document.querySelector("#email").value;
-//     const password = document.querySelector("#password").value;
-//     const user = localStorage.getItem(email);
-//     // kiểm tra trước vì nếu người dùng chưa đăng ký thì email sẽ null, null thì data bị lỗi
-//     if(user == null){
-//         alert("Vui lòng nhập thông tin đăng nhập");
-//         return;
-//     }
-//     const data = JSON.parse(user);
-//     if(email == data.email && password != data.password){
-//         alert("Mật khẩu không đúng. Vui lòng nhập lại!")
-//         return;
-//     }
-//     else{
-//         window.location.href= "nguoidung.html";
-//     }
-// }
-// // end đăng nhập
+// lấy giá trị từ ô tìm kiếm và chuyển thành không dấu
+const keyWord = document.querySelector("search_input").value.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
 
-// // đăng bán
+// lấy dữ liệu từ file JSON
+fetch("books.json")
+  .then(response => response.json())
+  .then(books => {
+    const result = books.filter( book => {
+      const book_name = book.book_name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+      return book_name.include(keyWord);
+    })
+      
+  })
 
-// //kiểm tra đúng định dạng ảnh
-// document.addEventListener('DOMContentLoaded', function(){
-//     var img_book = document.querySelector("#img_book");
-//     img_book.addEventListener('change', function(){
-//         const files = this.files;
-//         for(const i = 0; i < files.length; i++){
-//             const fileName = files[i].name.toLowerCase();
-//             if(!(fileName.endsWith('.png') && !(fileName.endsWith('.jpg')))){
-//                 alert("Vui lòng chỉ nhập file ảnh đúng định dạng!")
-//                 img_book.value = ""; //reset toàn bộ value trong img_book
-//                 return;
-//             }
-//         }
-//     })      
-// })
+  // Hàm hiển thị sản phẩm tìm kiếm
+  function showBooks(list){
+    const listProduct = document.getElementsByClassName(".list-product");
+    listProduct.innerHTML = ""; //xóa sản phẩm cũ (để hiển thị sản phẩm vừa nhập)
 
-// //kiểm tra nhập form đăng bán
-// function sold(e){
-//     e.preventDefault();
-    
-//     const book_name = document.querySelector("#book_name");
-//     const author = document.querySelector("#author");
-//     const genre = document.querySelector("#genre");
-//     const cost = document.querySelector("#cost");
-//     const status = document.querySelector("#status");
-//     const describe = document.querySelector("#describe");
-    
-//     if(img_book.value == ""){
-//         alert("Vui lòng chọn ảnh minh họa sách!");
-//         return;
-//     }
-//     else if(book_name.value == ""){
-//         alert("Vui lòng nhập tên sách!");
-//         return;
-//     }
-//     else if(author.value == ""){
-//         alert("Vui lòng nhập tên tác giả!");
-//         return;
-//     }
-//     else if(genre.value == "sample"){
-//         alert("Vui lòng chọn thể loại sách!");
-//         return;
-//     }
-//     else if(cost.value < 1000){
-//         alert("Vui lòng nhập giá tiền sách! Số tiền phải lớn hơn 1000vnđ");
-//         return;
-//     }
-//     else if(status.value == "sample"){
-//         alert("Vui lòng tình trạng sách!");
-//         return;
-//     }
-//     else if(describe.value == ""){
-//         alert("Vui lòng nhập thông tin mô tả sách!");
-//         return;
-//     }
-//     const product = {
-//         img_book : img_book,
-//         book_name : book_name,
-//         author : author,
-//         genre : genre,
-//         cost : cost,
-//         status : status,
-//         describe : describe
-//     }
-//     const data = JSON.stringify(product);
-//     localStorage.setItem(product, data);
-//     window.location.href = "nguoidung.html"
-// }
+    if(list.length == 0){
+      listProduct.innerHTML = "<p>Thật tiếc quá! Sách bạn vừa nhập vẫn chưa có ở Sách Ơi. Hãy thử tìm một quyển sách khác nhé!</p>"
+    }
 
-// // end đăng bán
+    list.forEach(product => {
+      listProduct.innerHTML += `
+      <div class="product-card">
+          <div class="info-img">
+            <img src="${product.img_book}" alt="${product.book_name}" />
+            <div class="overlay">
+              <figcaption>
+                <p><strong>Tác Giả:</strong> ${product.author}</p>
+                <p><strong>Năm:</strong> ${product.publication_year}</p>
+                <p><strong>Tóm tắt:</strong> ${product.summary}</p>
+              </figcaption>
+            </div>
+          </div>
+          <h3>${product.book_name}</h3>
+          <p>${product.describe}</p>
+          <div class="bottom">
+            <span class="price">${product.cost}<b>đ</b></span>
+            <button class="button-buy">Mua ngay</button>
+          </div>
+        </div>
+      `;
+    })
+  }
 
-
-
-// đăng ký
+// end ô tìm kiếm
+// ĐĂNG KÝ
 function signin(e) {
   e.preventDefault();
   const user_name = document.querySelector("#user_name").value;
@@ -167,11 +60,14 @@ function signin(e) {
   const password = document.querySelector("#password").value;
   const password_again = document.querySelector("#password_again").value;
 
-  if (gender === "sample") {
+  
+
+  if (gender === 'sample') {
     alert("Vui lòng chọn giới tính!");
     return;
   }
 
+  
   const passRegex = /(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}/;
   if (!passRegex.test(password)) {
     alert(
@@ -201,13 +97,13 @@ function signin(e) {
   };
 
   localStorage.setItem(email, JSON.stringify(user)); //lưu thông tin người dùng
-  localStorage.setItem("currentEmail", email); //ghi nhớ thông tin người dùng
+  localStorage.setItem("currentUserEmail", email); //ghi nhớ thông tin người dùng
   alert("Đăng ký thành công. Bây giờ hãy đăng nhập vào Sách Ơi! nhé!");
   window.location.href = "dangnhap.html";
 }
 // end đăng ký
 
-// đăng nhập
+// ĐĂNG NHẬP
 function login(e) {
   e.preventDefault();
   const email = document.querySelector("#email").value;
@@ -229,36 +125,16 @@ function login(e) {
   localStorage.setItem("currentUserEmail", email);
   localStorage.setItem("logged", "true");
   window.location.href = "nguoidung.html";
-}
+  alert("Đăng nhập thành công");
 
+  //chỉnh sửa
+  window.location.href = "nguoidung.html";
+  //end
+
+}
 // end đăng nhập
 
-
-
-// đăng bán
-//in thông tin user
-document.addEventListener("DOMContentLoaded", function () {
-  let currentUserEmail = localStorage.getItem("currentUserEmail");
-  const userData = localStorage.getItem(currentUserEmail);
-
-  if (!userData) {
-    alert("Bạn chưa đăng nhập. Vui lòng đăng nhập lại.");
-    window.location.href = "login.html";
-    return;
-  }
-
-  const user = JSON.parse(userData);
-
-  document.getElementById("td-name").innerHTML = `<i class="fa-solid fa-user"></i> ${user.user_name}`;
-  document.getElementById("td-email").innerHTML = `<i class="fa-solid fa-envelope"></i> ${user.email}`;
-  document.getElementById("td-tel").innerHTML = `<i class="fa-solid fa-square-phone"></i> ${user.tel}`;
-  document.getElementById("td-address").innerHTML = `<i class="fa-solid fa-location-dot"></i> ${user.address}`;
-  document.getElementById("td-gender").innerHTML = `<i class="fa-solid fa-venus-mars"></i> ${user.gender}`;
-  document.getElementById("td-birthday").innerHTML = `<i class="fa-solid fa-cake-candles"></i> ${user.birthday}`;
-});
-
-
-
+// ĐĂNG BÁN
 //kiểm tra đúng định dạng ảnh
 document.addEventListener("DOMContentLoaded", function () {
   const img_book = document.querySelector("#img_book");
@@ -283,6 +159,9 @@ function sold(e) {
   const cost = document.querySelector("#cost");
   const status = document.querySelector("#status");
   const describe = document.querySelector("#describe");
+  const publication_year = document.querySelector("#publication_year");
+  const publisher = document.querySelector("#publisher");
+  const summary = document.querySelector("#summary");
 
   if (img_book.value == "") {
     alert("Vui lòng chọn ảnh minh họa sách!");
@@ -291,8 +170,12 @@ function sold(e) {
     alert("Vui lòng nhập tên sách!");
     return;
   } else if (author.value == "") {
-    alert("Vui lòng nhập tên tác giả!");
+    alert("Vui lòng nhập tên tác giả/ dịch giả!");
     return;
+  } else if(publication_year.value){
+    alert("Vui lòng nhập năm xuất bản!");
+  } else if(publisher.value){
+    alert("Vui lòng nhập tên nhà xuất bản!");
   } else if (genre.value == "sample") {
     alert("Vui lòng chọn thể loại sách!");
     return;
@@ -305,7 +188,19 @@ function sold(e) {
   } else if (describe.value == "") {
     alert("Vui lòng nhập thông tin mô tả sách!");
     return;
+  } else if (summary.value == "") {
+    alert("Vui lòng nhập tóm tắt nội dung sách!");
+    return;
   }
+  //chỉnh sửa
+  const currentUserEmail = localStorage.getItem("currentUserEmail");
+  if (!currentUserEmail) {
+    alert("Bạn chưa đăng nhập. Không thể đăng bán sách.");
+    return;
+  }
+  //end chỉnh sửa
+
+
   const product = {
     img_book: img_book.value,
     book_name: book_name.value,
@@ -319,10 +214,11 @@ function sold(e) {
   localStorage.setItem("product_" + book_name.value, data);
   window.location.href = "nguoidung.html";
 }
-
 // end đăng bán
 
-// liên hệ
+
+
+// LIÊN HỆ
 function formtest_lienhe(a)
     {
         var email=document.getElementById("vb_Email");
@@ -348,3 +244,169 @@ function formtest_lienhe(a)
         return true;   
     }
 // end liên hệ
+
+
+
+//Lịch sử mua bán sách
+function getSellHistory() {
+   const currentEmail = localStorage.getItem("currentUserEmail");
+
+      if (!currentEmail) {
+        alert("Bạn chưa đăng nhập!");
+        window.location.href = "dangnhap.html";
+        return;
+      }
+
+      const history = JSON.parse(localStorage.getItem("history_ban_" + currentEmail)) || [];
+
+      if (history.length === 0) {
+        document.getElementById("bookList").innerHTML = "<p>Chưa có sách nào được bán.</p>";
+        return;
+      }
+
+      const container = document.getElementById("bookList");
+
+      history.forEach(book => {
+        const card = document.createElement("div");
+        card.className = "book-card";
+        card.innerHTML = `
+          <img src="${book.img_book}" alt="Ảnh sách">
+          <h3>${book.book_name}</h3>
+          <p><strong>Tác giả:</strong> ${book.author}</p>
+          <p><strong>Thể loại:</strong> ${book.genre}</p>
+          <p><strong>Giá:</strong> ${book.cost} VND</p>
+          <p><strong>Tình trạng:</strong> ${book.status}</p>
+          <p><strong>Mô tả:</strong> ${book.describe}</p>
+          <p><em>Đăng lúc: ${book.time}</em></p>
+        `;
+        container.appendChild(card);
+      });
+    };
+// end mua sách
+
+
+//ĐĂNG XUẤT
+
+function logout(e) {
+        e.preventDefault();
+        localStorage.removeItem("currentUserEmail");
+        localStorage.removeItem("logged");
+        alert("Đã đăng xuất.");
+        window.location.href = "dangnhap.html";
+        }
+
+
+//NGƯỜI DÙNG
+function information(e) {
+        const currentEmail = localStorage.getItem("currentUserEmail");
+
+        if (!currentEmail) {
+            alert("Bạn chưa đăng nhập. Quay lại đăng nhập.");
+            window.location.href = "dangnhap.html"; 
+            return;
+        }
+
+        const userData = JSON.parse(localStorage.getItem(currentEmail));
+
+        if (!userData) {
+            alert("Không tìm thấy thông tin người dùng.");
+            return;
+        }
+
+        document.getElementById("user_name").innerText = userData.user_name;
+        document.getElementById("gender").innerText = userData.gender;
+        document.getElementById("birthday").innerText = userData.birthday;
+        document.getElementById("tel").innerText = userData.tel;
+        document.getElementById("address").innerText = userData.address;
+        document.getElementById("email").innerText = userData.email;
+
+        
+    };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
