@@ -380,7 +380,17 @@ header {
   cursor: pointer;
   transition: 0.1s;
 }
-
+/* chỉnh */
+.btn-action label {  
+  padding: 10px 10px;
+  background-color: #df9959;
+  color: white;
+  border: none;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.1s;
+}
 .btn-action button:hover {
   background-color: #ffd399;
 }

@@ -3,18 +3,140 @@
     "book_name": "Đắc Nhân Tâm",
     "author": "Dale Carnegie",
     "cost": 89000,
-    "genre": "ky-nang",
+    "genre": "Kỹ năng",
     "status": "Còn hàng",
-    "describe": "Cuốn sách nổi tiếng giúp bạn phát triển kỹ năng giao tiếp.",
-    "img_book": "img/dacnhantam.jpg"
+    "describe": "Giúp bạn phát triển kỹ năng giao tiếp.",
+    "img_book": "img/dacnhantam.jpg",
+    "year": 1936
+  },
+  {
+    "book_name": "7 Thói Quen Hiệu Quả",
+    "author": "Stephen R. Covey",
+    "cost": 99000,
+    "genre": "Kỹ năng",
+    "status": "Còn hàng",
+    "describe": "Cẩm nang phát triển bản thân bền vững.",
+    "img_book": "img/7_Thói_Quen_Để_Thành_Đạt.jpg",
+    "year": 1989
   },
   {
     "book_name": "Dế Mèn Phiêu Lưu Ký",
     "author": "Tô Hoài",
     "cost": 65000,
-    "genre": "thieu-nhi",
+    "genre": "Thiếu nhi",
     "status": "Còn hàng",
-    "describe": "Câu chuyện hấp dẫn về chú dế nhỏ gan dạ.",
-    "img_book": "img/demen.jpg"
+    "describe": "Câu chuyện về chú dế nhỏ gan dạ.",
+    "img_book": "img/demen.jpg",
+    "year": 1941
+  },
+  {
+    "book_name": "Cho Tôi Xin Một Vé Đi Tuổi Thơ",
+    "author": "Nguyễn Nhật Ánh",
+    "cost": 72000,
+    "genre": "Thiếu nhi",
+    "status": "Còn hàng",
+    "describe": "Hồi tưởng thời thơ ấu đầy xúc cảm.",
+    "img_book": "img/Cho_tôi_xin_một_vé_đi_tuổi_thơ.jpg",
+    "year": 2008
+  },
+  {
+    "book_name": "Nhà Giả Kim",
+    "author": "Paulo Coelho",
+    "cost": 87000,
+    "genre": "Văn học",
+    "status": "Còn hàng",
+    "describe": "Hành trình theo đuổi ước mơ của chàng chăn cừu.",
+    "img_book": "img/Nha_gia_kim.jpg",
+    "year": 1988
+  },
+  {
+    "book_name": "Tuổi Trẻ Đáng Giá Bao Nhiêu",
+    "author": "Rosie Nguyễn",
+    "cost": 80000,
+    "genre": "Văn học",
+    "status": "Còn hàng",
+    "describe": "Truyền cảm hứng cho người trẻ dám sống hết mình.",
+    "img_book": "img/tuoi_tre_dang_bao_nhieu.jpg",
+    "year": 2016
+  },
+  {
+    "book_name": "Dạy Con Làm Giàu",
+    "author": "Robert T. Kiyosaki",
+    "cost": 95000,
+    "genre": "Kinh doanh",
+    "status": "Còn hàng",
+    "describe": "Bài học tài chính từ cha giàu và cha nghèo.",
+    "img_book": "img/day-con-lam-giau.jpg",
+    "year": 1997
+  },
+  {
+    "book_name": "Tâm Lý Học Về Tiền",
+    "author": "Morgan Housel",
+    "cost": 92000,
+    "genre": "Tâm lý",
+    "status": "Còn hàng",
+    "describe": "Suy nghĩ và hành vi con người khi liên quan đến tiền bạc.",
+    "img_book": "img/tam-ly-hoc-tien.jpg",
+    "year": 2020
+  },
+  {
+    "book_name": "Hiểu Về Trái Tim",
+    "author": "Minh Niệm",
+    "cost": 99000,
+    "genre": "Tôn giáo",
+    "status": "Còn hàng",
+    "describe": "Sách chữa lành cảm xúc và kết nối nội tâm.",
+    "img_book": "img/hieu-ve-trai-tim.jpg",
+    "year": 2011
+  },
+  {
+    "book_name": "Đường Xưa Mây Trắng",
+    "author": "Thích Nhất Hạnh",
+    "cost": 110000,
+    "genre": "Tôn giáo",
+    "status": "Còn hàng",
+    "describe": "Cuộc đời Đức Phật được kể lại nhẹ nhàng, sâu sắc.",
+    "img_book": "img/duong-xua.jpg",
+    "year": 1992
+  },
+  {
+    "book_name": "Lược Sử Thời Gian",
+    "author": "Stephen Hawking",
+    "cost": 105000,
+    "genre": "Công nghệ",
+    "status": "Còn hàng",
+    "describe": "Hiểu về vũ trụ, thời gian và lỗ đen.",
+    "img_book": "img/luoc-su-thoi-gian.jpg",
+    "year": 1988
+  },
+  {
+    "book_name": "Vũ Trụ Trong Vỏ Hạt Dẻ",
+    "author": "Stephen Hawking",
+    "cost": 98000,
+    "genre": "Công nghệ",
+    "status": "Còn hàng",
+    "describe": "Tiếp cận vật lý hiện đại một cách trực quan.",
+    "img_book": "img/vo-hat-de.jpg",
+    "year": 2001
+  },
+  {
+    "book_name": "Sapiens: Lược Sử Loài Người",
+    "author": "Yuval Noah Harari",
+    "cost": 130000,
+    "genre": "Lịch sử",
+    "status": "Còn hàng",
+    "describe": "Khám phá lịch sử nhân loại từ nguyên thủy đến hiện đại.",
+    "img_book": "img/sapiens.jpg",
+    "year": 2011
+  },
+  {
+    "book_name": "Việt Nam Sử Lược",
+    "author": "Trần Trọng Kim",
+    "cost": 85000,
+    "genre": "Lịch sử",
+    "status": "Còn hàng",
+    "describe": "Tổng quan lịch sử Việt Nam ngắn gọn, dễ hiểu.",
+    "img_book": "img/su_luoc.jpg",
+    "year": 1919
   }
 ]

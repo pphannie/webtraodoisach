@@ -79,15 +79,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Lọc thể loại
   filterGenre.addEventListener("change", function () {
-    const selected = this.value;
-    const filtered =
-      selected === "all"
-        ? allBooks
-        : allBooks.filter(
-            (book) => book.category === selected || book.genre === selected
-          );
-    renderBooks(filtered);
-  });
+  const selected = this.value.toLowerCase();
+  const filtered =
+    selected === "all"
+      ? allBooks
+      : allBooks.filter((book) => {
+          const genre = (book.genre || "").toLowerCase();
+          const category = (book.category || "").toLowerCase();
+          return genre === selected || category === selected;
+        });
+  renderBooks(filtered);
+});
 });
 
 // Hàm xử lý mua sách
@@ -95,29 +97,38 @@ document.addEventListener("DOMContentLoaded", function () {
 function buy(book) {
   const currentUserEmail = localStorage.getItem("currentUserEmail"); 
   if (!currentUserEmail) {
-    alert("Vui lòng đăng ký");
+    alert(" Vui lòng đăng ký hoặc đăng nhập.");
     return;
   }
 
   // Lấy thông tin người dùng
   const userJSON = localStorage.getItem(currentUserEmail);
   if (!userJSON) {
-    alert("Người dùng không tồn tại.");
+    alert(" Người dùng không tồn tại.");
     return;
   }
 
   const user = JSON.parse(userJSON);
 
-  // Cập nhật danh sách sách đã mua
-  if (!user.purchased_books) {
+  // Khởi tạo danh sách sách đã mua nếu chưa có
+  if (!Array.isArray(user.purchased_books)) {
     user.purchased_books = [];
   }
 
+  // Kiểm tra sách đã tồn tại chưa 
+  const exists = user.purchased_books.some(
+    (b) => b.book_name === book.book_name 
+  );
+
+  if (exists) {
+    alert(" Bạn đã mua sách này rồi!");
+    return;
+  }
   user.purchased_books.push(book);
 
   // Lưu lại vào localStorage
   localStorage.setItem(currentUserEmail, JSON.stringify(user));
 
-  // Hiển thị thông báo
-  alert(`Bạn đã mua sách: ${book.name || book.book_name}`);
+  // Thông báo
+  alert(` Bạn đã mua sách: ${book.name || book.book_name}`);
 }
