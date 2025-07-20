@@ -273,15 +273,23 @@ header {
   height: 5rem;
 }
 
-#describe_parent{
+/* #describe_parent{
   height: 17rem;
   max-width: 250rem;
   width: 86%;
-}
+} */
 .r3_dk textarea{
   margin-top: -2%;
     height: 14rem;
-    width: 250;
+    width: 25rem;
+}
+
+.r5{
+  height: fit-content;
+}
+
+#cost{
+  font-size: medium;
 }
 
 /* giỏ hàng */
@@ -389,6 +397,16 @@ header {
   transition: 0.1s;
 }
 
+.btn-action label {  
+  padding: 10px 10px;
+  background-color: #df9959;
+  color: white;
+  border: none;
+  font-size: 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.1s;
+}
 .btn-action button:hover {
   background-color: #ffd399;
 }
@@ -413,7 +431,7 @@ header {
   border-radius: 10px;
   padding: 1rem;
 }
-#book-category {
+#filter-genre {
   background-color: #ffd399;
   border-radius: 10px;
   width: 25rem;
@@ -846,12 +864,23 @@ header {
 /* liên hệ, người dùng & giới thiệu */
 
 /*  Vi chỉnh sửa 19/7/2025 */
+
+
 #vb_logout{
   border: none;
   outline: none;
   border-radius: 3px;
   background-color: #ffeace;
+
+  transition-duration: 0.31s;
+  transition-timing-function: ease;
+  cursor: pointer;
 }
+#vb_logout:hover{
+  filter: brightness(130%);
+  transform: scale(1.2);
+}
+
 .vb_htt {
     padding-right: 20px;  
     padding-top: 2px;
@@ -877,12 +906,7 @@ header {
     padding: 8px 13px;
     padding-bottom: 5px;
 }
-
-
-
-/* end chỉnh sửa */
-
-
+/* end chỉnh sửa*/
 
 
 
@@ -912,8 +936,19 @@ header {
     background-color: #ffeace;
 }
 
-
-
+.vb_htt {
+    padding-right: 8px;  
+    padding-bottom: -7px;
+    padding-top: -7px;
+}
+.vb_dong{
+    display: block;
+    background-color: #ffeace;
+    padding: 8px 13px;
+    margin: 10px;
+    border-radius: 10px;
+    max-width: 100%;  
+}
 #logoutBtn{
   border: solid #d48437 2px;
   border-radius: 5px;
@@ -1074,10 +1109,6 @@ p.vb_ndtg{
 
 /* đăng bán */
 
-#describe_parent{
-  width: 35rem;
-}
-
 .r1_dk#db{
     width: 65%;
     height: 100%;
@@ -1224,12 +1255,18 @@ p.vb_ndtg{
     #img_book{
        height: auto;
     }
-    #describe_parent{
-      width: 35rem;
-    }
 
     .r3_dk textarea{
       height: 15rem;
+      font-size: small;
+    }
+
+    .r3_dk input{
+      font-size: small;
+    }
+
+    #cost{
+      font-size: small;
     }
 
     /* giỏ hàng */
@@ -1306,6 +1343,7 @@ p.vb_ndtg{
     font-size: 15px;
     padding-right: 5px;
   }
+  /* end giỏ hàng */
 
   /* sản phẩm */
   .product-card {
