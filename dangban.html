@@ -13,7 +13,7 @@
 <body>
     <header>
         <div class="nav_bar" >
-            <a href=""><img src="img/SachOi.png" alt="logo" title="Trang chủ" id="logo"></a>
+            <a href="trangchu.html"><img src="img/SachOi.png" alt="logo" title="Trang chủ" id="logo"></a>
             <a href="trangchu.html" class="menu"> <b>Trang Chủ</b></a>
             <a href="gioithieu.html" class="menu"><b>Giới Thiệu</b></a>
             <a href="sanpham.html" class="menu"><b>Sản Phẩm</b></a>
@@ -21,11 +21,11 @@
             <a href="dangnhap.html" class="menu"><b>Đăng Nhập</b></a>
             <a href="dangky.html" class="menu"><b>Đăng Ký</b></a>
             <a href="lienhe.html" class="menu"><b>Liên Hệ</b></a>
-            <a href="user.html" class="menu" ><b>Người dùng</b></a>
+            <a href="nguoidung.html" class="menu" ><b>Người dùng</b></a>
         </div>
         <!-- menu cho dien thoai -->
         <nav class="navbar navbar-expand-lg navbar-light transparent d-md-none">
-            <a class="navbar-brand" href="#"><a href="#"><img src="img/SachOi.png" alt="logo" title="Trang chủ" id="logo_mobile"></a></a>
+            <a class="navbar-brand" href="trangchu.html"><img src="img/SachOi.png" alt="logo" title="Trang chủ" id="logo_mobile"></a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -33,38 +33,38 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="#"><b>Trang Chủ</b> <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="trangchu.html"><b>Trang Chủ</b> <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="#"><b>Giới thiệu</b> <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="gioithieu.html"><b>Giới thiệu</b> <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="#"><b>Sản phẩm</b> <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="sanpham.html"><b>Sản phẩm</b> <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="#"><b>Giỏ hàng </b><span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="giohang.html"><b>Giỏ hàng </b><span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="#"><b>Đăng nhập</b><span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="dangnhap.html"><b>Đăng nhập</b><span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="#"><b>Đăng ký</b><span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="dangky.html"><b>Đăng ký</b><span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="#"><b>Người dùng </b><span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="nguoidung.html"><b>Người dùng </b><span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a class="nav-link" href="#"><b>Liên hệ</b><span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="lienhe.html"><b>Liên hệ</b><span class="sr-only">(current)</span></a>
             </li>
         </ul>
         </div>
         </nav>
 <!-- khung tim kiem -->
-        <form action="search" method="get">
+        <form id="search_form">
             <div class="search_box">
             <input type="text" id="search_input" placeholder=" Nhập tên sách, thể loại...">
             <button class="search_button" title="Tìm kiếm"><i class="fa-solid fa-magnifying-glass"></i></button>
-            <a href="#" title="Đăng bán"><i class="fa-solid fa-square-plus"></i></a>
+            <a href="dangban.html" title="Đăng bán"><i class="fa-solid fa-square-plus"></i></a>
         </div>
         </form>
     </header>
@@ -92,6 +92,18 @@
                         </label>
                     </div>
                     <div class="r3_dk">
+                        <label for="publication_year">
+                            <i class="fa-solid fa-calendar-days"></i>
+                            <input type="number" name="publication_year" id="publication_year" placeholder="Vui lòng nhập năm xuất bản">
+                        </label>
+                    </div>
+                    <div class="r3_dk">
+                        <label for="publisher">
+                            <i class="fa-solid fa-user"></i>
+                            <input type="text" name="publisher" id="publisher" placeholder="Vui lòng nhập tên nhà xuất bản">
+                        </label>
+                    </div>
+                    <div class="r3_dk">
                         <label for="genre">
                             <i class="fa-solid fa-bars fa-flip-horizontal"></i>
                             <select name="genre" id="genre">
@@ -110,7 +122,7 @@
                     <div class="r3_dk">
                         <label for="cost">
                             <i class="fa-solid fa-sack-dollar"></i>
-                            <input type="number" name="cost" id="cost" placeholder="Vui lòng nhập giá tiền (VND)">
+                            <input type="number" name="cost" id="cost" placeholder="Vui lòng nhập giá tiền (X.000)">
                         </label>
                     </div>
                     <div class="r3_dk">
@@ -123,18 +135,19 @@
                             </select>
                         </label>
                     </div>
-                    <div class="r3_dk" id="describe_parent">
+                    
+                    <div class="r3_dk r5">
                         <label for="describe">
                             <i class="fa-solid fa-pen-to-square"></i>
                             <textarea name="describe" id="describe" placeholder="Vui lòng nhập mô tả sách"></textarea>
                         </label>
                     </div>
-                    <!-- <div  class="r3_dk">
-                        <label for="amount">
-                            <i class="fa-solid fa-list-ol"></i>
-                            <input type="number" name="amount" id="amount" placeholder="Vui lòng nhập số lượng">
+                    <div class="r3_dk r5">
+                        <label for="summary">
+                            <i class="fa-solid fa-pen-to-square"></i>
+                            <textarea name="summary" id="summary" placeholder="Vui lòng nhập tóm tắt nội dung"></textarea>
                         </label>
-                    </div> -->
+                    </div>
                     <div><button class="r4"><b>Đăng Bán</b></button></div>
                 </form>
             </div>
