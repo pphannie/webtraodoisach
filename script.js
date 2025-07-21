@@ -1,349 +1,182 @@
-// ô tìm kiếm
-document.querySelector("#search_form").addEventListener("submit", function(e){
-  e.preventDefault();
-  // lấy giá trị từ ô tìm kiếm và chuyển thành không dấu
-const keyWord = document.querySelector("#search_input").value.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-
-// lấy dữ liệu từ file JSON
-fetch("books.json")
-  .then(response => response.json())
-  .then(books => {
-    const result = books.filter( book => {
-      const book_name = book.book_name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-      return book_name.includes(keyWord);
-    });
-    showBooks(result);
-      
-  })
-
-  // Hàm hiển thị sản phẩm tìm kiếm
-  function showBooks(list){
-    const listProduct = document.querySelector(".list-product");
-    listProduct.innerHTML = ""; //xóa sản phẩm cũ (để hiển thị sản phẩm vừa nhập)
-
-    if(list.length == 0){
-      listProduct.innerHTML = "<p>Thật tiếc quá! Sách bạn vừa nhập vẫn chưa có ở Sách Ơi. Hãy thử tìm một quyển sách khác nhé!</p>"
-      return;
-    }
-
-    list.forEach(product => {
-      listProduct.innerHTML += `
-      <div class="product-card">
-          <div class="info-img">
-            <img src="${product.img_book}" alt="${product.book_name}" />
-            <div class="overlay">
-              <figcaption>
-                <p><strong>Tác Giả:</strong> ${product.author}</p>
-                <p><strong>Năm:</strong> ${product.publication_year}</p>
-                <p><strong>Tóm tắt:</strong> ${product.summary}</p>
-              </figcaption>
-            </div>
-          </div>
-          <h3>${product.book_name}</h3>
-          <p>${product.describe}</p>
-          <div class="bottom">
-            <span class="price">${product.cost}<b>đ</b></span>
-            <button class="button-buy">Mua ngay</button>
-          </div>
-        </div>
-      `;
-    })
-  }
-
-})
-// end ô tìm kiếm
-// ĐĂNG KÝ
-function signin(e) {
-  e.preventDefault();
-  const user_name = document.querySelector("#user_name").value;
-  const gender = document.querySelector("#gender").value;
-  const birthday = document.querySelector("#birthday").value;
-  const tel = document.querySelector("#tel").value;
-  const address = document.querySelector("#address").value;
-  const email = document.querySelector("#email").value;
-  const password = document.querySelector("#password").value;
-  const password_again = document.querySelector("#password_again").value;
-
-  
-
-  if (gender === 'sample') {
-    alert("Vui lòng chọn giới tính!");
-    return;
-  }
-
-  
-  const passRegex = /(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}/;
-  if (!passRegex.test(password)) {
-    alert(
-      "Vui lòng nhập đúng định dạng. Mật khẩu buộc phải có ít nhất 8 ký tự, một chữ cái in hoa và 1 số."
-    );
-    return;
-  }
-
-  if (password !== password_again) {
-    alert("Mật khẩu không khớp nhau. Vui lòng nhập lại thật chính xác!");
-    return;
-  }
-
-  if (localStorage.getItem(email)) {
-    alert("Email này đã được sử dụng. Vui lòng dùng email khác.");
-    return;
-  }
-  //ojb->chuỗi
-  const user = {
-    user_name,
-    gender,
-    birthday,
-    tel,
-    address,
-    email,
-    password,
-  };
-
-  localStorage.setItem(email, JSON.stringify(user)); //lưu thông tin người dùng
-  localStorage.setItem("currentUserEmail", email); //ghi nhớ thông tin người dùng
-  alert("Đăng ký thành công. Bây giờ hãy đăng nhập vào Sách Ơi! nhé!");
-  window.location.href = "dangnhap.html";
-}
-// end đăng ký
-
-// ĐĂNG NHẬP
-function login(e) {
-  e.preventDefault();
-  const email = document.querySelector("#email").value;
-  const password = document.querySelector("#password").value;
-  const user = localStorage.getItem(email);
-
-  if (user == null) {
-    alert("Email chưa được đăng ký!");
-    return;
-  }
-
-  const data = JSON.parse(user);
-  if (email != data.email || password != data.password) {
-    alert("Mật khẩu không đúng. Vui lòng nhập lại!");
-    return;
-  }
-
-  // Lưu lại email của người đã đăng nhập để qua trang khác còn dùng
-  localStorage.setItem("currentUserEmail", email);
-  localStorage.setItem("logged", "true");
-  window.location.href = "nguoidung.html";
-  alert("Đăng nhập thành công");
-
-  //chỉnh sửa
-  window.location.href = "nguoidung.html";
-  //end
-
-}
-// end đăng nhập
-
-// ĐĂNG BÁN
-//kiểm tra đúng định dạng ảnh
+// nút cuộn lên
 document.addEventListener("DOMContentLoaded", function () {
-  const img_book = document.querySelector("#img_book");
-  img_book.addEventListener("change", function () {
-    const file = this.files[0]; 
-    if (!file) return; 
-    const fileName = file.name.toLowerCase(); //viết thường hết tên file
-    if (!(fileName.endsWith(".png") || fileName.endsWith(".jpg") || fileName.endsWith(".jpeg"))) {
-      alert("Vui lòng chỉ chọn ảnh định dạng .png, .jpg hoặc .jpeg!");
-      img_book.value = ""; 
+  const scrollTopBtn = document.getElementById("vb_dau");
+  if (scrollTopBtn) {
+    scrollTopBtn.addEventListener("click", function (e) {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    });
+  }
+});
+
+// trang chủ
+function initCarousel(container) {
+  const bookList = container.querySelector(".tcbook-list");
+  const nextBtn = container.querySelector(".tcnextBtn");
+  const prevBtn = container.querySelector(".tcprevBtn");
+
+  let currentIndex = 0;
+
+  function getBooks() {
+    return Array.from(bookList.querySelectorAll(".tcbook, #tcdot"));
+  }
+
+  function getItemsPerView() {
+    const width = window.innerWidth;
+    if (width >= 1024) return 5;
+    if (width >= 768) return 3;
+    return 1;
+  }
+
+  function getBookFullWidth() {
+    const item = bookList.querySelector(".tcbook, #tcdot");
+    if (!item) return 0;
+    const style = window.getComputedStyle(item);
+    const marginLeft = parseFloat(style.marginLeft) || 0;
+    const marginRight = parseFloat(style.marginRight) || 0;
+    return item.offsetWidth + marginLeft + marginRight;
+  }
+
+  function updateCarousel() {
+    const bookWidth = getBookFullWidth();
+    const offset = currentIndex * bookWidth;
+    bookList.style.transform = `translateX(-${offset}px)`;
+  }
+
+  function getMaxIndex() {
+    const totalBooks = getBooks().length;
+    const itemsPerView = getItemsPerView();
+    return Math.max(totalBooks - itemsPerView, 0);
+  }
+
+  nextBtn.addEventListener("click", () => {
+    const maxIndex = getMaxIndex();
+    if (currentIndex < maxIndex) {
+      currentIndex++;
+    } else {
+      currentIndex = 0;
     }
+    updateCarousel();
+  });
+
+  prevBtn.addEventListener("click", () => {
+    const maxIndex = getMaxIndex();
+    if (currentIndex > 0) {
+      currentIndex--;
+    } else {
+      currentIndex = maxIndex;
+    }
+    updateCarousel();
+  });
+
+  window.addEventListener("resize", () => {
+    currentIndex = 0;
+    updateCarousel();
+  });
+
+  updateCarousel();
+}
+
+document.querySelectorAll(".tcmycarousel-container").forEach(initCarousel);
+
+document.querySelectorAll(".tcmota").forEach(function (button) {
+  button.addEventListener("click", function () {
+    const book = this.closest(".tcbook");
+    book.classList.toggle("show-overlay");
   });
 });
 
-//kiểm tra nhập form đăng bán
-function sold(e) {
-  e.preventDefault();
-  const img_book = document.querySelector("#img_book");
-  const book_name = document.querySelector("#book_name");
-  const author = document.querySelector("#author");
-  const genre = document.querySelector("#genre");
-  const cost = document.querySelector("#cost");
-  const status = document.querySelector("#status");
-  const describe = document.querySelector("#describe");
-  const publication_year = document.querySelector("#publication_year");
-  const publisher = document.querySelector("#publisher");
-  const summary = document.querySelector("#summary");
+(function () {
+  document.addEventListener("DOMContentLoaded", function () {
+    function addBookToPurchased(book) {
+      const currentUserEmail = localStorage.getItem("currentUserEmail");
+      if (!currentUserEmail) {
+        alert("Vui lòng đăng nhập để mua sách");
+        window.location.href = "dangnhap.html";
+        return;
+      }
 
-  if (img_book.value == "") {
-    alert("Vui lòng chọn ảnh minh họa sách!");
-    return;
-  } else if (book_name.value == "") {
-    alert("Vui lòng nhập tên sách!");
-    return;
-  } else if (author.value == "") {
-    alert("Vui lòng nhập tên tác giả/ dịch giả!");
-    return;
-  } else if(publication_year.value){
-    alert("Vui lòng nhập năm xuất bản!");
-  } else if(publisher.value){
-    alert("Vui lòng nhập tên nhà xuất bản!");
-  } else if (genre.value == "sample") {
-    alert("Vui lòng chọn thể loại sách!");
-    return;
-  } else if (cost.value < 1000) {
-    alert("Vui lòng nhập giá tiền sách! Số tiền phải lớn hơn 1000vnđ");
-    return;
-  } else if (status.value == "sample") {
-    alert("Vui lòng tình trạng sách!");
-    return;
-  } else if (describe.value == "") {
-    alert("Vui lòng nhập thông tin mô tả sách!");
-    return;
-  } else if (summary.value == "") {
-    alert("Vui lòng nhập tóm tắt nội dung sách!");
-    return;
-  }
-  //chỉnh sửa
-  const currentUserEmail = localStorage.getItem("currentUserEmail");
-  if (!currentUserEmail) {
-    alert("Bạn chưa đăng nhập. Không thể đăng bán sách.");
-    return;
-  }
-  //end chỉnh sửa
+      const userData = localStorage.getItem(currentUserEmail);
+      if (!userData) {
+        alert("Không tìm thấy thông tin người dùng.");
+        return;
+      }
 
+      const user = JSON.parse(userData);
+      if (!Array.isArray(user.purchased_books)) {
+        user.purchased_books = [];
+      }
 
-  const product = {
-    img_book: img_book.value,
-    book_name: book_name.value,
-    author: author.value,
-    genre: genre.value,
-    cost: cost.value,
-    status: status.value,
-    describe: describe.value,
-  };
-  const data = JSON.stringify(product);
-  localStorage.setItem("product_" + book_name.value, data);
-  window.location.href = "nguoidung.html";
-}
-// end đăng bán
-
-
-
-// LIÊN HỆ
-function formtest_lienhe(a)
-    {
-        var email=document.getElementById("vb_Email");
-        var user=document.getElementById("vb_ten");
-        var nd=document.getElementById("vb_ykien");
-        var reg=/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-
-        if (user.value.length <= 4)
-        {
-            alert("Tên phải lớn hơn 4 ký tự");
-            return false;
-        }
-        if(reg.test(email.value)==false)
-        {
-            alert("Vui lòng nhập email hợp lệ!");
-            return false;
-        }
-        if (nd.value.length <= 10)
-        {
-            alert("Nội dung lớn hơn 10 ký tự");
-            return false;
-        }    
-        return true;   
+      user.purchased_books.push(book);
+      localStorage.setItem(currentUserEmail, JSON.stringify(user));
+      alert(`Đã thêm sách \"${book.book_name || book.name}\" vào giỏ hàng.`);
     }
-// end liên hệ
 
+    function getBookDataFromDOM(bookElement) {
+      const name = bookElement.querySelector("h3")?.textContent?.trim();
+      const priceText = bookElement.querySelector("p")?.textContent?.trim();
+      const img = bookElement.querySelector("img")?.getAttribute("src");
+      const describe =
+        bookElement.querySelector(".tcbook-overlay p")?.textContent?.trim() ||
+        "Không có mô tả";
+      const author = getAuthorFromOverlay(bookElement) || "Không rõ";
 
+      const price = Number(priceText.replace(/[^\d]/g, ""));
+      return {
+        book_name: name,
+        cost: price,
+        img_book: img,
+        describe: describe,
+        author: author,
+        genre: "chua-ro",
+        status: "Còn hàng",
+      };
+    }
 
-//Lịch sử mua bán sách
-function getSellHistory() {
-   const currentEmail = localStorage.getItem("currentUserEmail");
+    function getAuthorFromOverlay(bookElement) {
+      const overlay = bookElement.querySelector(".tcbook-overlay");
+      if (!overlay) return null;
+      const match = overlay.innerText.match(/Tác giả\s*:\s*(.+)/i);
+      return match ? match[1].trim() : null;
+    }
 
-      if (!currentEmail) {
-        alert("Bạn chưa đăng nhập!");
-        window.location.href = "dangnhap.html";
-        return;
-      }
+    document.querySelectorAll(".tcbook").forEach(function (bookElement) {
+      const addBtn = bookElement.querySelector(".tcaddCart");
+      if (!addBtn) return;
 
-      const history = JSON.parse(localStorage.getItem("history_ban_" + currentEmail)) || [];
-
-      if (history.length === 0) {
-        document.getElementById("bookList").innerHTML = "<p>Chưa có sách nào được bán.</p>";
-        return;
-      }
-
-      const container = document.getElementById("bookList");
-
-      history.forEach(book => {
-        const card = document.createElement("div");
-        card.className = "book-card";
-        card.innerHTML = `
-          <img src="${book.img_book}" alt="Ảnh sách">
-          <h3>${book.book_name}</h3>
-          <p><strong>Tác giả:</strong> ${book.author}</p>
-          <p><strong>Thể loại:</strong> ${book.genre}</p>
-          <p><strong>Giá:</strong> ${book.cost} VND</p>
-          <p><strong>Tình trạng:</strong> ${book.status}</p>
-          <p><strong>Mô tả:</strong> ${book.describe}</p>
-          <p><em>Đăng lúc: ${book.time}</em></p>
-        `;
-        container.appendChild(card);
+      addBtn.addEventListener("click", function () {
+        const book = getBookDataFromDOM(bookElement);
+        addBookToPurchased(book);
       });
-    };
-// end mua sách
+    });
 
+    window.addBookToPurchased = addBookToPurchased;
+  });
+})();
+// end trang chủ
 
-//ĐĂNG XUẤT
+// giỏ hàng
 
-function logout(e) {
-        e.preventDefault();
-        localStorage.removeItem("currentUserEmail");
-        localStorage.removeItem("logged");
-        alert("Đã đăng xuất.");
-        window.location.href = "dangnhap.html";
-        }
-
-
-//NGƯỜI DÙNG
-function information(e) {
-        const currentEmail = localStorage.getItem("currentUserEmail");
-
-        if (!currentEmail) {
-            alert("Bạn chưa đăng nhập. Quay lại đăng nhập.");
-            window.location.href = "dangnhap.html"; 
-            return;
-        }
-
-        const userData = JSON.parse(localStorage.getItem(currentEmail));
-
-        if (!userData) {
-            alert("Không tìm thấy thông tin người dùng.");
-            return;
-        }
-
-        document.getElementById("user_name").innerText = userData.user_name;
-        document.getElementById("gender").innerText = userData.gender;
-        document.getElementById("birthday").innerText = userData.birthday;
-        document.getElementById("tel").innerText = userData.tel;
-        document.getElementById("address").innerText = userData.address;
-        document.getElementById("email").innerText = userData.email;
-
-        
-    };
-
-    // giỏ hàng
-
-    let cart = [];
+let cart = [];
 let currentUserEmail = "";
 let user = {};
 
 document.addEventListener("DOMContentLoaded", function () {
-  currentUserEmail = localStorage.getItem("currentUserEmail");
-  if (!currentUserEmail) {
-    console.warn("Chưa đăng nhập.");
-    return;
+  if (document.getElementById("cart-container")) {
+    currentUserEmail = localStorage.getItem("currentUserEmail");
+    if (!currentUserEmail) {
+      console.warn("Chưa đăng nhập.");
+      return;
+    }
+
+    user = JSON.parse(localStorage.getItem(currentUserEmail)) || {};
+    cart = user.purchased_books || [];
+
+    renderCart(); // <- gọi hàm này nếu phần tử tồn tại
   }
-
-  user = JSON.parse(localStorage.getItem(currentUserEmail));
-  cart = user.purchased_books || [];
-
-  renderCart();
 });
 
 function renderCart() {
@@ -574,7 +407,9 @@ function removeBookFromPayment(bookName) {
 
   user.select = user.select.filter((b) => b.book_name !== bookName);
 
-  user.purchased_books = user.purchased_books.filter((b) => b.book_name !== bookName);
+  user.purchased_books = user.purchased_books.filter(
+    (b) => b.book_name !== bookName
+  );
 
   localStorage.setItem(currentUserEmail, JSON.stringify(user));
 
@@ -589,6 +424,360 @@ function confirmExchangeSuccess() {
   renderPayment();
 }
 // end giỏ hàng
+// ô tìm kiếm
+document.querySelector("#search_form").addEventListener("submit", function (e) {
+  e.preventDefault();
+  // lấy giá trị từ ô tìm kiếm và chuyển thành không dấu
+  const keyWord = document
+    .querySelector("#search_input")
+    .value.trim()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+
+  // lấy dữ liệu từ file JSON
+  fetch("books.json")
+    .then((response) => response.json())
+    .then((books) => {
+      const result = books.filter((book) => {
+        const book_name = book.book_name
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase();
+        return book_name.includes(keyWord);
+      });
+      showBooks(result);
+    });
+
+  // Hàm hiển thị sản phẩm tìm kiếm
+  function showBooks(list) {
+    const listProduct = document.querySelector(".list-product");
+    listProduct.innerHTML = ""; //xóa sản phẩm cũ (để hiển thị sản phẩm vừa nhập)
+
+    if (list.length == 0) {
+      listProduct.innerHTML =
+        "<p>Thật tiếc quá! Sách bạn vừa nhập vẫn chưa có ở Sách Ơi. Hãy thử tìm một quyển sách khác nhé!</p>";
+      return;
+    }
+
+    list.forEach((product) => {
+      listProduct.innerHTML += `
+      <div class="product-card">
+          <div class="info-img">
+            <img src="${product.img_book}" alt="${product.book_name}" />
+            <div class="overlay">
+              <figcaption>
+                <p><strong>Tác Giả:</strong> ${product.author}</p>
+                <p><strong>Năm:</strong> ${product.publication_year}</p>
+                <p><strong>Tóm tắt:</strong> ${product.summary}</p>
+              </figcaption>
+            </div>
+          </div>
+          <h3>${product.book_name}</h3>
+          <p>${product.describe}</p>
+          <div class="bottom">
+            <span class="price">${product.cost}<b>đ</b></span>
+            <button class="button-buy">Mua ngay</button>
+          </div>
+        </div>
+      `;
+    });
+  }
+});
+// end ô tìm kiếm
+
+function check() {
+  const user = localStorage.getItem(currentUserEmail);
+  if (!user) {
+    alert("dhehngj");
+     window.location.href = "nguoidung.html";
+    return;
+  }
+}
+// ĐĂNG KÝ
+function signin(e) {
+  e.preventDefault();
+  const user_name = document.querySelector("#user_name").value;
+  const gender = document.querySelector("#gender").value;
+  const birthday = document.querySelector("#birthday").value;
+  const tel = document.querySelector("#tel").value;
+  const address = document.querySelector("#address").value;
+  const email = document.querySelector("#email").value;
+  const password = document.querySelector("#password").value;
+  const password_again = document.querySelector("#password_again").value;
+
+  if (gender === "sample") {
+    alert("Vui lòng chọn giới tính!");
+    return;
+  }
+
+  const passRegex = /(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}/;
+  if (!passRegex.test(password)) {
+    alert(
+      "Vui lòng nhập đúng định dạng. Mật khẩu buộc phải có ít nhất 8 ký tự, một chữ cái in hoa và 1 số."
+    );
+    return;
+  }
+
+  if (password !== password_again) {
+    alert("Mật khẩu không khớp nhau. Vui lòng nhập lại thật chính xác!");
+    return;
+  }
+
+  if (localStorage.getItem(email)) {
+    alert("Email này đã được sử dụng. Vui lòng dùng email khác.");
+    return;
+  }
+  //ojb->chuỗi
+  const user = {
+    user_name,
+    gender,
+    birthday,
+    tel,
+    address,
+    email,
+    password,
+  };
+
+  localStorage.setItem(email, JSON.stringify(user)); //lưu thông tin người dùng
+  localStorage.setItem("currentUserEmail", email); //ghi nhớ thông tin người dùng
+  alert("Đăng ký thành công. Bây giờ hãy đăng nhập vào Sách Ơi! nhé!");
+  window.location.href = "dangnhap.html";
+}
+// end đăng ký
+
+// ĐĂNG NHẬP
+function login(e) {
+  e.preventDefault();
+  const email = document.querySelector("#email").value;
+  const password = document.querySelector("#password").value;
+  const user = localStorage.getItem(email);
+
+  if (user == null) {
+    alert("Email chưa được đăng ký!");
+    return;
+  }
+
+  const data = JSON.parse(user);
+  if (email != data.email || password != data.password) {
+    alert("Mật khẩu không đúng. Vui lòng nhập lại!");
+    return;
+  }
+
+  // Lưu lại email của người đã đăng nhập để qua trang khác còn dùng
+  localStorage.setItem("currentUserEmail", email);
+  localStorage.setItem("logged", "true");
+  window.location.href = "nguoidung.html";
+  alert("Đăng nhập thành công");
+
+  //chỉnh sửa
+  window.location.href = "nguoidung.html";
+  //end
+}
+// end đăng nhập
+
+// ĐĂNG BÁN
+//kiểm tra đúng định dạng ảnh
+document.addEventListener("DOMContentLoaded", function () {
+  const img_book = document.querySelector("#img_book");
+  img_book.addEventListener("change", function () {
+    const file = this.files[0];
+    if (!file) return;
+    const fileName = file.name.toLowerCase(); 
+    if (
+      !(
+        fileName.endsWith(".png") ||
+        fileName.endsWith(".jpg") ||
+        fileName.endsWith(".jpeg")
+      )
+    ) {
+      alert("Vui lòng chỉ chọn ảnh định dạng .png, .jpg hoặc .jpeg!");
+      img_book.value = "";
+    }
+  });
+});
+
+//kiểm tra nhập form đăng bán
+function sold(e) {
+  e.preventDefault();
+
+  // Lấy thông tin người dùng
+  const currentUserEmail = localStorage.getItem("currentUserEmail");
+  if (!currentUserEmail) {
+    alert("Bạn chưa đăng nhập. Không thể đăng bán sách.");
+    return;
+  }
+
+  const userJSON = localStorage.getItem(currentUserEmail);
+  if (!userJSON) {
+    alert(" Người dùng không tồn tại.");
+    return;
+  }
+
+  const user = JSON.parse(userJSON);
+
+  const img_book = document.querySelector("#img_book");
+  const book_name = document.querySelector("#book_name");
+  const author = document.querySelector("#author");
+  const genre = document.querySelector("#genre");
+  const cost = document.querySelector("#cost");
+  const status = document.querySelector("#status");
+  const describe = document.querySelector("#describe");
+  const publication_year = document.querySelector("#publication_year");
+  const publisher = document.querySelector("#publisher");
+  const summary = document.querySelector("#summary");
+
+  if (img_book.value == "") {
+    alert("Vui lòng chọn ảnh minh họa sách!");
+    return;
+  } else if (book_name.value == "") {
+    alert("Vui lòng nhập tên sách!");
+    return;
+  } else if (author.value == "") {
+    alert("Vui lòng nhập tên tác giả/ dịch giả!");
+    return;
+  } else if (publication_year.value == "") {
+    alert("Vui lòng nhập năm xuất bản!");
+  } else if (publisher.value == "") {
+    alert("Vui lòng nhập tên nhà xuất bản!");
+  } else if (genre.value == "sample") {
+    alert("Vui lòng chọn thể loại sách!");
+    return;
+  } else if (cost.value < 1000) {
+    alert("Vui lòng nhập giá tiền sách! Số tiền phải lớn hơn 1000vnđ");
+    return;
+  } else if (status.value == "sample") {
+    alert("Vui lòng tình trạng sách!");
+    return;
+  } else if (describe.value == "") {
+    alert("Vui lòng nhập thông tin mô tả sách!");
+    return;
+  } else if (summary.value == "") {
+    alert("Vui lòng nhập tóm tắt nội dung sách!");
+    return;
+  }
+
+  const product = {
+    img_book: img_book.files[0]?.name || "",
+    book_name: book_name.value,
+    author: author.value,
+    genre: genre.value,
+    cost: cost.value,
+    status: status.value,
+    describe: describe.value,
+    publication_year: publication_year.value,
+    publisher: publisher.value,
+    summary: summary.value,
+  };
+
+  // Khởi tạo danh sách sách đã bán
+  if (!Array.isArray(user.sold_books)) {
+    user.sold_books = [];
+  }
+  user.sold_books.push(product);
+  // Lưu lại vào localStorage
+  localStorage.setItem(currentUserEmail, JSON.stringify(user));
+  localStorage.setItem("product_" + book_name.value, JSON.stringify(product));
+  window.location.href = "nguoidung.html";
+}
+// end đăng bán
+
+// LIÊN HỆ
+function formtest_lienhe(a) {
+  var email = document.getElementById("vb_Email");
+  var user = document.getElementById("vb_ten");
+  var nd = document.getElementById("vb_ykien");
+  var reg = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+
+  if (user.value.length <= 4) {
+    alert("Tên phải lớn hơn 4 ký tự");
+    return false;
+  }
+  if (reg.test(email.value) == false) {
+    alert("Vui lòng nhập email hợp lệ!");
+    return false;
+  }
+  if (nd.value.length <= 10) {
+    alert("Nội dung lớn hơn 10 ký tự");
+    return false;
+  }
+  return true;
+}
+// end liên hệ
+
+//Lịch sử mua bán sách
+function getSellHistory() {
+  const currentEmail = localStorage.getItem("currentUserEmail");
+
+  if (!currentEmail) {
+    alert("Bạn chưa đăng nhập!");
+    window.location.href = "dangnhap.html";
+    return;
+  }
+
+  const history =
+    JSON.parse(localStorage.getItem("history_ban_" + currentEmail)) || [];
+
+  if (history.length === 0) {
+    document.getElementById("bookList").innerHTML =
+      "<p>Chưa có sách nào được bán.</p>";
+    return;
+  }
+
+  const container = document.getElementById("bookList");
+
+  history.forEach((book) => {
+    const card = document.createElement("div");
+    card.className = "book-card";
+    card.innerHTML = `
+          <img src="${book.img_book}" alt="Ảnh sách">
+          <h3>${book.book_name}</h3>
+          <p><strong>Tác giả:</strong> ${book.author}</p>
+          <p><strong>Thể loại:</strong> ${book.genre}</p>
+          <p><strong>Giá:</strong> ${book.cost} VND</p>
+          <p><strong>Tình trạng:</strong> ${book.status}</p>
+          <p><strong>Mô tả:</strong> ${book.describe}</p>
+          <p><em>Đăng lúc: ${book.time}</em></p>
+        `;
+    container.appendChild(card);
+  });
+}
+// end mua sách
+
+//ĐĂNG XUẤT
+
+function logout(e) {
+  e.preventDefault();
+  localStorage.removeItem("currentUserEmail");
+  localStorage.removeItem("logged");
+  alert("Đã đăng xuất.");
+  window.location.href = "dangnhap.html";
+}
+
+//NGƯỜI DÙNG
+function information(e) {
+  const currentEmail = localStorage.getItem("currentUserEmail");
+
+  if (!currentEmail) {
+    alert("Bạn chưa đăng nhập. Quay lại đăng nhập.");
+    window.location.href = "dangnhap.html";
+    return;
+  }
+
+  const userData = JSON.parse(localStorage.getItem(currentEmail));
+
+  if (!userData) {
+    alert("Không tìm thấy thông tin người dùng.");
+    return;
+  }
+
+  document.getElementById("user_name").innerText = userData.user_name;
+  document.getElementById("gender").innerText = userData.gender;
+  document.getElementById("birthday").innerText = userData.birthday;
+  document.getElementById("tel").innerText = userData.tel;
+  document.getElementById("address").innerText = userData.address;
+  document.getElementById("email").innerText = userData.email;
+}
 
 // sản phẩm
 document.addEventListener("DOMContentLoaded", function () {
@@ -672,23 +861,23 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Lọc thể loại
   filterGenre.addEventListener("change", function () {
-  const selected = this.value.toLowerCase();
-  const filtered =
-    selected === "all"
-      ? allBooks
-      : allBooks.filter((book) => {
-          const genre = (book.genre || "").toLowerCase();
-          const category = (book.category || "").toLowerCase();
-          return genre === selected || category === selected;
-        });
-  renderBooks(filtered);
-});
+    const selected = this.value.toLowerCase();
+    const filtered =
+      selected === "all"
+        ? allBooks
+        : allBooks.filter((book) => {
+            const genre = (book.genre || "").toLowerCase();
+            const category = (book.category || "").toLowerCase();
+            return genre === selected || category === selected;
+          });
+    renderBooks(filtered);
+  });
 });
 
 // Hàm xử lý mua sách
 
 function buy(book) {
-  const currentUserEmail = localStorage.getItem("currentUserEmail"); 
+  const currentUserEmail = localStorage.getItem("currentUserEmail");
   if (!currentUserEmail) {
     alert(" Vui lòng đăng ký hoặc đăng nhập.");
     return;
@@ -708,9 +897,9 @@ function buy(book) {
     user.purchased_books = [];
   }
 
-  // Kiểm tra sách đã tồn tại chưa 
+  // Kiểm tra sách đã tồn tại chưa
   const exists = user.purchased_books.some(
-    (b) => b.book_name === book.book_name 
+    (b) => b.book_name === book.book_name
   );
 
   if (exists) {
@@ -726,91 +915,3 @@ function buy(book) {
   alert(` Bạn đã mua sách: ${book.name || book.book_name}`);
 }
 // end sản phẩm
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
