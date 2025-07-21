@@ -811,8 +811,13 @@ footer a i:hover {
   display: block;
 }
 
+.tcbook h3 {
+  font-size: 2rem;
+}
+
 .tcbook p {
-  font-size: 150%;
+  color: red;
+  font-size: 2rem;
 }
 
 .tcbook,
@@ -915,6 +920,10 @@ footer a i:hover {
   font-size: 90%;
   box-sizing: border-box;
   overflow-y: auto;
+}
+
+.tcbook-overlay p {
+  color: black;
 }
 
 .tcbook-overlay::-webkit-scrollbar {
