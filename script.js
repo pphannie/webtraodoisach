@@ -541,8 +541,8 @@ function signin(e) {
 
   localStorage.setItem(email, JSON.stringify(user)); //lưu thông tin người dùng
   localStorage.setItem("currentUserEmail", email); //ghi nhớ thông tin người dùng
-  alert("Đăng ký thành công. Bây giờ hãy đăng nhập vào Sách Ơi! nhé!");
-  window.location.href = "dangnhap.html";
+  alert("Đăng ký thành công. Chào mừng bạn đến với Sách Ơi! nhé!");
+  window.location.href = "nguoidung.html";
 }
 // end đăng ký
 
