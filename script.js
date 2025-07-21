@@ -428,38 +428,79 @@ function confirmExchangeSuccess() {
 // ô tìm kiếm
 document.querySelector("#search_form").addEventListener("submit", function (e) {
   e.preventDefault();
-  // lấy giá trị từ ô tìm kiếm và chuyển thành không dấu
+
   const keyWord = document
-    .querySelector("#search_input")
-    .value.trim()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase();
+    .querySelector("#search_input").value.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+  if(keyWord != ""){
+    localStorage.setItem("keyWord", keyWord);
+    window.location.href = "sanpham.html"
+  }
+});
+
+window.addEventListener("load", function(){
+
+  const keyWord = localStorage.getItem("keyWord");
+  if(!keyWord){
+    return;
+  }
 
   // lấy dữ liệu từ file JSON
   fetch("books.json")
     .then((response) => response.json())
     .then((books) => {
-      const result = books.filter((book) => {
+
+      function getSoldBooks(){
+        const soldBooks = [];
+        for (let i = 0; i < localStorage.length; i++){
+          const key = localStorage.key(i);
+          if(!key.includes("@")){
+            continue;
+          }
+          try{
+            const user = JSON.parse(localStorage.getItem(key));
+            if(user && Array.isArray(user.soldBooks)){
+              soldBooks.push(...user.soldBooks)
+            }
+          } catch(e){
+            console.warn("Lỗi khi đọc soldBooks của ", key, e);
+          }
+        }
+        return soldBooks
+      }
+
+
+      const resultJSON = books.filter((book) => {
         const book_name = book.book_name
           .normalize("NFD")
           .replace(/[\u0300-\u036f]/g, "")
           .toLowerCase();
         return book_name.includes(keyWord);
       });
-      showBooks(result);
+
+      if(resultJSON.length > 0){
+        showBooks(resultJSON);
+      } else{ //nếu không có ở file JSON mới tìm ở localSorage
+        const booksLocal = getSoldBooks();
+        const resultLocal = booksLocal.filter((book) => {
+        const book_name = book.book_name
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase();
+        return book_name.includes(keyWord);
+      });
+
+      if (resultLocal.length > 0){
+        showBooks(resultLocal);
+      } else{
+        const listProduct = document.querySelector(".list-product");
+        listProduct.innerHTML = "<p>Thật tiếc quá! Sách bạn vừa nhập vẫn chưa có ở Sách Ơi!. Hãy thử tìm một quyển sách khác nhé!</p>";
+      }
+      } 
     });
 
-  // Hàm hiển thị sản phẩm tìm kiếm
   function showBooks(list) {
     const listProduct = document.querySelector(".list-product");
-    listProduct.innerHTML = ""; //xóa sản phẩm cũ (để hiển thị sản phẩm vừa nhập)
-
-    if (list.length == 0) {
-      listProduct.innerHTML =
-        "<p>Thật tiếc quá! Sách bạn vừa nhập vẫn chưa có ở Sách Ơi. Hãy thử tìm một quyển sách khác nhé!</p>";
-      return;
-    }
+    listProduct.innerHTML = ""; 
 
     list.forEach((product) => {
       listProduct.innerHTML += `
@@ -485,6 +526,7 @@ document.querySelector("#search_form").addEventListener("submit", function (e) {
     });
   }
 });
+
 // end ô tìm kiếm
 
 function check() {
@@ -602,20 +644,19 @@ document.addEventListener("DOMContentLoaded", function () {
 function sold(e) {
   e.preventDefault();
 
-  // Lấy thông tin người dùng
   const currentUserEmail = localStorage.getItem("currentUserEmail");
   if (!currentUserEmail) {
     alert("Bạn chưa đăng nhập. Không thể đăng bán sách.");
     return;
   }
 
-  const userJSON = localStorage.getItem(currentUserEmail);
-  if (!userJSON) {
-    alert(" Người dùng không tồn tại.");
+
+  const userData = localStorage.getItem(currentUserEmail);
+  if (!userData) {
+    alert("Không tìm thấy thông tin người dùng.");
     return;
   }
-
-  const user = JSON.parse(userJSON);
+  const user = JSON.parse(userData);
 
   const img_book = document.querySelector("#img_book");
   const book_name = document.querySelector("#book_name");
@@ -672,13 +713,14 @@ function sold(e) {
   };
 
   // Khởi tạo danh sách sách đã bán
-  if (!Array.isArray(user.sold_books)) {
-    user.sold_books = [];
+  if (!Array.isArray(user.soldBooks)) {
+    user.soldBooks = [];
   }
-  user.sold_books.push(product);
+  user.soldBooks.push(product);
   // Lưu lại vào localStorage
   localStorage.setItem(currentUserEmail, JSON.stringify(user));
   localStorage.setItem("product_" + book_name.value, JSON.stringify(product));
+  alert("Đăng bán thành công!");
   window.location.href = "nguoidung.html";
 }
 // end đăng bán
@@ -819,6 +861,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Hàm hiển thị sách
   function renderBooks(books) {
+
+    
     productList.innerHTML = "";
     if (books.length === 0) {
       productList.innerHTML = "<p>Không có sản phẩm nào.</p>";
