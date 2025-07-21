@@ -5,7 +5,7 @@ html {
 body {
   overflow-x: hidden;
   /* Ngăn trang bị tràn */
-  background-image: url(img/bgw.png);
+  background-image: url(img/bgw.jpg);
   background-position: center;
   background-attachment: fixed;
   /*cố định nền để khôi bị lỗi di chuyển khi điều  chỉnh các khối khác*/
@@ -1288,7 +1288,7 @@ p.vb_ndtg{
   /* menu cho mobile */
   #logo_mobile {
     width: 17rem;
-    margin-left: -150%;
+    margin-left: 5%;
   }
 
   .navbar-toggler {
@@ -1563,7 +1563,7 @@ p.vb_ndtg{
   }
   /* end trang chủ */
 
-  /  /*liên hệ, người dùng & giới thiệu */
+  /*liên hệ, người dùng & giới thiệu */
 
      #vb_ykien{
         width: 450px;
