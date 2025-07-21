@@ -424,6 +424,7 @@ function confirmExchangeSuccess() {
   renderPayment();
 }
 // end giỏ hàng
+
 // ô tìm kiếm
 document.querySelector("#search_form").addEventListener("submit", function (e) {
   e.preventDefault();
