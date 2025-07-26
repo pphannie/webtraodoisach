@@ -5,7 +5,7 @@ html {
 body {
   overflow-x: hidden;
   /* Ngăn trang bị tràn */
-  background-image: url(img/bgw.png);
+  background-image: url(img/bgw.jpg);
   background-position: center;
   background-attachment: fixed;
   /*cố định nền để khôi bị lỗi di chuyển khi điều  chỉnh các khối khác*/
@@ -285,18 +285,13 @@ footer a i:hover {
 
 /* đăng bán */
 .r1_dk#db {
-  height: 70rem;
+  height: auto;
 }
 
 #img_book {
   height: 5rem;
 }
 
-/* #describe_parent{
-  height: 17rem;
-  max-width: 250rem;
-  width: 86%;
-} */
 .r3_dk textarea {
   margin-top: -2%;
   height: 14rem;
@@ -969,56 +964,87 @@ footer a i:hover {
 /* end trang chủ */
 
 /* liên hệ, người dùng & giới thiệu */
-#vb_lienhe *,
-#vb_lienhe ::before,
-#vb_lienhe ::after {
-  box-sizing: content-box;
-}
 
-#vb_user *,
-#vb_user ::before,
-#vb_user ::after {
-  box-sizing: content-box;
-}
-
-.vb_background {
-  max-width: 700px;
-  margin: 0 auto;
-  margin-top: 15px;
-}
-
-#vb_ykien {
-  max-width: 650px;
-}
-
-.vb_search_box {
-  background-color: #ffeace;
-}
-
-#vb_submit {
-  border: #d48437 solid 2px;
+#vb_logout{
+  border: none;
   outline: none;
-  padding: 8px;
-  border-radius: 10px;
+  border-radius: 3px;
   background-color: #ffeace;
+
+  transition-duration: 0.31s;
+  transition-timing-function: ease;
+  cursor: pointer;
+}
+#vb_logout:hover{
+  filter: brightness(130%);
+  transform: scale(1.2);
 }
 
 .vb_htt {
-  padding-right: 8px;
-  padding-bottom: -7px;
-  padding-top: -7px;
+    padding-right: 20px;  
+    padding-top: 2px;
+    text-align: center;
+    font-size: larger;
+
+}
+.vb_inf{
+    font-weight: bold;
+    font-size: medium;
+
+    display: flex;
+    background-color: #ffeace;
+    padding-left: 13px;
+    padding-top: 10px;
+    margin: 10px;
+    border-radius: 10px;
+    max-width: 100%;  
+
+
+}
+.vb_dong{
+    padding: 8px 13px;
+    padding-bottom: 5px;
 }
 
-.vb_dong {
-  display: block;
+#vb_lienhe *, #vb_lienhe ::before, #vb_lienhe ::after {
+  box-sizing: content-box;
+}
+#vb_user *, #vb_user ::before, #vb_user ::after {
+  box-sizing: content-box;
+}
+.vb_background{
+        max-width: 700px;
+        margin: 0 auto;
+        margin-top: 15px;
+    }
+#vb_ykien{
+       max-width:  650px;
+    }
+.vb_search_box{
   background-color: #ffeace;
-  padding: 8px 13px;
-  margin: 10px;
-  border-radius: 10px;
-  max-width: 100%;
+}
+#vb_submit{
+    border: #d48437 solid 2px;
+    outline: none;
+    padding: 8px;
+    border-radius: 10px;
+    background-color: #ffeace;
 }
 
-#logoutBtn {
+.vb_htt {
+    padding-right: 8px;  
+    padding-bottom: -7px;
+    padding-top: -7px;
+}
+.vb_dong{
+    display: block;
+    background-color: #ffeace;
+    padding: 8px 13px;
+    margin: 10px;
+    border-radius: 10px;
+    max-width: 100%;  
+}
+#logoutBtn{
   border: solid #d48437 2px;
   border-radius: 5px;
   border: none;
@@ -1026,118 +1052,100 @@ footer a i:hover {
   background-color: #ffeace;
 }
 
-#vb_ykien {
-  border: none;
-  outline: none;
-  border-radius: 10px;
-  background-color: #ffeace;
-
+#vb_ykien{
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    background-color: #ffeace;
+    
+}
+.vb_input{
+    border: none;
+    outline: none;
+    background-color: #ffeace;
+    width:250px;
+    
+}
+#vb_main{
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.vb_input {
-  border: none;
-  outline: none;
-  background-color: #ffeace;
-  width: 250px;
-
+.vb_background{
+    background-color: #df9959;
+    border-radius: 10px;
+    padding: 5px;
+    text-align: center;
+    margin:15px  auto;
 }
-
-#vb_main {
-  margin-left: auto;
-  margin-right: auto;
+#vb_noi_dung{
+    background-color: #ffd399;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
 }
-
-.vb_background {
-  background-color: #df9959;
-  border-radius: 10px;
-  padding: 5px;
-  text-align: center;
-  margin: 15px auto;
+#vb_ads{
+    color:#ffd399;
 }
-
-#vb_noi_dung {
-  background-color: #ffd399;
-  border-radius: 10px;
-  padding: 10px;
-  margin: 10px;
-}
-
-#vb_ads {
-  color: #ffd399;
-}
-
 #vb_dau {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: fixed;
-  right: 10px;
-  bottom: 5px;
-  width: 45px;
-  height: 45px;
-  background-color: #ffd399;
-  color: #d48437;
-  z-index: 100;
-  border-radius: 20%;
-  border: 2px solid #d48437;
-  text-decoration: none;
-  cursor: pointer;
+    position: fixed;
+    right: 10px;
+    bottom: 5px;
+    padding: 10px;
+    background-color: #ffd399;
+    color: #d48437;
+    z-index: 100;
+    border-radius: 7px;
+}
+.vb_icon{
+    width: 25px;
+    height: 25px;
+    size: 300%;
+    padding: 2px;
+    color: black;
+    text-align: center;
+    
 }
 
-.vb_icon {
-  width: 25px;
-  height: 25px;
-  size: 300%;
-  padding: 2px;
-  color: black;
-  text-align: center;
-
+.vb_lichsu > section {
+    flex: 1 1 0;
+    align-items: stretch;
+    display: flex;
+    background-color: #ffd399;
+    border-radius: 5px;
+    text-align: center;
+    padding: 5px;
+    margin: 3px;
 }
-
-.vb_lichsu>section {
-  flex: 1 1 0;
-  align-items: stretch;
-  display: flex;
-  background-color: #ffd399;
-  border-radius: 5px;
-  text-align: center;
-  padding: 5px;
-  margin: 3px;
-}
-
 .vb_lichsu {
-  border-radius: 10px;
-  padding: 10px;
-  margin: 10px;
+    border-radius: 10px;
+    padding: 10px;
+    margin: 10px;
 
 }
-
-section.vb_lichsu {
-  display: flex;
-
-  align-items: stretch;
-  text-align: center;
+section.vb_lichsu{
+    display: flex;
+    
+    align-items: stretch;
+    text-align: center;
 }
 
-#vb_dong>td>section {
-  background-color: #ffeace;
-  border: none;
-  outline: none;
+#vb_dong > td > section{
+    background-color: #ffeace;
+    border: none;
+    outline: none;
 }
-
-.vb_nd {
-  background-color: #ffeace;
-  border: none;
-  outline: none;
+.vb_nd{
+     background-color: #ffeace;
+    border: none;
+    outline: none;
 }
-
-.vb_ndtg {
-  text-align: left;
+.vb_ndtg{
+    text-align: left;
 }
-
-p.vb_ndtg {
-  text-align: left;
-  margin-left: 30px;
+p.vb_ndtg{
+    text-align: left;
+    margin-left: 30px ;
 }
 
 /* end liên hệ, người dùng & giới thiệu */
@@ -1157,8 +1165,6 @@ p.vb_ndtg {
     transform: scale(1.1);
   }
 }
-
-/* end liên hệ, người dùng & giới thiệu */
 @media (max-width: 1023px) {
 
   /* trang chủ */
@@ -1170,16 +1176,16 @@ p.vb_ndtg {
 
   /* end trang chủ */
 
-  /* liên hệ, người dùng & giới thiệu */
-
-  .vb_search_box {
+   /* liên hệ, người dùng & giới thiệu */
+  
+    .vb_search_box{
     display: grid;
     grid-template-areas: "search_box search sold";
     grid-template-columns: 3fr 0.5fr 0.5fr;
 
     max-width: 500px;
     background-color: #df9959;
-    height: 45px;
+    height:45px;
     margin: 1% 2% 0 auto;
     border-radius: 20px;
     height: 20px;
@@ -1238,20 +1244,18 @@ p.vb_ndtg {
   }
 
   /* liên hệ, người dùng & giới thiệu */
-  #vb_ykien {
-    width: 550px;
-  }
-
-  .vb_background {
-    width: 600px;
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 15px;
-  }
-
-  .vb_search_box {
-    background-color: #ffeace;
-    text-align: left;
+     #vb_ykien{
+        width: 550px;
+    }
+    .vb_background{
+        width: 600px;
+        text-align: center;
+        margin: 0 auto;
+        margin-top: 15px;
+    }
+    .vb_search_box{
+        background-color: #ffeace;
+        text-align: left;
   }
 
   /* end liên hệ, người dùng & giới thiệu */
@@ -1284,7 +1288,7 @@ p.vb_ndtg {
   /* menu cho mobile */
   #logo_mobile {
     width: 17rem;
-    margin-left: -150%;
+    margin-left: 5%;
   }
 
   .navbar-toggler {
@@ -1561,21 +1565,19 @@ p.vb_ndtg {
 
   /*liên hệ, người dùng & giới thiệu */
 
-  #vb_ykien {
-    width: 450px;
-  }
-
-  .vb_background {
-    width: 500px;
-    text-align: center;
-    margin: 0 auto;
-    margin-top: 15px;
-  }
-
-  .vb_search_box {
-    background-color: #ffeace;
-    text-align: left;
-  }
+     #vb_ykien{
+        width: 450px;
+    }
+    .vb_background{
+        width: 500px;
+        text-align: center;
+        margin: 0 auto;
+        margin-top: 15px;
+    }
+    .vb_search_box{
+        background-color: #ffeace;
+        text-align: left;
+      }
 
   /* end liên hệ, người dùng & giới thiệu */
 
