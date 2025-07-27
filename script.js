@@ -262,7 +262,7 @@ window.addEventListener("DOMContentLoaded", function () {
 // end ô tìm kiếm
 
 
-//giỏ hàng  chỉnh
+//giỏ hàng 
 let cart = [];
 let currentUserEmail = "";
 let user = {};
@@ -423,6 +423,7 @@ function checkgh() {
     window.location.href = "dangnhap.html";
   }
 }
+
 //Thanh toán//
 function confirmExchange() {
   //  Chưa đăng nhập
@@ -644,26 +645,26 @@ document.addEventListener("DOMContentLoaded", function () {
     renderBooks(filtered);
   });
 });
-const button = card.querySelector(".description1");
-const overlay = card.querySelector(".overlay");
-const closeBtn = card.querySelector(".close-overlay");
+  const button = card.querySelector(".description1");
+  const overlay = card.querySelector(".overlay");
+  const closeBtn = card.querySelector(".close-overlay");
 
-button.addEventListener("click", () => {
-  overlay.classList.add("show");
-});
+  button.addEventListener("click", () => {
+    overlay.classList.add("show");
+  });
 
-closeBtn.addEventListener("click", () => {
-  overlay.classList.remove("show");
-});
+  closeBtn.addEventListener("click", () => {
+    overlay.classList.remove("show");
+  });
 
-// Hàm xử lý mua sách
+  // Hàm xử lý mua sách
 
-function buy(book) {
-  const currentUserEmail = localStorage.getItem("currentUserEmail");
-  if (!currentUserEmail) {
-    alert(" Vui lòng đăng ký hoặc đăng nhập.");
-    return;
-  }
+  function buy(book) {
+    const currentUserEmail = localStorage.getItem("currentUserEmail");
+    if (!currentUserEmail) {
+      alert(" Vui lòng đăng ký hoặc đăng nhập.");
+      return;
+    }
 
   // Lấy thông tin người dùng
   const userJSON = localStorage.getItem(currentUserEmail);
@@ -702,13 +703,7 @@ function buy(book) {
 }
 // end sản phẩm
 
-
-
-
-
-
-
-// ĐĂNG KÝ
+// đăng ký
 
 function check() {
   const currentEmail = localStorage.getItem("currentUserEmail");
@@ -768,7 +763,7 @@ function signin(e) {
 }
 // end đăng ký
 
-// ĐĂNG NHẬP
+// đăng nhập
 function login(e) {
   e.preventDefault();
   const email = document.querySelector("#email").value;
@@ -796,7 +791,7 @@ function login(e) {
 }
 // end đăng nhập
 
-// ĐĂNG BÁN
+// đăng bán
 function sold(e) {
   e.preventDefault();
   const img_book = document.querySelector("#img_book");
@@ -886,7 +881,7 @@ function sold(e) {
 
 // end đăng bán
 
-// LIÊN HỆ
+// liên hệ
 function formtest_lienhe(a) {
   var email = document.getElementById("vb_Email");
   var user = document.getElementById("vb_ten");
@@ -909,46 +904,7 @@ function formtest_lienhe(a) {
 }
 // end liên hệ
 
-//Lịch sử mua bán sách
-function getSellHistory() {
-  const currentEmail = localStorage.getItem("currentUserEmail");
-
-  if (!currentEmail) {
-    alert("Bạn chưa đăng nhập!");
-    window.location.href = "dangnhap.html";
-    return;
-  }
-
-  const history =
-    JSON.parse(localStorage.getItem("history_ban_" + currentEmail)) || [];
-
-  if (history.length === 0) {
-    document.getElementById("bookList").innerHTML =
-      "<p>Chưa có sách nào được bán.</p>";
-    return;
-  }
-
-  const container = document.getElementById("bookList");
-
-  history.forEach((book) => {
-    const card = document.createElement("div");
-    card.className = "book-card";
-    card.innerHTML = `
-          <img src="${book.img_book}" alt="Ảnh sách">
-          <h3>${book.book_name}</h3>
-          <p><strong>Tác giả:</strong> ${book.author}</p>
-          <p><strong>Thể loại:</strong> ${book.genre}</p>
-          <p><strong>Giá:</strong> ${book.cost} VND</p>
-          <p><strong>Tình trạng:</strong> ${book.status}</p>
-          <p><strong>Mô tả:</strong> ${book.describe}</p>
-          <p><em>Đăng lúc: ${book.time}</em></p>
-        `;
-    container.appendChild(card);
-  });
-}
-// end mua sách
-
-//ĐĂNG XUẤT
+//đăng xuất
 
 function logout(e) {
   e.preventDefault();
@@ -957,8 +913,9 @@ function logout(e) {
   alert("Đã đăng xuất.");
   window.location.href = "dangnhap.html";
 }
+// end đăng xuất
 
-//NGƯỜI DÙNG
+//người dùng
 function information(e) {
   const currentEmail = localStorage.getItem("currentUserEmail");
 
@@ -982,3 +939,4 @@ function information(e) {
   document.getElementById("address").innerText = userData.address;
   document.getElementById("email").innerText = userData.email;
 }
+// end người dùng
