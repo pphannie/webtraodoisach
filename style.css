@@ -478,7 +478,7 @@ footer a i:hover {
 .info-img {
   position: relative;
 }
-
+/* chỉnh */
 .description1 {
   width: 30%;
   border-radius: 0.8rem;
@@ -578,7 +578,7 @@ footer a i:hover {
   align-items: center;
   margin-top: auto;
 }
-
+/* end chỉnh */
 .price {
   color: #e91e63;
   font-weight: bold;
