@@ -686,6 +686,7 @@ span#total-price {
   transition-duration: 0.31s;
   transition-timing-function: ease;
   cursor: pointer;
+  color: white;
 }
 
 .main-store button:hover {

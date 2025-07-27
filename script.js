@@ -157,7 +157,121 @@ document.querySelectorAll(".tcmota").forEach(function (button) {
   });
 })();
 // end trang chủ
-//giỏ hàng  chỉnh
+
+// ô tìm kiếm
+document
+  .querySelector("#search_form")
+  ?.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const keyWord = document.querySelector("#search_input")?.value.trim();
+    if (!keyWord) {
+      return;
+    }
+    localStorage.setItem("searchKey", keyWord);
+    window.location.href = "sanpham.html";
+  });
+
+window.addEventListener("DOMContentLoaded", function () {
+  const isSanPham = window.location.pathname.endsWith("sanpham.html");
+  if (!isSanPham) {
+    return;
+  }
+  const searchKey = localStorage.getItem("searchKey");
+  if (!searchKey) {
+    return;
+  }
+  localStorage.removeItem("searchKey");
+  const keyWord = searchKey
+    .trim()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+
+  // lấy dữ liệu từ file JSON
+  fetch("books.json")
+    .then((response) => response.json())
+    .then((books) => {
+      const result = books.filter((book) => {
+        const bookName = book.book_name
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase();
+        return bookName.includes(keyWord);
+      });
+
+      // Tìm trong localStorage
+      const products = [];
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key.startsWith("product_")) {
+          try {
+            const product = JSON.parse(localStorage.getItem(key));
+            products.push(product);
+          } catch (e) {
+            console.error("Lỗi khi đọc sản phẩm từ localStorage:", e);
+          }
+        }
+      }
+  // chỉnh tìm kiếm
+      const localResults = products.filter((book) => {
+        const bookName = book.book_name
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase();
+        return bookName.includes(keyWord);
+      });
+
+      const resultAll = [...result, ...localResults];
+
+      if (resultAll.length > 0) {
+        showBooks(resultAll);
+      } else {
+        document.getElementById("bookList").innerHTML =
+          "<p>Không tìm thấy sản phẩm phù hợp.</p>";
+      }
+      showBooks(resultAll);
+    });
+
+  // hàm hiển thị sách
+  function showBooks(list) {
+    const listProduct = document.querySelector(".list-product");
+    if (!listProduct) {
+      return;
+    }
+    listProduct.innerHTML = "";
+    if (list.length === 0) {
+      listProduct.innerHTML =
+        "<p>Thật tiếc quá! Sách bạn vừa nhập vẫn chưa có ở Sách Ơi. Hãy thử tìm một quyển sách khác nhé!</p>";
+      return;
+    }
+
+    list.forEach((product) => {
+      listProduct.innerHTML += `
+        <div class="product-card">
+            <div class="info-img">
+              <img src="${product.img_book}" alt="${product.book_name}" />
+              <div class="overlay">
+                <figcaption>
+                  <p><strong>Tác Giả:</strong> ${product.author}</p>
+                  <p><strong>Năm:</strong> ${product.publication_year}</p>
+                  <p><strong>Tóm tắt:</strong> ${product.summary}</p>
+                </figcaption>
+              </div>
+            </div>
+            <h3>${product.book_name}</h3>
+            <p>${product.describe}</p>
+            <div class="bottom">
+              <span class="price">${product.cost}<b>đ</b></span>
+              <button class="button-buy">Mua ngay</button>
+            </div>
+          </div>
+      `;
+    });
+  }
+});
+// end ô tìm kiếm
+
+//giỏ hàng
 let cart = [];
 let currentUserEmail = "";
 let user = {};
@@ -318,6 +432,7 @@ function checkgh() {
     window.location.href = "dangnhap.html";
   }
 }
+
 //Thanh toán//
 function confirmExchange() {
   //  Chưa đăng nhập
@@ -597,104 +712,7 @@ function buy(book) {
 }
 // end sản phẩm
 
-// ô tìm kiếm
-document
-  .querySelector("#search_form")
-  ?.addEventListener("submit", function (e) {
-    e.preventDefault();
-    const keyWord = document.querySelector("#search_input")?.value.trim();
-    if (!keyWord) {
-      return;
-    }
-    localStorage.setItem("searchKey", keyWord);
-    window.location.href = "sanpham.html";
-  });
-
-window.addEventListener("DOMContentLoaded", function () {
-  const isSanPham = window.location.pathname.endsWith("sanpham.html");
-  if (!isSanPham) {
-    return;
-  }
-  const searchKey = localStorage.getItem("searchKey");
-  if (!searchKey) {
-    return;
-  }
-  localStorage.removeItem("searchKey");
-  const keyWord = searchKey
-    .trim()
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase();
-
-  // lấy dữ liệu từ file JSON
-  fetch("books.json")
-    .then((response) => response.json())
-    .then((books) => {
-      let result = books.filter((book) => {
-        const bookName = book.book_name
-          .normalize("NFD")
-          .replace(/[\u0300-\u036f]/g, "")
-          .toLowerCase();
-        return bookName.includes(keyWord);
-      });
-
-      // Nếu không tìm thấy trong books.json thì tìm trong localStorage
-      if (result.length === 0) {
-        const localData = localStorage.getItem("bookList");
-        if (localData) {
-          const localBooks = JSON.parse(localData);
-          result = localBooks.filter((book) => {
-            const bookName = book.book_name
-              .normalize("NFD")
-              .replace(/[\u0300-\u036f]/g, "")
-              .toLowerCase();
-            return bookName.includes(keyWord);
-          });
-        }
-      }
-
-      showBooks(result);
-    });
-
-  // hàm hiển thị sách
-  function showBooks(list) {
-    const listProduct = document.querySelector(".list-product");
-    if (!listProduct) {
-      return;
-    }
-    listProduct.innerHTML = "";
-    if (list.length === 0) {
-      listProduct.innerHTML =
-        "<p>Thật tiếc quá! Sách bạn vừa nhập vẫn chưa có ở Sách Ơi. Hãy thử tìm một quyển sách khác nhé!</p>";
-      return;
-    }
-
-    list.forEach((product) => {
-      listProduct.innerHTML += `
-        <div class="product-card">
-            <div class="info-img">
-              <img src="${product.img_book}" alt="${product.book_name}" />
-              <div class="overlay">
-                <figcaption>
-                  <p><strong>Tác Giả:</strong> ${product.author}</p>
-                  <p><strong>Năm:</strong> ${product.publication_year}</p>
-                  <p><strong>Tóm tắt:</strong> ${product.summary}</p>
-                </figcaption>
-              </div>
-            </div>
-            <h3>${product.book_name}</h3>
-            <p>${product.describe}</p>
-            <div class="bottom">
-              <span class="price">${product.cost}<b>đ</b></span>
-              <button class="button-buy">Mua ngay</button>
-            </div>
-          </div>
-      `;
-    });
-  }
-});
-// end ô tìm kiếm
-// ĐĂNG KÝ
+// đăng ký
 
 function check() {
   const currentEmail = localStorage.getItem("currentUserEmail");
@@ -754,7 +772,7 @@ function signin(e) {
 }
 // end đăng ký
 
-// ĐĂNG NHẬP
+// đăng nhập
 function login(e) {
   e.preventDefault();
   const email = document.querySelector("#email").value;
@@ -782,7 +800,7 @@ function login(e) {
 }
 // end đăng nhập
 
-// ĐĂNG BÁN
+// đăng bán
 function sold(e) {
   e.preventDefault();
   const img_book = document.querySelector("#img_book");
@@ -872,7 +890,7 @@ function sold(e) {
 
 // end đăng bán
 
-// LIÊN HỆ
+// liên hệ
 function formtest_lienhe(a) {
   var email = document.getElementById("vb_Email");
   var user = document.getElementById("vb_ten");
@@ -895,46 +913,7 @@ function formtest_lienhe(a) {
 }
 // end liên hệ
 
-//Lịch sử mua bán sách
-function getSellHistory() {
-  const currentEmail = localStorage.getItem("currentUserEmail");
-
-  if (!currentEmail) {
-    alert("Bạn chưa đăng nhập!");
-    window.location.href = "dangnhap.html";
-    return;
-  }
-
-  const history =
-    JSON.parse(localStorage.getItem("history_ban_" + currentEmail)) || [];
-
-  if (history.length === 0) {
-    document.getElementById("bookList").innerHTML =
-      "<p>Chưa có sách nào được bán.</p>";
-    return;
-  }
-
-  const container = document.getElementById("bookList");
-
-  history.forEach((book) => {
-    const card = document.createElement("div");
-    card.className = "book-card";
-    card.innerHTML = `
-          <img src="${book.img_book}" alt="Ảnh sách">
-          <h3>${book.book_name}</h3>
-          <p><strong>Tác giả:</strong> ${book.author}</p>
-          <p><strong>Thể loại:</strong> ${book.genre}</p>
-          <p><strong>Giá:</strong> ${book.cost} VND</p>
-          <p><strong>Tình trạng:</strong> ${book.status}</p>
-          <p><strong>Mô tả:</strong> ${book.describe}</p>
-          <p><em>Đăng lúc: ${book.time}</em></p>
-        `;
-    container.appendChild(card);
-  });
-}
-// end mua sách
-
-//ĐĂNG XUẤT
+//đăng xuất
 
 function logout(e) {
   e.preventDefault();
@@ -943,8 +922,9 @@ function logout(e) {
   alert("Đã đăng xuất.");
   window.location.href = "dangnhap.html";
 }
+// end đăng xuất
 
-//NGƯỜI DÙNG
+//người dùng
 function information(e) {
   const currentEmail = localStorage.getItem("currentUserEmail");
 
@@ -968,3 +948,4 @@ function information(e) {
   document.getElementById("address").innerText = userData.address;
   document.getElementById("email").innerText = userData.email;
 }
+// end người dùng
