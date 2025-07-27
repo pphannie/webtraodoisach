@@ -157,6 +157,172 @@ document.querySelectorAll(".tcmota").forEach(function (button) {
   });
 })();
 // end trang chủ
+
+// sản phẩm
+document.addEventListener("DOMContentLoaded", function () {
+  const productList = document.getElementById("list-product");
+  const filterGenre = document.getElementById("filter-genre");
+  let allBooks = [];
+
+  // Lấy sách từ localStorage
+  function getLocalProducts() {
+    const products = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key.startsWith("product_")) {
+        try {
+          const product = JSON.parse(localStorage.getItem(key));
+          products.push(product);
+        } catch (e) {
+          console.error("Lỗi khi đọc sản phẩm từ localStorage:", e);
+        }
+      }
+    }
+    return products;
+  }
+
+  // Load sách từ JSON và localStorage
+  fetch("books.json")
+    .then((res) => res.json())
+    .then((data) => {
+      const localProducts = getLocalProducts();
+      allBooks = [...data, ...localProducts];
+      renderBooks(allBooks);
+    })
+    .catch((err) => {
+      console.error("Không thể load books.json:", err);
+      allBooks = getLocalProducts();
+      renderBooks(allBooks);
+    });
+
+  // Hàm hiển thị sách
+    function renderBooks(books) {
+    productList.innerHTML = "";
+    if (books.length === 0) {
+      productList.innerHTML = "<p>Không có sản phẩm nào.</p>";
+      return;
+    }
+
+    books.forEach((book) => {
+      const card = document.createElement("div");
+      card.className = "product-card";
+      card.innerHTML = `
+      <button class="description1" title="Xem mô tả">
+        <i class="fa-solid fa-ellipsis"></i>
+      </button>
+      <div class="info-img">
+        <img src="${book.image || book.img_book}" alt="Ảnh sản phẩm" />
+      </div>
+      <div class="description">
+        <h3>${book.name || book.book_name}</h3>
+        <p>${book.description || book.describe || "Không có mô tả"}</p>
+      </div>
+      <div class="bottom">
+        <span class="price">${Number(
+          book.price || book.cost || 0
+        ).toLocaleString()}đ</span>
+        <button class="button-buy">Mua ngay</button>
+      </div>
+      <div class="overlay description-overlay ">
+        <button class="close-overlay"><i class="fa-solid fa-xmark"></i></button>
+        <figcaption>
+          <p><strong>Tác Giả:</strong> ${book.author}</p>
+          <p><strong>Năm:</strong> ${book.year || book.publication_year||"N/A" }</p>
+          <p><strong>Tóm tắt:</strong> ${
+            book.description || book.describe || "Không có mô tả"
+          }</p>
+        </figcaption>
+      </div>
+    `;
+      productList.appendChild(card);
+
+      // Gắn sự kiện nút "Mua ngay"
+      const buttonBuy = card.querySelector(".button-buy");
+      buttonBuy.addEventListener("click", function () {
+        buy(book);
+      });
+      const buttonShow = card.querySelector(".description1");
+      const overlay = card.querySelector(".overlay");
+      const closeBtn = card.querySelector(".close-overlay");
+
+      buttonShow.addEventListener("click", () => {
+        overlay.classList.add("show");
+      });
+
+      closeBtn.addEventListener("click", () => {
+        overlay.classList.remove("show");
+      });
+    });
+  }
+
+  // Lọc thể loại
+  filterGenre.addEventListener("change", function () {
+    const selected = this.value.toLowerCase();
+    const filtered =
+      selected === "tất cả"
+        ? allBooks
+        : allBooks.filter((book) => {
+            const genre = (book.genre || "").toLowerCase();
+            const category = (book.category || "").toLowerCase();
+            return genre === selected || category === selected;
+          });
+    renderBooks(filtered);
+  });
+});
+const button = card.querySelector(".description1");
+const overlay = card.querySelector(".overlay");
+const closeBtn = card.querySelector(".close-overlay");
+
+button.addEventListener("click", () => {
+  overlay.classList.add("show");
+});
+
+closeBtn.addEventListener("click", () => {
+  overlay.classList.remove("show");
+});
+
+// Hàm xử lý mua sách
+
+function buy(book) {
+  const currentUserEmail = localStorage.getItem("currentUserEmail");
+  if (!currentUserEmail) {
+    alert(" Vui lòng đăng ký hoặc đăng nhập.");
+    return;
+  }
+
+  // Lấy thông tin người dùng
+  const userJSON = localStorage.getItem(currentUserEmail);
+  if (!userJSON) {
+    alert(" Người dùng không tồn tại.");
+    return;
+  }
+
+  const user = JSON.parse(userJSON);
+
+  // Khởi tạo danh sách sách đã mua nếu chưa có
+  if (!Array.isArray(user.purchased_books)) {
+    user.purchased_books = [];
+  }
+
+  // Kiểm tra sách đã tồn tại chưa
+  const exists = user.purchased_books.some(
+    (b) => b.book_name === book.book_name
+  );
+
+  if (exists) {
+    alert(" Bạn đã mua sách này rồi!");
+    return;
+  }
+  user.purchased_books.push(book);
+
+  // Lưu lại vào localStorage
+  localStorage.setItem(currentUserEmail, JSON.stringify(user));
+
+  // Thông báo
+  alert(` Bạn đã mua sách: ${book.name || book.book_name}`);
+}
+// end sản phẩm
+
 // giỏ hàng
 let cart = [];
 let currentUserEmail = "";
@@ -673,8 +839,14 @@ function sold(e) {
       created_at: new Date().toISOString(),
     };
 
-    const data = JSON.stringify(product);
-    localStorage.setItem("product_" + book_name.value, data);
+    // Lưu sản phẩm vào localStorage
+    localStorage.setItem("product_" + book_name.value, JSON.stringify(product));
+    if (!user.sold_books) {
+      user.sold_books = [];
+    }
+    user.sold_books.push("product_" + book_name.value);
+
+    localStorage.setItem(currentUserEmail, JSON.stringify(user));
     alert("Sách đã được đăng bán!");
     window.location.href = "nguoidung.html";
   };
@@ -781,139 +953,3 @@ function information(e) {
   document.getElementById("email").innerText = userData.email;
 }
 
-// sản phẩm
-document.addEventListener("DOMContentLoaded", function () {
-  const productList = document.getElementById("list-product");
-  const filterGenre = document.getElementById("filter-genre");
-  let allBooks = [];
-
-  // Lấy sách từ localStorage
-  function getLocalProducts() {
-    const products = [];
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (key.startsWith("product_")) {
-        try {
-          const product = JSON.parse(localStorage.getItem(key));
-          products.push(product);
-        } catch (e) {
-          console.error("Lỗi khi đọc sản phẩm từ localStorage:", e);
-        }
-      }
-    }
-    return products;
-  }
-
-  // Load sách từ JSON và localStorage
-  fetch("books.json")
-    .then((res) => res.json())
-    .then((data) => {
-      const localProducts = getLocalProducts();
-      allBooks = [...data, ...localProducts];
-      renderBooks(allBooks);
-    })
-    .catch((err) => {
-      console.error("Không thể load books.json:", err);
-      allBooks = getLocalProducts();
-      renderBooks(allBooks);
-    });
-
-  // Hàm hiển thị sách
-  function renderBooks(books) {
-    productList.innerHTML = "";
-    if (books.length === 0) {
-      productList.innerHTML = "<p>Không có sản phẩm nào.</p>";
-      return;
-    }
-
-    books.forEach((book) => {
-      const card = document.createElement("div");
-      card.className = "product-card";
-      card.innerHTML = `
-        <div class="info-img">
-          <img src="${book.image || book.img_book}" alt="Ảnh sản phẩm" />
-          <div class="overlay">
-            <figcaption>
-              <p><strong>Tác Giả:</strong> ${book.author}</p>
-              <p><strong>Năm:</strong> ${book.year || "N/A"}</p>
-              <p><strong>Tóm tắt:</strong> ${
-                book.description || book.describe || "Không có mô tả"
-              }</p>
-            </figcaption>
-          </div>
-        </div>
-        <h3>${book.name || book.book_name}</h3>
-        <p>${book.description || book.describe || "Không có mô tả"}</p>
-        <div class="bottom">
-          <span class="price">${Number(
-            book.price || book.cost || 0
-          ).toLocaleString()}đ</span>
-          <button class="button-buy">Mua ngay</button>
-        </div>
-      `;
-      productList.appendChild(card);
-
-      // Gắn sự kiện click cho nút "Mua ngay"
-      const button = card.querySelector(".button-buy");
-      button.addEventListener("click", function () {
-        buy(book);
-      });
-    });
-  }
-
-  // Lọc thể loại
-  filterGenre.addEventListener("change", function () {
-    const selected = this.value.toLowerCase();
-    const filtered =
-      selected === "tất cả"
-        ? allBooks
-        : allBooks.filter((book) => {
-            const genre = (book.genre || "").toLowerCase();
-            const category = (book.category || "").toLowerCase();
-            return genre === selected || category === selected;
-          });
-    renderBooks(filtered);
-  });
-});
-
-// Hàm xử lý mua sách
-
-function buy(book) {
-  const currentUserEmail = localStorage.getItem("currentUserEmail");
-  if (!currentUserEmail) {
-    alert(" Vui lòng đăng ký hoặc đăng nhập.");
-    return;
-  }
-
-  // Lấy thông tin người dùng
-  const userJSON = localStorage.getItem(currentUserEmail);
-  if (!userJSON) {
-    alert(" Người dùng không tồn tại.");
-    return;
-  }
-
-  const user = JSON.parse(userJSON);
-
-  // Khởi tạo danh sách sách đã mua nếu chưa có
-  if (!Array.isArray(user.purchased_books)) {
-    user.purchased_books = [];
-  }
-
-  // Kiểm tra sách đã tồn tại chưa
-  const exists = user.purchased_books.some(
-    (b) => b.book_name === book.book_name
-  );
-
-  if (exists) {
-    alert(" Bạn đã mua sách này rồi!");
-    return;
-  }
-  user.purchased_books.push(book);
-
-  // Lưu lại vào localStorage
-  localStorage.setItem(currentUserEmail, JSON.stringify(user));
-
-  // Thông báo
-  alert(` Bạn đã mua sách: ${book.name || book.book_name}`);
-}
-// end sản phẩm
