@@ -649,8 +649,10 @@ function sold(e) {
     alert("Bạn chưa đăng nhập. Không thể đăng bán sách.");
     return;
   }
+  const userJSON = localStorage.getItem(currentUserEmail);
+  const user = JSON.parse(userJSON);
 
-  // chỉnh 
+  // chỉnh
   const file = img_book.files[0];
   const reader = new FileReader();
 
@@ -672,8 +674,16 @@ function sold(e) {
       created_at: new Date().toISOString(),
     };
 
-    const data = JSON.stringify(product);
-    localStorage.setItem("product_" + book_name.value, data);
+    // Lưu sản phẩm vào localStorage
+    localStorage.setItem("product_" + book_name.value, JSON.stringify(product));
+    if (!user.sold_books) {
+      user.sold_books = [];
+    }
+    user.sold_books.push("product_" + book_name.value);
+
+    // Cập nhật lại user trong localStorage
+    localStorage.setItem(currentUserEmail, JSON.stringify(user));
+
     alert("Sách đã được đăng bán!");
     window.location.href = "nguoidung.html";
   };
@@ -829,33 +839,50 @@ document.addEventListener("DOMContentLoaded", function () {
       const card = document.createElement("div");
       card.className = "product-card";
       card.innerHTML = `
-        <div class="info-img">
-          <img src="${book.image || book.img_book}" alt="Ảnh sản phẩm" />
-          <div class="overlay">
-            <figcaption>
-              <p><strong>Tác Giả:</strong> ${book.author}</p>
-              <p><strong>Năm:</strong> ${book.year || "N/A"}</p>
-              <p><strong>Tóm tắt:</strong> ${
-                book.description || book.describe || "Không có mô tả"
-              }</p>
-            </figcaption>
-          </div>
-        </div>
+      <button class="description1" title="Xem mô tả">
+        <i class="fa-solid fa-ellipsis"></i>
+      </button>
+      <div class="info-img">
+        <img src="${book.image || book.img_book}" alt="Ảnh sản phẩm" />
+      </div>
+      <div class="description">
         <h3>${book.name || book.book_name}</h3>
         <p>${book.description || book.describe || "Không có mô tả"}</p>
-        <div class="bottom">
-          <span class="price">${Number(
-            book.price || book.cost || 0
-          ).toLocaleString()}đ</span>
-          <button class="button-buy">Mua ngay</button>
-        </div>
-      `;
+      </div>
+      <div class="bottom">
+        <span class="price">${Number(
+          book.price || book.cost || 0
+        ).toLocaleString()}đ</span>
+        <button class="button-buy">Mua ngay</button>
+      </div>
+      <div class="overlay description-overlay ">
+        <button class="close-overlay"><i class="fa-solid fa-xmark"></i></button>
+        <figcaption>
+          <p><strong>Tác Giả:</strong> ${book.author}</p>
+          <p><strong>Năm:</strong> ${book.year || book.publication_year||"N/A" }</p>
+          <p><strong>Tóm tắt:</strong> ${
+            book.description || book.describe || "Không có mô tả"
+          }</p>
+        </figcaption>
+      </div>
+    `;
       productList.appendChild(card);
 
-      // Gắn sự kiện click cho nút "Mua ngay"
-      const button = card.querySelector(".button-buy");
-      button.addEventListener("click", function () {
+      // Gắn sự kiện nút "Mua ngay"
+      const buttonBuy = card.querySelector(".button-buy");
+      buttonBuy.addEventListener("click", function () {
         buy(book);
+      });
+      const buttonShow = card.querySelector(".description1");
+      const overlay = card.querySelector(".overlay");
+      const closeBtn = card.querySelector(".close-overlay");
+
+      buttonShow.addEventListener("click", () => {
+        overlay.classList.add("show");
+      });
+
+      closeBtn.addEventListener("click", () => {
+        overlay.classList.remove("show");
       });
     });
   }
@@ -874,7 +901,17 @@ document.addEventListener("DOMContentLoaded", function () {
     renderBooks(filtered);
   });
 });
+const button = card.querySelector(".description1");
+const overlay = card.querySelector(".overlay");
+const closeBtn = card.querySelector(".close-overlay");
 
+button.addEventListener("click", () => {
+  overlay.classList.add("show");
+});
+
+closeBtn.addEventListener("click", () => {
+  overlay.classList.remove("show");
+});
 // Hàm xử lý mua sách
 
 function buy(book) {
