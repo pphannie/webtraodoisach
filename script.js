@@ -158,172 +158,111 @@ document.querySelectorAll(".tcmota").forEach(function (button) {
 })();
 // end trang chủ
 
-// sản phẩm
-document.addEventListener("DOMContentLoaded", function () {
-  const productList = document.getElementById("list-product");
-  const filterGenre = document.getElementById("filter-genre");
-  let allBooks = [];
+// ô tìm kiếm
+document
+  .querySelector("#search_form")
+  ?.addEventListener("submit", function (e) {
+    e.preventDefault();
+    const keyWord = document.querySelector("#search_input")?.value.trim();
+    if (!keyWord) {
+      return;
+    }
+    localStorage.setItem("searchKey", keyWord);
+    window.location.href = "sanpham.html";
+  });
 
-  // Lấy sách từ localStorage
-  function getLocalProducts() {
-    const products = [];
-    for (let i = 0; i < localStorage.length; i++) {
-      const key = localStorage.key(i);
-      if (key.startsWith("product_")) {
-        try {
-          const product = JSON.parse(localStorage.getItem(key));
-          products.push(product);
-        } catch (e) {
-          console.error("Lỗi khi đọc sản phẩm từ localStorage:", e);
+window.addEventListener("DOMContentLoaded", function () {
+  const isSanPham = window.location.pathname.endsWith("sanpham.html");
+  if (!isSanPham) {
+    return;
+  }
+  const searchKey = localStorage.getItem("searchKey");
+  if (!searchKey) {
+    return;
+  }
+  localStorage.removeItem("searchKey");
+  const keyWord = searchKey
+    .trim()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase();
+
+  // lấy dữ liệu từ file JSON
+  fetch("books.json")
+    .then((response) => response.json())
+    .then((books) => {
+      let result = books.filter((book) => {
+        const bookName = book.book_name
+          .normalize("NFD")
+          .replace(/[\u0300-\u036f]/g, "")
+          .toLowerCase();
+        return bookName.includes(keyWord);
+      });
+
+      // Nếu không tìm thấy trong books.json thì tìm trong localStorage
+
+      if (result.length === 0) {
+        const currentUserEmail = localStorage.getItem("currentUserEmail"); // Lấy email đang đăng nhập
+        if (currentUserEmail) {
+          const userData = localStorage.getItem(currentUserEmail); // Lấy dữ liệu theo email
+          if (userData) {
+            const userObj = JSON.parse(userData);
+            const books = userObj.sold_books || [];
+
+            result = books.filter((book) => {
+              const bookName = book.book_name
+                .normalize("NFD")
+                .replace(/[\u0300-\u036f]/g, "")
+                .toLowerCase();
+              return bookName.includes(keyWord);
+            });
+          }
         }
       }
-    }
-    return products;
-  }
-
-  // Load sách từ JSON và localStorage
-  fetch("books.json")
-    .then((res) => res.json())
-    .then((data) => {
-      const localProducts = getLocalProducts();
-      allBooks = [...data, ...localProducts];
-      renderBooks(allBooks);
-    })
-    .catch((err) => {
-      console.error("Không thể load books.json:", err);
-      allBooks = getLocalProducts();
-      renderBooks(allBooks);
+      showBooks(result);
     });
 
-  // Hàm hiển thị sách
-    function renderBooks(books) {
-    productList.innerHTML = "";
-    if (books.length === 0) {
-      productList.innerHTML = "<p>Không có sản phẩm nào.</p>";
+  // hàm hiển thị sách
+  function showBooks(list) {
+    const listProduct = document.querySelector(".list-product");
+    if (!listProduct) {
+      return;
+    }
+    listProduct.innerHTML = "";
+    if (list.length === 0) {
+      listProduct.innerHTML =
+        "<p>Thật tiếc quá! Sách bạn vừa nhập vẫn chưa có ở Sách Ơi. Hãy thử tìm một quyển sách khác nhé!</p>";
       return;
     }
 
-    books.forEach((book) => {
-      const card = document.createElement("div");
-      card.className = "product-card";
-      card.innerHTML = `
-      <button class="description1" title="Xem mô tả">
-        <i class="fa-solid fa-ellipsis"></i>
-      </button>
-      <div class="info-img">
-        <img src="${book.image || book.img_book}" alt="Ảnh sản phẩm" />
-      </div>
-      <div class="description">
-        <h3>${book.name || book.book_name}</h3>
-        <p>${book.description || book.describe || "Không có mô tả"}</p>
-      </div>
-      <div class="bottom">
-        <span class="price">${Number(
-          book.price || book.cost || 0
-        ).toLocaleString()}đ</span>
-        <button class="button-buy">Mua ngay</button>
-      </div>
-      <div class="overlay description-overlay ">
-        <button class="close-overlay"><i class="fa-solid fa-xmark"></i></button>
-        <figcaption>
-          <p><strong>Tác Giả:</strong> ${book.author}</p>
-          <p><strong>Năm:</strong> ${book.year || book.publication_year||"N/A" }</p>
-          <p><strong>Tóm tắt:</strong> ${
-            book.description || book.describe || "Không có mô tả"
-          }</p>
-        </figcaption>
-      </div>
-    `;
-      productList.appendChild(card);
-
-      // Gắn sự kiện nút "Mua ngay"
-      const buttonBuy = card.querySelector(".button-buy");
-      buttonBuy.addEventListener("click", function () {
-        buy(book);
-      });
-      const buttonShow = card.querySelector(".description1");
-      const overlay = card.querySelector(".overlay");
-      const closeBtn = card.querySelector(".close-overlay");
-
-      buttonShow.addEventListener("click", () => {
-        overlay.classList.add("show");
-      });
-
-      closeBtn.addEventListener("click", () => {
-        overlay.classList.remove("show");
-      });
+    list.forEach((product) => {
+      listProduct.innerHTML += `
+        <div class="product-card">
+            <div class="info-img">
+              <img src="${product.img_book}" alt="${product.book_name}" />
+              <div class="overlay">
+                <figcaption>
+                  <p><strong>Tác Giả:</strong> ${product.author}</p>
+                  <p><strong>Năm:</strong> ${product.publication_year}</p>
+                  <p><strong>Tóm tắt:</strong> ${product.summary}</p>
+                </figcaption>
+              </div>
+            </div>
+            <h3>${product.book_name}</h3>
+            <p>${product.describe}</p>
+            <div class="bottom">
+              <span class="price">${product.cost}<b>đ</b></span>
+              <button class="button-buy">Mua ngay</button>
+            </div>
+          </div>
+      `;
     });
   }
-
-  // Lọc thể loại
-  filterGenre.addEventListener("change", function () {
-    const selected = this.value.toLowerCase();
-    const filtered =
-      selected === "tất cả"
-        ? allBooks
-        : allBooks.filter((book) => {
-            const genre = (book.genre || "").toLowerCase();
-            const category = (book.category || "").toLowerCase();
-            return genre === selected || category === selected;
-          });
-    renderBooks(filtered);
-  });
 });
-const button = card.querySelector(".description1");
-const overlay = card.querySelector(".overlay");
-const closeBtn = card.querySelector(".close-overlay");
+// end ô tìm kiếm
 
-button.addEventListener("click", () => {
-  overlay.classList.add("show");
-});
 
-closeBtn.addEventListener("click", () => {
-  overlay.classList.remove("show");
-});
-
-// Hàm xử lý mua sách
-
-function buy(book) {
-  const currentUserEmail = localStorage.getItem("currentUserEmail");
-  if (!currentUserEmail) {
-    alert(" Vui lòng đăng ký hoặc đăng nhập.");
-    return;
-  }
-
-  // Lấy thông tin người dùng
-  const userJSON = localStorage.getItem(currentUserEmail);
-  if (!userJSON) {
-    alert(" Người dùng không tồn tại.");
-    return;
-  }
-
-  const user = JSON.parse(userJSON);
-
-  // Khởi tạo danh sách sách đã mua nếu chưa có
-  if (!Array.isArray(user.purchased_books)) {
-    user.purchased_books = [];
-  }
-
-  // Kiểm tra sách đã tồn tại chưa
-  const exists = user.purchased_books.some(
-    (b) => b.book_name === book.book_name
-  );
-
-  if (exists) {
-    alert(" Bạn đã mua sách này rồi!");
-    return;
-  }
-  user.purchased_books.push(book);
-
-  // Lưu lại vào localStorage
-  localStorage.setItem(currentUserEmail, JSON.stringify(user));
-
-  // Thông báo
-  alert(` Bạn đã mua sách: ${book.name || book.book_name}`);
-}
-// end sản phẩm
-
-// giỏ hàng
+//giỏ hàng  chỉnh
 let cart = [];
 let currentUserEmail = "";
 let user = {};
@@ -560,7 +499,7 @@ function renderPayment() {
   const payment = document.createElement("div");
   payment.className = "payment";
   payment.innerHTML = `
-          <h3><span id="total-price" fun></span></h3>
+          <h3><span id="total-price" ></span></h3>
           <form onclick="confirmExchangeSuccess()">
             <button type="submit">Trao đổi</button>
           </form>
@@ -592,91 +531,183 @@ function confirmExchangeSuccess() {
 }
 // end giỏ hàng
 
+// sản phẩm
+document.addEventListener("DOMContentLoaded", function () {
+  const productList = document.getElementById("list-product");
+  const filterGenre = document.getElementById("filter-genre");
+  let allBooks = [];
 
-// ô tìm kiếm
-document.querySelector("#search_form")?.addEventListener("submit", function(e) {
-  e.preventDefault();
-  const keyWord = document.querySelector("#search_input")?.value.trim();
-  if (!keyWord) {
-    return;
-  }
-  localStorage.setItem("searchKey", keyWord);
-  window.location.href = "sanpham.html";
-});
-
-window.addEventListener("DOMContentLoaded", function () {
-  const isSanPham = window.location.pathname.endsWith("sanpham.html");
-  if (!isSanPham) {
-    return;
-  }
-  const searchKey = localStorage.getItem("searchKey");
-  if (!searchKey) {
-    return;
-  }
-  localStorage.removeItem("searchKey");
-  const keyWord = searchKey.trim().normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-
-   // lấy dữ liệu từ file JSON
-  fetch("books.json")
-  .then(response => response.json())
-  .then(books => {
-    let result = books.filter(book => {
-      const bookName = book.book_name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-      return bookName.includes(keyWord);
-    });
-
-    // Nếu không tìm thấy trong books.json thì tìm trong localStorage
-    if (result.length === 0) {
-      const localData = localStorage.getItem("bookList");
-      if (localData) {
-        const localBooks = JSON.parse(localData);
-        result = localBooks.filter(book => {
-          const bookName = book.book_name.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
-          return bookName.includes(keyWord);
-        });
+  // Lấy sách từ localStorage
+  function getLocalProducts() {
+    const products = [];
+    for (let i = 0; i < localStorage.length; i++) {
+      const key = localStorage.key(i);
+      if (key.startsWith("product_")) {
+        try {
+          const product = JSON.parse(localStorage.getItem(key));
+          products.push(product);
+        } catch (e) {
+          console.error("Lỗi khi đọc sản phẩm từ localStorage:", e);
+        }
       }
     }
+    return products;
+  }
 
-    showBooks(result);
-  });
+  // Load sách từ JSON và localStorage
+  fetch("books.json")
+    .then((res) => res.json())
+    .then((data) => {
+      const localProducts = getLocalProducts();
+      allBooks = [...data, ...localProducts];
+      renderBooks(allBooks);
+    })
+    .catch((err) => {
+      console.error("Không thể load books.json:", err);
+      allBooks = getLocalProducts();
+      renderBooks(allBooks);
+    });
 
-  // hàm hiển thị sách
-  function showBooks(list) {
-    const listProduct = document.querySelector(".list-product");
-    if (!listProduct) {
+  // Hàm hiển thị sách
+  function renderBooks(books) {
+    productList.innerHTML = "";
+    if (books.length === 0) {
+      productList.innerHTML = "<p>Không có sản phẩm nào.</p>";
       return;
     }
-    listProduct.innerHTML = "";
-    if (list.length === 0) {
-      listProduct.innerHTML = "<p>Thật tiếc quá! Sách bạn vừa nhập vẫn chưa có ở Sách Ơi. Hãy thử tìm một quyển sách khác nhé!</p>";
-      return;
-    }
 
-    list.forEach(product => {
-      listProduct.innerHTML += `
-        <div class="product-card">
-            <div class="info-img">
-              <img src="${product.img_book}" alt="${product.book_name}" />
-              <div class="overlay">
-                <figcaption>
-                  <p><strong>Tác Giả:</strong> ${product.author}</p>
-                  <p><strong>Năm:</strong> ${product.publication_year}</p>
-                  <p><strong>Tóm tắt:</strong> ${product.summary}</p>
-                </figcaption>
-              </div>
-            </div>
-            <h3>${product.book_name}</h3>
-            <p>${product.describe}</p>
-            <div class="bottom">
-              <span class="price">${product.cost}<b>đ</b></span>
-              <button class="button-buy">Mua ngay</button>
-            </div>
-          </div>
-      `;
+    books.forEach((book) => {
+      const card = document.createElement("div");
+      card.className = "product-card";
+      card.innerHTML = `
+      <button class="description1" title="Xem mô tả">
+        <i class="fa-solid fa-ellipsis"></i>
+      </button>
+      <div class="info-img">
+        <img src="${book.image || book.img_book}" alt="Ảnh sản phẩm" />
+      </div>
+      <div class="description">
+        <h3>${book.name || book.book_name}</h3>
+        <p>${book.description || book.describe || "Không có mô tả"}</p>
+      </div>
+      <div class="bottom">
+        <span class="price">${Number(
+          book.price || book.cost || 0
+        ).toLocaleString()}đ</span>
+        <button class="button-buy">Mua ngay</button>
+      </div>
+      <div class="overlay description-overlay ">
+        <button class="close-overlay"><i class="fa-solid fa-xmark"></i></button>
+        <figcaption>
+          <p><strong>Tác Giả:</strong> ${book.author}</p>
+          <p><strong>Năm:</strong> ${
+            book.year || book.publication_year || "N/A"
+          }</p>
+          <p><strong>Tóm tắt:</strong> ${
+            book.description || book.describe || "Không có mô tả"
+          }</p>
+        </figcaption>
+      </div>
+    `;
+      productList.appendChild(card);
+
+      // Gắn sự kiện nút "Mua ngay"
+      const buttonBuy = card.querySelector(".button-buy");
+      buttonBuy.addEventListener("click", function () {
+        buy(book);
+      });
+      const buttonShow = card.querySelector(".description1");
+      const overlay = card.querySelector(".overlay");
+      const closeBtn = card.querySelector(".close-overlay");
+
+      buttonShow.addEventListener("click", () => {
+        overlay.classList.add("show");
+      });
+
+      closeBtn.addEventListener("click", () => {
+        overlay.classList.remove("show");
+      });
     });
   }
+
+  // Lọc thể loại
+  filterGenre.addEventListener("change", function () {
+    const selected = this.value.toLowerCase();
+    const filtered =
+      selected === "tất cả"
+        ? allBooks
+        : allBooks.filter((book) => {
+            const genre = (book.genre || "").toLowerCase();
+            const category = (book.category || "").toLowerCase();
+            return genre === selected || category === selected;
+          });
+    renderBooks(filtered);
+  });
 });
-// end ô tìm kiếm
+const button = card.querySelector(".description1");
+const overlay = card.querySelector(".overlay");
+const closeBtn = card.querySelector(".close-overlay");
+
+button.addEventListener("click", () => {
+  overlay.classList.add("show");
+});
+
+closeBtn.addEventListener("click", () => {
+  overlay.classList.remove("show");
+});
+
+// Hàm xử lý mua sách
+
+function buy(book) {
+  const currentUserEmail = localStorage.getItem("currentUserEmail");
+  if (!currentUserEmail) {
+    alert(" Vui lòng đăng ký hoặc đăng nhập.");
+    return;
+  }
+
+  // Lấy thông tin người dùng
+  const userJSON = localStorage.getItem(currentUserEmail);
+  if (!userJSON) {
+    alert(" Người dùng không tồn tại.");
+    return;
+  }
+
+  const user = JSON.parse(userJSON);
+
+  // Khởi tạo danh sách sách đã mua nếu chưa có
+  if (!Array.isArray(user.purchased_books)) {
+    user.purchased_books = [];
+  }
+
+  // Kiểm tra sách đã tồn tại chưa
+  const exists = user.purchased_books.some(
+    (b) => b.book_name === book.book_name
+  );
+
+  if (exists) {
+    alert(" Bạn đã mua sách này rồi!");
+    return;
+  }
+  user.purchased_books.push(book);
+
+  // Lưu lại vào localStorage
+  localStorage.setItem(currentUserEmail, JSON.stringify(user));
+
+  // Thông báo
+  alert(
+    ` Bạn vừa chọn mua  ${
+      book.name || book.book_name
+    }. \n Đến trang giỏ hàng để thanh toán ngay`
+  );
+}
+// end sản phẩm
+
+
+
+
+
+
+
 // ĐĂNG KÝ
 
 function check() {
@@ -762,7 +793,6 @@ function login(e) {
   alert("Đăng nhập thành công");
 
   window.location.href = "nguoidung.html";
-
 }
 // end đăng nhập
 
@@ -952,4 +982,3 @@ function information(e) {
   document.getElementById("address").innerText = userData.address;
   document.getElementById("email").innerText = userData.email;
 }
-

@@ -1515,6 +1515,10 @@ p.vb_ndtg{
     padding-right: 5px;
   }
 
+  span#total-price {
+  color: black;
+}
+
   /* end giỏ hàng */
 
   /* sản phẩm */
