@@ -318,6 +318,114 @@ function checkgh() {
     window.location.href = "dangnhap.html";
   }
 }
+//Thanh toán//
+function confirmExchange() {
+  //  Chưa đăng nhập
+  if (!user) {
+    const hasAccount = confirm(
+      "⚠️ Bạn cần đăng nhập để thanh toán.\nBạn đã có tài khoản chưa?"
+    );
+    if (hasAccount) {
+      window.location.href = "dangnhap.html";
+    } else {
+      window.location.href = "dangky.html";
+    }
+    return;
+  }
+
+  //  Kiểm tra có chọn sách nào chưa
+  const selected = document.querySelectorAll(".item-checkbox:checked");
+  if (selected.length === 0) {
+    alert(" Vui lòng chọn ít nhất một sách để thanh toán.");
+    return;
+  }
+
+  //  Đã đăng nhập + đã chọn sách
+  window.location.href = "thanhtoan.html";
+}
+
+//hàm in thanh toán
+document.addEventListener("DOMContentLoaded", function () {
+  if (document.querySelector(".store")) {
+    currentUserEmail = localStorage.getItem("currentUserEmail");
+    user = JSON.parse(localStorage.getItem(currentUserEmail)) || {};
+    renderPayment();
+  }
+});
+function renderPayment() {
+  const store = document.querySelector(".store");
+  store.innerHTML = "";
+
+  let pay = user.select || [];
+
+  if (pay.length === 0) {
+    store.innerHTML = "<p>Không có sách nào để thanh toán.</p>";
+    return;
+  }
+
+  pay.forEach((book) => {
+    const bookDiv = document.createElement("div");
+    bookDiv.className = "item";
+    bookDiv.innerHTML = `
+        <img class="item-img" src="${
+          book.img_book || "https://via.placeholder.com/60x80?text=No+Image"
+        }" alt="ảnh sách" />
+        <div class="item-info">
+          <p class="item-name">${book.book_name}</p>
+          <p class="item-type">Thể loại: ${book.genre || "Không rõ"}</p>
+        </div>
+        <p class="item-price">${book.cost.toLocaleString("vi-VN")} đ</p>
+        <button class="button-clear" onclick="removeBookFromPayment('${
+          book.book_name
+        }')">Xóa</button>
+      `;
+    store.appendChild(bookDiv);
+  });
+  const info = document.createElement("div");
+  info.className = "info";
+  info.innerHTML = `
+          <h3><i class="fa-solid fa-book-open-reader"></i>${user.user_name}</h3>
+          <h3><i class="fa-solid fa-square-phone"></i>${user.tel}</h3>
+          <h3>
+            <i class="fa-solid fa-location-dot"></i> Địa chỉ: ${user.address}
+            </h3>
+        </div>`;
+  store.appendChild(info);
+  const payment = document.createElement("div");
+  payment.className = "payment";
+  payment.innerHTML = `
+          <h3><span id="total-price" ></span></h3>
+          <form onclick="confirmExchangeSuccess()">
+            <button type="submit">Trao đổi</button>
+          </form>
+    `;
+  store.appendChild(payment);
+  total();
+}
+function removeBookFromPayment(bookName) {
+  if (!Array.isArray(user.select)) user.select = [];
+  if (!Array.isArray(user.purchased_books)) user.purchased_books = [];
+
+  user.select = user.select.filter((b) => b.book_name !== bookName);
+
+  user.purchased_books = user.purchased_books.filter(
+    (b) => b.book_name !== bookName
+  );
+
+  localStorage.setItem(currentUserEmail, JSON.stringify(user));
+
+  renderPayment();
+}
+
+function confirmExchangeSuccess() {
+  alert("Thao tác thành công");
+  user.select = [];
+  user.purchased_books = [];
+  localStorage.setItem(currentUserEmail, JSON.stringify(user));
+  renderPayment();
+}
+// end giỏ hàng
+
 // sản phẩm
 document.addEventListener("DOMContentLoaded", function () {
   const productList = document.getElementById("list-product");
@@ -481,117 +589,13 @@ function buy(book) {
   localStorage.setItem(currentUserEmail, JSON.stringify(user));
 
   // Thông báo
-  alert(` Bạn đã mua sách: ${book.name || book.book_name}`);
+  alert(
+    ` Bạn vừa chọn mua  ${
+      book.name || book.book_name
+    }. \n Đến trang giỏ hàng để thanh toán ngay`
+  );
 }
 // end sản phẩm
-
-//Thanh toán//
-function confirmExchange() {
-  //  Chưa đăng nhập
-  if (!user) {
-    const hasAccount = confirm(
-      "⚠️ Bạn cần đăng nhập để thanh toán.\nBạn đã có tài khoản chưa?"
-    );
-    if (hasAccount) {
-      window.location.href = "dangnhap.html";
-    } else {
-      window.location.href = "dangky.html";
-    }
-    return;
-  }
-
-  //  Kiểm tra có chọn sách nào chưa
-  const selected = document.querySelectorAll(".item-checkbox:checked");
-  if (selected.length === 0) {
-    alert(" Vui lòng chọn ít nhất một sách để thanh toán.");
-    return;
-  }
-
-  //  Đã đăng nhập + đã chọn sách
-  window.location.href = "thanhtoan.html";
-}
-
-//hàm in thanh toán
-document.addEventListener("DOMContentLoaded", function () {
-  if (document.querySelector(".store")) {
-    currentUserEmail = localStorage.getItem("currentUserEmail");
-    user = JSON.parse(localStorage.getItem(currentUserEmail)) || {};
-    renderPayment();
-  }
-});
-function renderPayment() {
-  const store = document.querySelector(".store");
-  store.innerHTML = "";
-
-  let pay = user.select || [];
-
-  if (pay.length === 0) {
-    store.innerHTML = "<p>Không có sách nào để thanh toán.</p>";
-    return;
-  }
-
-  pay.forEach((book) => {
-    const bookDiv = document.createElement("div");
-    bookDiv.className = "item";
-    bookDiv.innerHTML = `
-        <img class="item-img" src="${
-          book.img_book || "https://via.placeholder.com/60x80?text=No+Image"
-        }" alt="ảnh sách" />
-        <div class="item-info">
-          <p class="item-name">${book.book_name}</p>
-          <p class="item-type">Thể loại: ${book.genre || "Không rõ"}</p>
-        </div>
-        <p class="item-price">${book.cost.toLocaleString("vi-VN")} đ</p>
-        <button class="button-clear" onclick="removeBookFromPayment('${
-          book.book_name
-        }')">Xóa</button>
-      `;
-    store.appendChild(bookDiv);
-  });
-  const info = document.createElement("div");
-  info.className = "info";
-  info.innerHTML = `
-          <h3><i class="fa-solid fa-book-open-reader"></i>${user.user_name}</h3>
-          <h3><i class="fa-solid fa-square-phone"></i>${user.tel}</h3>
-          <h3>
-            <i class="fa-solid fa-location-dot"></i> Địa chỉ: ${user.address}
-            </h3>
-        </div>`;
-  store.appendChild(info);
-  const payment = document.createElement("div");
-  payment.className = "payment";
-  payment.innerHTML = `
-          <h3><span id="total-price" fun></span></h3>
-          <form onclick="confirmExchangeSuccess()">
-            <button type="submit">Trao đổi</button>
-          </form>
-    `;
-  store.appendChild(payment);
-  total();
-}
-function removeBookFromPayment(bookName) {
-  if (!Array.isArray(user.select)) user.select = [];
-  if (!Array.isArray(user.purchased_books)) user.purchased_books = [];
-
-  user.select = user.select.filter((b) => b.book_name !== bookName);
-
-  user.purchased_books = user.purchased_books.filter(
-    (b) => b.book_name !== bookName
-  );
-
-  localStorage.setItem(currentUserEmail, JSON.stringify(user));
-
-  renderPayment();
-}
-
-function confirmExchangeSuccess() {
-  alert("Thao tác thành công");
-  user.select = [];
-  user.purchased_books = [];
-  localStorage.setItem(currentUserEmail, JSON.stringify(user));
-  renderPayment();
-}
-// end giỏ hàng
 
 // ô tìm kiếm
 document

@@ -438,6 +438,10 @@ footer a i:hover {
 #total-price {
   color: #eee;
 }
+/* chỉnh css thanh toán */
+span#total-price {
+  color: black;
+}
 
 /* end giỏ hàng */
 
@@ -675,7 +679,7 @@ footer a i:hover {
 /* nút trao đổi với nút xóa */
 .main-store button {
   padding: 0.8rem 1.6rem;
-  background: #ffd399;
+  background: #df9959;
   border-radius: 0.4rem;
   border: 0.1px;
   font-size: 1.4rem;
