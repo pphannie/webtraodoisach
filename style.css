@@ -1126,7 +1126,7 @@ span#total-price {
     border: none;
     outline: none;
     background-color: #ffeace;
-    width:250px;
+    width: 150px;
     
 }
 #vb_main{
@@ -1608,10 +1608,10 @@ p.vb_ndtg{
   /*liên hệ, người dùng & giới thiệu */
 
      #vb_ykien{
-        width: 450px;
+        width: 300px;
     }
     .vb_background{
-        width: 500px;
+        width: 350px;
         text-align: center;
         margin: 0 auto;
         margin-top: 15px;
