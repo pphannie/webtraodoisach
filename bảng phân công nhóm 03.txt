@@ -11,6 +11,6 @@
 |B2303820 | NGUYỄN HOÀNG KHANG        | HTML, CSS, JAVASCRIPT TRANG CHỦ.			           	 |
 |=========|===========================|==========================================================================|
 |B2306517 | NGÔ AN BÌNH	    	      | HTML, CSS, JAVASCRIPT TRANG SẢN PHẨM, THANH TOÁN và một phần JAVASCRIPT  |
-|	  |			      | của trang GIỎ HÀNG, ĐĂNG BÁN.			                         |
+|	  |			      | của trang GIỎ HÀNG, ĐĂNG BÁN, Ô TÌM KIẾM			              |
 |=========|===========================|==========================================================================|
 
