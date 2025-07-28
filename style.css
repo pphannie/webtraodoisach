@@ -1264,10 +1264,6 @@ p.vb_ndtg{
   }
 
   /* sản phẩm */
-  .product-card {
-    width: 10rem;
-    padding: 1rem;
-  }
 
   .list-product {
     column-gap: 2rem;
