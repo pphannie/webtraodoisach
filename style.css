@@ -438,7 +438,7 @@ footer a i:hover {
 #total-price {
   color: #eee;
 }
-/* chỉnh css thanh toán */
+/* chỉnh css thanh toán Bình */
 span#total-price {
   color: black;
 }
@@ -1623,5 +1623,15 @@ p.vb_ndtg{
 
   /* end liên hệ, người dùng & giới thiệu */
 
-
+  /* chỉnh thanh Toán Bình */
+  .item{
+    gap:0;
+  }
+  .item img{
+    width: 10rem;
+    height: 12rem;
+  }
+    .item p{
+      font-size: 1rem;
+  }
 }

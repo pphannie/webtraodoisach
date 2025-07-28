@@ -212,7 +212,7 @@ window.addEventListener("DOMContentLoaded", function () {
           }
         }
       }
-  // chỉnh tìm kiếm
+      // chỉnh tìm kiếm
       const localResults = products.filter((book) => {
         const bookName = book.book_name
           .normalize("NFD")
@@ -438,7 +438,7 @@ function confirmExchange() {
   //  Chưa đăng nhập
   if (!user) {
     const hasAccount = confirm(
-      "⚠️ Bạn cần đăng nhập để thanh toán.\nBạn đã có tài khoản chưa?"
+      " Bạn cần đăng nhập để thanh toán.\nBạn đã có tài khoản chưa?"
     );
     if (hasAccount) {
       window.location.href = "dangnhap.html";
@@ -487,7 +487,6 @@ function renderPayment() {
         }" alt="ảnh sách" />
         <div class="item-info">
           <p class="item-name">${book.book_name}</p>
-          <p class="item-type">Thể loại: ${book.genre || "Không rõ"}</p>
         </div>
         <p class="item-price">${book.cost.toLocaleString("vi-VN")} đ</p>
         <button class="button-clear" onclick="removeBookFromPayment('${
@@ -613,6 +612,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <p><strong>Năm:</strong> ${
             book.year || book.publication_year || "N/A"
           }</p>
+         <p><strong>Thể Loại :</strong> ${book.genre || "N/A"}</p>
           <p><strong>Tóm tắt:</strong> ${
             book.description || book.describe || "Không có mô tả"
           }</p>
@@ -845,7 +845,6 @@ function sold(e) {
     alert("Vui lòng nhập tóm tắt nội dung sách!");
     return;
   }
-
   const currentUserEmail = localStorage.getItem("currentUserEmail");
   if (!currentUserEmail) {
     alert("Bạn chưa đăng nhập. Không thể đăng bán sách.");
@@ -863,7 +862,7 @@ function sold(e) {
       book_name: book_name.value,
       author: author.value,
       genre: genre.value,
-      cost: cost.value,
+      cost: parseInt(cost.value),
       status: status.value,
       describe: describe.value,
       publication_year: publication_year.value,
