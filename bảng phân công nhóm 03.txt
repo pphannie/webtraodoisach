@@ -1,16 +1,23 @@
+
+**WEB CHẠY BẰNG LIVE SERVER (thầy nhớ chạy bằng live server nha thầy ^^)**
+
 |=========|===========================|==========================================================================|
-|  MSSV   | 	HỌ  VÀ TÊN 	      |  				CÔNG VIỆC                    	         |
+|  MSSV   | 	HỌ  VÀ TÊN 	          |  				CÔNG VIỆC                    	                         |
 |=========|===========================|==========================================================================|
 |B2303744 | NGUYỄN THỊ NGỌC HÂN       | HTML, CSS, JAVASCRIPT TRANG ĐĂNG KÝ, ĐĂNG NHẬP, ĐĂNG BÁN. BOOTSTRAP MENU.|
 |=========|===========================|==========================================================================|
-|B2303787 | LÝ KHÁNH TRÂN             | HTML, CSS, JAVASCRIPT TRANG GIỎ HÀNG.		                         |
+|B2303787 | LÝ KHÁNH TRÂN             | HTML, CSS, JAVASCRIPT TRANG GIỎ HÀNG.		                             |
 |=========|===========================|==========================================================================|
 |B2303793 | NGUYỄN QUỐC ÁI VI         | HTML, CSS, JAVASCRIPT TRANG LIÊN HỆ, GIỚI THIỆU, NGƯỜI DÙNG và một phần  |
 |         |             	          | JAVASCRIPT của ĐĂNG NHẬP                                                 |
 |=========|===========================|==========================================================================|
-|B2303820 | NGUYỄN HOÀNG KHANG        | HTML, CSS, JAVASCRIPT TRANG CHỦ.			           	 |
+|B2303820 | NGUYỄN HOÀNG KHANG        | HTML, CSS, JAVASCRIPT TRANG CHỦ.			                         	 |
 |=========|===========================|==========================================================================|
 |B2306517 | NGÔ AN BÌNH	    	      | HTML, CSS, JAVASCRIPT TRANG SẢN PHẨM, THANH TOÁN và một phần JAVASCRIPT  |
-|	      |			                  | của trang GIỎ HÀNG, ĐĂNG BÁN.			                         |
+<<<<<<< HEAD
+|	      |			                  | của trang GIỎ HÀNG, ĐĂNG BÁN.			                                 |
+=======
+|	  |			      | của trang GIỎ HÀNG, ĐĂNG BÁN, Ô TÌM KIẾM			         |
+>>>>>>> c5d568661945eb0511806644b3fbcad8101913e8
 |=========|===========================|==========================================================================|
 

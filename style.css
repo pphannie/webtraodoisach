@@ -4,11 +4,9 @@ html {
 
 body {
   overflow-x: hidden;
-  /* Ngăn trang bị tràn */
   background-image: url(img/bgw.jpg);
   background-position: center;
   background-attachment: fixed;
-  /*cố định nền để khôi bị lỗi di chuyển khi điều  chỉnh các khối khác*/
   background-repeat: no-repeat;
   background-size: cover;
   font-size: 1.6rem;
@@ -31,7 +29,6 @@ footer {
 footer a i {
   color: black;
   font-size: x-large;
-
   transition-duration: 0.31s;
   transition-timing-function: ease;
   cursor: pointer;
@@ -81,6 +78,8 @@ header {
   transform: scale(1.2);
 }
 
+/* end thanh điều hướng */
+
 /* khung tìm kiếm */
 
 #search_input {
@@ -98,7 +97,6 @@ header {
   margin-left: -10%;
   margin-top: 10%;
   padding-bottom: 5%;
-
   border: none;
   height: 3.1rem;
 }
@@ -131,7 +129,6 @@ header {
   display: grid;
   grid-template-areas: "search_box search sold";
   grid-template-columns: 3fr 0.5fr 0.5fr;
-
   max-width: 500px;
   background-color: #df9959;
   height: 45px;
@@ -145,6 +142,8 @@ footer a i:hover {
   filter: brightness(105%);
   transform: scale(1.1);
 }
+
+/* end khung tìm kiếm */
 
 /* đăng nhập */
 .r1_dk,
@@ -196,7 +195,6 @@ footer a i:hover {
   justify-content: space-around;
   gap: 7%;
   flex: 1;
-
   width: 90%;
   padding: 4% 5%;
 }
@@ -214,7 +212,6 @@ footer a i:hover {
 .r3_dk textarea {
   flex: 2;
   flex-shrink: 1;
-
   border: none;
   outline: none;
   background-color: transparent;
@@ -230,7 +227,6 @@ footer a i:hover {
   font-size: large;
   border: none;
   border-radius: 20px;
-
   transition-duration: 0.31s;
   transition-timing-function: ease;
   cursor: pointer;
@@ -248,6 +244,7 @@ footer a i:hover {
   color: black;
   text-decoration: none;
 }
+/* end đăng nhập */
 
 /* đăng ký */
 
@@ -282,6 +279,7 @@ footer a i:hover {
 #birthday {
   cursor: pointer;
 }
+/* end đăng ký */
 
 /* đăng bán */
 .r1_dk#db {
@@ -305,6 +303,7 @@ footer a i:hover {
 #cost {
   font-size: medium;
 }
+/* end đăng bán */
 
 /* giỏ hàng */
 #cart-container {
@@ -438,11 +437,6 @@ footer a i:hover {
 #total-price {
   color: #eee;
 }
-/* chỉnh css thanh toán Bình */
-span#total-price {
-  color: black;
-}
-
 /* end giỏ hàng */
 
 /* sản phẩm */
@@ -534,7 +528,7 @@ span#total-price {
   color: #555;
   margin: 0;
 }
-.description-overlay {
+.description-overlay, .description {
   max-height: 100%;
   overflow-x: auto;
   padding-right: 0.5rem;
@@ -545,7 +539,7 @@ span#total-price {
   word-break: break-word;
 }
 
-.description-overlay::-webkit-scrollbar {
+.description-overlay::-webkit-scrollbar, .description::-webkit-scrollbar {
   width: 6px;
 }
 .description-overlay::-webkit-scrollbar-thumb {
@@ -555,20 +549,7 @@ span#total-price {
 .description-overlay::-webkit-scrollbar-track {
   background: transparent;
 }
-.description {
-  max-height: 10rem;
-  overflow-y: auto;
-  padding-right: 0.5rem;
-  /* ẨN thanh cuộn ngang */
-  overflow-x: hidden;
-  /* Cho phép tự xuống dòng nếu văn bản dài */
-  white-space: normal;
-  word-break: break-word;
-}
 
-.description::-webkit-scrollbar {
-  width: 6px;
-}
 .description::-webkit-scrollbar-thumb {
   background-color: #aaa;
   border-radius: 4px;
@@ -630,7 +611,6 @@ span#total-price {
   text-align: center;
   color: black;
   border-radius: 20%;
-
   transition-duration: 0.31s;
   transition-timing-function: ease;
   cursor: pointer;
@@ -671,11 +651,11 @@ span#total-price {
   width: 100%;
   border-radius: 5px;
 }
-
 /* end sản phẩm */
 
 
 /* thanh toán */
+
 /* nút trao đổi với nút xóa */
 .main-store button {
   padding: 0.8rem 1.6rem;
@@ -702,6 +682,10 @@ span#total-price {
   padding: 1rem;
   text-align: left;
 }
+
+span#total-price {
+    color: black;
+  }
 
 /* end thanh toán */
 
@@ -874,8 +858,17 @@ span#total-price {
   display: block;
 }
 
+.tcbook h3 {
+  font-size: 2rem;
+}
+
 .tcbook p {
-  font-size: 150%;
+  color: red;
+  font-size: 2rem;
+}
+
+#tcdot p{
+  color: black;
 }
 
 .tcbook,
@@ -980,6 +973,10 @@ span#total-price {
   overflow-y: auto;
 }
 
+.tcbook-overlay p {
+  color: black;
+}
+
 .tcbook-overlay::-webkit-scrollbar {
   width: 6px;
 }
@@ -1027,20 +1024,19 @@ span#total-price {
 /* end trang chủ */
 
 /* liên hệ, người dùng & giới thiệu */
-
 #vb_logout{
   border: none;
   outline: none;
   border-radius: 3px;
   background-color: #ffeace;
-
   transition-duration: 0.31s;
   transition-timing-function: ease;
   cursor: pointer;
 }
+
 #vb_logout:hover{
-  filter: brightness(130%);
-  transform: scale(1.2);
+  filter: brightness(105%);
+  transform: scale(1.05);
 }
 
 .vb_htt {
@@ -1048,12 +1044,11 @@ span#total-price {
     padding-top: 2px;
     text-align: center;
     font-size: larger;
-
 }
+
 .vb_inf{
     font-weight: bold;
     font-size: medium;
-
     display: flex;
     background-color: #ffeace;
     padding-left: 13px;
@@ -1061,9 +1056,8 @@ span#total-price {
     margin: 10px;
     border-radius: 10px;
     max-width: 100%;  
-
-
 }
+
 .vb_dong{
     padding: 8px 13px;
     padding-bottom: 5px;
@@ -1072,26 +1066,39 @@ span#total-price {
 #vb_lienhe *, #vb_lienhe ::before, #vb_lienhe ::after {
   box-sizing: content-box;
 }
+
 #vb_user *, #vb_user ::before, #vb_user ::after {
   box-sizing: content-box;
 }
+
 .vb_background{
         max-width: 700px;
         margin: 0 auto;
         margin-top: 15px;
-    }
+}
+
 #vb_ykien{
        max-width:  650px;
-    }
+}
+
 .vb_search_box{
   background-color: #ffeace;
 }
+
 #vb_submit{
-    border: #d48437 solid 2px;
+    border: none;
     outline: none;
     padding: 8px;
     border-radius: 10px;
-    background-color: #ffeace;
+    background-color: #df9959;
+    transition-duration: 0.31s;
+    transition-timing-function: ease;
+    cursor: pointer;
+}
+
+#vb_submit:hover{
+  filter: brightness(110%);
+  transform: scale(1.2);
 }
 
 .vb_htt {
@@ -1099,14 +1106,16 @@ span#total-price {
     padding-bottom: -7px;
     padding-top: -7px;
 }
+
 .vb_dong{
     display: block;
     background-color: #ffeace;
     padding: 8px 13px;
     margin: 10px;
     border-radius: 10px;
-    max-width: 100%;  
+    /* width: 100%;   */
 }
+
 #logoutBtn{
   border: solid #d48437 2px;
   border-radius: 5px;
@@ -1122,13 +1131,15 @@ span#total-price {
     background-color: #ffeace;
     
 }
+
 .vb_input{
     border: none;
     outline: none;
     background-color: #ffeace;
-    width: 150px;
+    width:150px;
     
 }
+
 #vb_main{
     margin-left: auto;
     margin-right: auto;
@@ -1141,15 +1152,18 @@ span#total-price {
     text-align: center;
     margin:15px  auto;
 }
+
 #vb_noi_dung{
     background-color: #ffd399;
     border-radius: 10px;
     padding: 10px;
     margin: 10px;
 }
+
 #vb_ads{
     color:#ffd399;
 }
+
 #vb_dau {
     position: fixed;
     right: 10px;
@@ -1159,7 +1173,9 @@ span#total-price {
     color: #d48437;
     z-index: 100;
     border-radius: 7px;
+    border: 2px solid #d48437;
 }
+
 .vb_icon{
     width: 25px;
     height: 25px;
@@ -1167,24 +1183,24 @@ span#total-price {
     padding: 2px;
     color: black;
     text-align: center;
-    
 }
-
-
 
 #vb_dong > td > section{
     background-color: #ffeace;
     border: none;
     outline: none;
 }
+
 .vb_nd{
      background-color: #ffeace;
     border: none;
     outline: none;
 }
+
 .vb_ndtg{
     text-align: left;
 }
+
 p.vb_ndtg{
     text-align: left;
     margin-left: 30px ;
@@ -1215,16 +1231,13 @@ p.vb_ndtg{
     flex: 0 0 calc(100% / 3 - 10px);
     max-width: calc(100% / 3 - 10px);
   }
-
   /* end trang chủ */
 
    /* liên hệ, người dùng & giới thiệu */
-  
     .vb_search_box{
     display: grid;
     grid-template-areas: "search_box search sold";
     grid-template-columns: 3fr 0.5fr 0.5fr;
-
     max-width: 500px;
     background-color: #df9959;
     height:45px;
@@ -1232,7 +1245,6 @@ p.vb_ndtg{
     border-radius: 20px;
     height: 20px;
   }
-
   /* end liên hệ, người dùng & giới thiệu */
 
 }
@@ -1246,14 +1258,12 @@ p.vb_ndtg{
   }
 
   /* đăng bán */
-
   .r1_dk#db {
     width: 65%;
     height: 100%;
   }
 
   /* sản phẩm */
-
   .product-card {
     width: 10rem;
     padding: 1rem;
@@ -1284,22 +1294,24 @@ p.vb_ndtg{
   .main-store {
     width: 90%;
   }
+  /* end đăng bán */
 
   /* liên hệ, người dùng & giới thiệu */
      #vb_ykien{
-        width: 550px;
+        width: 300px;
     }
+
     .vb_background{
-        width: 600px;
+        width: 350px;
         text-align: center;
         margin: 0 auto;
         margin-top: 15px;
     }
+
     .vb_search_box{
         background-color: #ffeace;
         text-align: left;
-  }
-
+    }
   /* end liên hệ, người dùng & giới thiệu */
 
   /* trang chủ */
@@ -1315,7 +1327,6 @@ p.vb_ndtg{
     filter: brightness(105%);
     transform: scale(1.1);
   }
-
   /* end trang chủ */
 
 }
@@ -1349,6 +1360,7 @@ p.vb_ndtg{
   .nav-link {
     padding-left: 4%;
   }
+  /* end menu mobile */
 
   /* khung tìm kiếm */
   .search_box {
@@ -1374,6 +1386,7 @@ p.vb_ndtg{
     height: 34px;
     padding-top: 15%;
   }
+  /* end khung tìm kiếm */
 
   /* nút cuộn lên */
   #vb_dau {
@@ -1390,7 +1403,7 @@ p.vb_ndtg{
     color: #d48437;
     z-index: 1000;
     border: 2px solid #d48437;
-    border-radius: 50%;
+    border-radius: 7px;
     text-decoration: none;
   }
 
@@ -1412,6 +1425,7 @@ p.vb_ndtg{
   .r4 {
     margin-bottom: 5%;
   }
+  /* end đăng nhập */
 
   /* đăng ký */
 
@@ -1422,6 +1436,7 @@ p.vb_ndtg{
   .r3_dk {
     height: auto;
   }
+  /* end đăng ký */
 
   /* dăng bán */
   .r1_dk#db {
@@ -1444,9 +1459,9 @@ p.vb_ndtg{
   #cost {
     font-size: small;
   }
+  /* đăng bán */
 
   /* giỏ hàng */
-
   #tieudegiohang {
     font-size: 20px;
   }
@@ -1520,39 +1535,22 @@ p.vb_ndtg{
     padding-right: 5px;
   }
 
+  span#total-price {
+    color: black;
+  }
+
   /* end giỏ hàng */
 
   /* sản phẩm */
-  .product-card {
-    width: 10rem;
-    padding: 1rem;
-  }
 
   .list-product {
-    column-gap: 2rem;
     row-gap: 2rem;
-  }
-
-  .product-card h3 {
-    font-size: 1.5rem;
-  }
-
-  .product-card p {
-    font-size: 1rem;
-  }
-
-  .price {
-    font-size: 1rem;
-  }
-
-  .button-buy {
-    font-size: 1rem;
-    padding: 0.5rem;
   }
 
   .main-store {
     width: 90%;
   }
+  /* end sản phẩm */
 
   /* trang chủ */
   .tcmycarousel-container {
@@ -1620,18 +1618,16 @@ p.vb_ndtg{
         background-color: #ffeace;
         text-align: left;
       }
-
   /* end liên hệ, người dùng & giới thiệu */
 
-  /* chỉnh thanh Toán Bình */
-  .item{
-    gap:0;
-  }
-  .item img{
-    width: 10rem;
-    height: 12rem;
-  }
-    .item p{
-      font-size: 1rem;
-  }
+    .item{
+      gap:0;
+    }
+    .item img{
+      width: 10rem;
+      height: 12rem;
+    }
+      .item p{
+        font-size: 1rem;
+    }
 }
