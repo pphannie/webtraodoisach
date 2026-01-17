@@ -1,0 +1,272 @@
+[
+  {
+    "book_name": "Đắc Nhân Tâm",
+    "author": "Dale Carnegie",
+    "cost": 89000,
+    "genre": "Phát triển bản thân",
+    "status": "Còn hàng",
+    "describe": "Giúp bạn phát triển kỹ năng giao tiếp.",
+    "img_book": "img/dacnhantam.jpg",
+    "year": 1936
+  },
+  {
+    "book_name": "7 Thói Quen Hiệu Quả",
+    "author": "Stephen R. Covey",
+    "cost": 99000,
+    "genre": "Phát triển bản thân",
+    "status": "Còn hàng",
+    "describe": "Cẩm nang phát triển bản thân bền vững.",
+    "img_book": "img/7_Thói_Quen_Để_Thành_Đạt.jpg",
+    "year": 1989
+  },
+  {
+    "book_name": "Dế Mèn Phiêu Lưu Ký",
+    "author": "Tô Hoài",
+    "cost": 65000,
+    "genre": "Phát triển bản thân",
+    "status": "Còn hàng",
+    "describe": "Câu chuyện về chú dế nhỏ gan dạ.",
+    "img_book": "img/demen.jpg",
+    "year": 1941
+  },
+  {
+    "book_name": "Cho Tôi Xin Một Vé Đi Tuổi Thơ",
+    "author": "Nguyễn Nhật Ánh",
+    "cost": 72000,
+    "genre": "Phát triển bản thân",
+    "status": "Còn hàng",
+    "describe": "Hồi tưởng thời thơ ấu đầy xúc cảm.",
+    "img_book": "img/Cho_tôi_xin_một_vé_đi_tuổi_thơ.jpg",
+    "year": 2008
+  },
+  {
+    "book_name": "Nhà Giả Kim",
+    "author": "Paulo Coelho",
+    "cost": 87000,
+    "genre": "Phát triển bản thân",
+    "status": "Còn hàng",
+    "describe": "Hành trình theo đuổi ước mơ của chàng chăn cừu.",
+    "img_book": "img/Nha_gia_kim.jpg",
+    "year": 1988
+  },
+  {
+    "book_name": "Tuổi Trẻ Đáng Giá Bao Nhiêu",
+    "author": "Rosie Nguyễn",
+    "cost": 80000,
+    "genre": "Phát triển bản thân",
+    "status": "Còn hàng",
+    "describe": "Truyền cảm hứng cho người trẻ dám sống hết mình.",
+    "img_book": "img/tuoi_tre_dang_bao_nhieu.jpg",
+    "year": 2016
+  },
+  {
+    "book_name": "Dạy Con Làm Giàu",
+    "author": "Robert T. Kiyosaki",
+    "cost": 95000,
+    "genre": "Kinh doanh / Tài chính",
+    "status": "Còn hàng",
+    "describe": "Bài học tài chính từ cha giàu và cha nghèo.",
+    "img_book": "img/day-con-lam-giau.jpg",
+    "year": 1997
+  },
+  {
+    "book_name": "Tâm Lý Học Về Tiền",
+    "author": "Morgan Housel",
+    "cost": 92000,
+    "genre": "Phát triển bản thân",
+    "status": "Còn hàng",
+    "describe": "Suy nghĩ và hành vi con người khi liên quan đến tiền bạc.",
+    "img_book": "img/tam-ly-hoc-tien.jpg",
+    "year": 2020
+  },
+  {
+    "book_name": "Hiểu Về Trái Tim",
+    "author": "Minh Niệm",
+    "cost": 99000,
+    "genre": "Tôn giáo / Tâm linh",
+    "status": "Còn hàng",
+    "describe": "Sách chữa lành cảm xúc và kết nối nội tâm.",
+    "img_book": "img/hieu-ve-trai-tim.jpg",
+    "year": 2011
+  },
+  {
+    "book_name": "Đường Xưa Mây Trắng",
+    "author": "Thích Nhất Hạnh",
+    "cost": 110000,
+    "genre": "Tôn giáo / Tâm linh",
+    "status": "Còn hàng",
+    "describe": "Cuộc đời Đức Phật được kể lại nhẹ nhàng, sâu sắc.",
+    "img_book": "img/duong-xua.jpg",
+    "year": 1992
+  },
+  {
+    "book_name": "Lược Sử Thời Gian",
+    "author": "Stephen Hawking",
+    "cost": 105000,
+    "genre": "Khoa học",
+    "status": "Còn hàng",
+    "describe": "Hiểu về vũ trụ, thời gian và lỗ đen.",
+    "img_book": "img/luoc-su-thoi-gian.jpg",
+    "year": 1988
+  },
+  {
+    "book_name": "Vũ Trụ Trong Vỏ Hạt Dẻ",
+    "author": "Stephen Hawking",
+    "cost": 98000,
+    "genre": "Khoa học",
+    "status": "Còn hàng",
+    "describe": "Tiếp cận vật lý hiện đại một cách trực quan.",
+    "img_book": "img/vo-hat-de.jpg",
+    "year": 2001
+  },
+  {
+    "book_name": "Sapiens: Lược Sử Loài Người",
+    "author": "Yuval Noah Harari",
+    "cost": 130000,
+    "genre": "Khoa học",
+    "status": "Còn hàng",
+    "describe": "Khám phá lịch sử nhân loại từ nguyên thủy đến hiện đại.",
+    "img_book": "img/sapiens.jpg",
+    "year": 2011
+  },
+  {
+    "book_name": "Việt Nam Sử Lược",
+    "author": "Trần Trọng Kim",
+    "cost": 85000,
+    "genre": "Khoa học",
+    "status": "Còn hàng",
+    "describe": "Tổng quan lịch sử Việt Nam ngắn gọn, dễ hiểu.",
+    "img_book": "img/su_luoc.jpg",
+    "year": 1919
+  },
+  {
+    "book_name": "Overlord (Light Novel) Vol. 1",
+    "author": "Kugane Maruyama",
+    "cost": 130000,
+    "genre": "Tiểu thuyết",
+    "status": "Còn hàng",
+    "describe": "Overlord là một light novel Nhật Bản thuộc thể loại isekai (dị giới), giả tưởng đen tối và hành động.",
+    "img_book": "img/overlord_1.jpg",
+    "year": 2020
+  },
+  {
+    "book_name": "Nhất Quyền Nhân - Chương 30",
+    "author": "ONE, Yusuke Murat",
+    "cost": 30000,
+    "genre": "Truyện tranh",
+    "status": "Còn hàng",
+    "describe": "One Punch Man là một truyện tranh (manga) thể loại hành động, siêu anh hùng pha trộn hài hước và châm biếm.",
+    "img_book": "img/opm.jpg",
+    "year": 2025
+  },
+  {
+    "book_name": "Về Chuyện Tôi Chuyển Sinh Thành Slime - (Light Novel) Vol. 1",
+    "author": "Fuse, Mizt Vah",
+    "cost": 135000,
+    "genre": "Tiểu thuyết",
+    "status": "Còn hàng",
+    "describe": "Tensei Shitara Slime Datta Ken là một light novel isekai nổi tiếng, pha trộn phiêu lưu, hành động, phép thuật và xây dựng thế giới.",
+    "img_book": "img/csts1.jpg",
+    "year": 2020
+  },
+  {
+    "book_name": "Hãy ban phúc lành cho thế giới tuyệt vời này! (Light Novel) Vol. 1",
+    "author": "Akatsuki Natsume, Mishima Kurone",
+    "cost": 530000,
+    "genre": "Truyện tranh",
+    "status": "Còn hàng",
+    "describe": "Kono Subarashii Sekai ni Shukufuku wo! là một light novel isekai nổi tiếng pha trộn hài hước, phiêu lưu và đời sống thường nhật.",
+    "img_book": "img/knsb.jpg",
+    "year": 2015
+  },
+  {
+    "book_name": "Thất nghiệp chuyển sinh ~ Sống hết mình sau khi tới thế giới khác (Light Novel) Vol. 1",
+    "author": "Rifujin na Magonote, Shirotaka",
+    "cost": 615000,
+    "genre": "Tiểu thuyết",
+    "status": "Còn hàng",
+    "describe": "Mushoku Tensei: Isekai Ittara Honki Dasu là một light novel isekai nổi bật, pha trộn giữa phiêu lưu, trưởng thành, phép thuật và tình cảm.",
+    "img_book": "img/ms.jpg",
+    "year": 2014
+  },
+  {
+    "book_name": "Chỉ mình tôi thăng cấp - Chương 1",
+    "author": "Dubu (Redice Studio), Chugong",
+    "cost": 85000,
+    "genre": "Truyện tranh",
+    "status": "Còn hàng",
+    "describe": "Solo Leveling là một web novel Hàn Quốc, sau đó được chuyển thể thành manhwa rất nổi tiếng, thuộc thể loại hành động, giả tưởng, hệ thống.",
+    "img_book": "img/sl.webp",
+    "year": 2023
+  },
+  {
+    "book_name": "Đại chiến Titan - Chương 11",
+    "author": "Hajime Isayama",
+    "cost": 22000,
+    "genre": "Truyện tranh",
+    "status": "Còn hàng",
+    "describe": "Attack on Titan / Shingeki no Kyojin là một manga nổi tiếng toàn cầu, thuộc thể loại hành động, hậu tận thế, giả tưởng đen tối.",
+    "img_book": "img/aot11.webp",
+    "year": 2015
+  },
+  {
+    "book_name": "Thất Hình Đại Tội - Chương 1",
+    "author": "Suzuki Nakaba",
+    "cost": 20000,
+    "genre": "Truyện tranh",
+    "status": "Còn hàng",
+    "describe": "The Seven Deadly Sins / Nanatsu no Taizai là một manga phiêu lưu – hành động – giả tưởng nổi tiếng của Nhật Bản, với bối cảnh trung cổ, hiệp sĩ và phép thuật.",
+    "img_book": "img/tdt.webp",
+    "year": 2018
+  },
+  {
+    "book_name": "Nàng Búp Bê Thử Đồ Biết Yêu - Vol. 7",
+    "author": "Fukuda Shinichi",
+    "cost": 190000,
+    "genre": "Truyện tranh",
+    "status": "Còn hàng",
+    "describe": "Sono Bisque Doll wa Koi wo Suru / My Dress-Up Darling là một manga thể loại rom-com (hài lãng mạn) pha chút slice of life và cosplay.",
+    "img_book": "img/mdd.jpg",
+    "year": 2023
+  },
+  {
+    "book_name": "Bảy Viên Ngọc Rồng Siêu Cấp - Chương 12",
+    "author": "Akira Toriyama, Toyotarou",
+    "cost": 28000,
+    "genre": "Truyện tranh",
+    "status": "Còn hàng",
+    "describe": "Dragon Ball Super là phần tiếp theo của loạt manga huyền thoại Dragon Ball Z, thuộc thể loại hành động, viễn tưởng, võ thuật, siêu năng lực.",
+    "img_book": "img/dgbs.jpg",
+    "year": 2025
+  },
+  {
+    "book_name": "Nhập môn HTML và CSS",
+    "author": "Nguyễn Quang Hải",
+    "cost": 90000,
+    "genre": "Giáo trình / Học tập",
+    "status": "Còn hàng",
+    "describe": "Sách giúp người học có kiến thức cơ bản về HTML và CSS.",
+    "img_book": "img/b1.jpg",
+    "year": 2014
+  },
+  {
+    "book_name": "100 bài tập Javascript có lời giải",
+    "author": "Lưu Trường Hải Lân",
+    "cost": 120000,
+    "genre": "Giáo trình / Học tập",
+    "status": "Còn hàng",
+    "describe": "Cuốn sách không chỉ là một nguồn tài nguyên học tập mà còn là một hướng dẫn chi tiết và đầy đủ, giúp bạn phát triển kỹ năng lập trình một cách toàn diện và hiệu quả.",
+    "img_book": "img/book2jpg.jpg",
+    "year": 2024
+  },
+  {
+    "book_name": "LẬP TRÌNH PYTHON CHO NGƯỜI MỚI BẮT ĐẦU",
+    "author": "Nguyễn Ngọc Tân",
+    "cost": 100000,
+    "genre": "Giáo trình / Học tập",
+    "status": "Còn hàng",
+    "describe": "Sách được chia thành nhiều bài học, từ cơ bản đến nâng cao, tập trung vào việc phát triển tư duy và kỹ năng thực hành thông qua việc phân tích, thực hành và xây dựng các chương trình và ứng dụng Python.",
+    "img_book": "img/book3.jpg",
+    "year": 2024
+  }
+]
